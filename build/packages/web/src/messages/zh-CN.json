@@ -1,0 +1,268 @@
+{
+  "common": {
+    "appName": "流程目录",
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "search": "搜索",
+    "filter": "筛选",
+    "export": "导出",
+    "import": "导入",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "yes": "是",
+    "no": "否",
+    "confirm": "确认",
+    "noResults": "未找到结果",
+    "rowsPerPage": "每页行数",
+    "page": "页",
+    "of": "/",
+    "selected": "已选择",
+    "all": "全部",
+    "none": "无"
+  },
+  "nav": {
+    "dashboard": "仪表板",
+    "processes": "流程",
+    "processCanvas": "流程画布",
+    "riada": "RIADA",
+    "portfolio": "项目组合",
+    "businessModel": "商业模式",
+    "surveys": "调查",
+    "prompts": "提示词库",
+    "reports": "报告",
+    "referenceData": "参考数据",
+    "settings": "设置"
+  },
+  "auth": {
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "email": "邮箱",
+    "emailPlaceholder": "请输入邮箱",
+    "sendMagicLink": "发送魔法链接",
+    "checkYourEmail": "请查收邮件",
+    "magicLinkSent": "我们已向 {email} 发送了魔法链接",
+    "clickToSignIn": "点击邮件中的链接登录",
+    "linkExpires": "链接将在15分钟后过期",
+    "tryAgain": "重试"
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来",
+    "overview": "概览",
+    "recentActivity": "最近活动",
+    "quickActions": "快捷操作",
+    "stats": {
+      "processes": "流程数",
+      "openRisks": "未解决风险",
+      "openIssues": "未解决问题",
+      "projects": "项目数"
+    }
+  },
+  "processes": {
+    "title": "流程目录",
+    "canvas": "流程画布",
+    "list": "流程列表",
+    "create": "创建流程",
+    "edit": "编辑流程",
+    "delete": "删除流程",
+    "deleteConfirm": "确定要删除此流程吗？",
+    "fields": {
+      "code": "编码",
+      "name": "名称",
+      "description": "描述",
+      "level": "层级",
+      "type": "类型",
+      "status": "状态",
+      "owner": "负责人",
+      "sponsor": "发起人",
+      "automation": "自动化程度",
+      "parent": "父流程"
+    },
+    "levels": {
+      "L0": "价值流",
+      "L1": "流程组",
+      "L2": "流程",
+      "L3": "子流程",
+      "L4": "变体",
+      "L5": "任务"
+    },
+    "types": {
+      "primary": "主要",
+      "secondary": "次要"
+    },
+    "statuses": {
+      "draft": "草稿",
+      "active": "活跃",
+      "under_review": "审核中",
+      "deprecated": "已弃用",
+      "archived": "已归档"
+    },
+    "automation": {
+      "manual": "手动",
+      "semi_automated": "半自动化",
+      "fully_automated": "全自动化",
+      "ai_assisted": "AI辅助"
+    }
+  },
+  "riada": {
+    "title": "RIADA",
+    "subtitle": "风险、问题、行动、依赖、假设",
+    "create": "创建项目",
+    "edit": "编辑项目",
+    "delete": "删除项目",
+    "deleteConfirm": "确定要删除此项目吗？",
+    "fields": {
+      "code": "编码",
+      "title": "标题",
+      "description": "描述",
+      "type": "类型",
+      "category": "类别",
+      "severity": "严重程度",
+      "status": "状态",
+      "probability": "可能性",
+      "impact": "影响",
+      "riskScore": "风险评分",
+      "mitigationPlan": "缓解计划",
+      "dueDate": "截止日期",
+      "assignedTo": "指派给",
+      "raisedBy": "提出者",
+      "linkedProcess": "关联流程"
+    },
+    "types": {
+      "risk": "风险",
+      "issue": "问题",
+      "action": "行动",
+      "dependency": "依赖",
+      "assumption": "假设"
+    },
+    "categories": {
+      "people": "人员",
+      "process": "流程",
+      "system": "系统",
+      "data": "数据"
+    },
+    "severities": {
+      "critical": "严重",
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "statuses": {
+      "open": "开放",
+      "in_progress": "进行中",
+      "mitigated": "已缓解",
+      "resolved": "已解决",
+      "closed": "已关闭",
+      "accepted": "已接受"
+    }
+  },
+  "portfolio": {
+    "title": "项目组合",
+    "create": "创建项目",
+    "edit": "编辑项目",
+    "delete": "删除项目",
+    "deleteConfirm": "确定要删除此项目吗？",
+    "tree": "树状视图",
+    "table": "表格视图",
+    "gantt": "甘特图",
+    "fields": {
+      "code": "编码",
+      "name": "名称",
+      "description": "描述",
+      "level": "层级",
+      "status": "状态",
+      "rag": "RAG",
+      "owner": "负责人",
+      "sponsor": "发起人",
+      "plannedStart": "计划开始",
+      "plannedEnd": "计划结束",
+      "actualStart": "实际开始",
+      "actualEnd": "实际结束",
+      "budget": "预算",
+      "wsvf": "WSVF评分"
+    },
+    "levels": {
+      "strategy": "战略",
+      "portfolio": "组合",
+      "programme": "计划",
+      "project": "项目",
+      "workstream": "工作流",
+      "epic": "史诗",
+      "task": "任务"
+    },
+    "statuses": {
+      "proposed": "已提议",
+      "approved": "已批准",
+      "in_progress": "进行中",
+      "on_hold": "暂停",
+      "completed": "已完成",
+      "cancelled": "已取消"
+    }
+  },
+  "businessModel": {
+    "title": "商业模式画布",
+    "create": "创建条目",
+    "edit": "编辑条目",
+    "delete": "删除条目",
+    "deleteConfirm": "确定要删除此条目吗？",
+    "gridView": "网格视图",
+    "listView": "列表视图",
+    "components": {
+      "key_partners": "关键合作伙伴",
+      "key_activities": "关键业务",
+      "key_resources": "核心资源",
+      "value_propositions": "价值主张",
+      "customer_relationships": "客户关系",
+      "channels": "渠道通路",
+      "customer_segments": "客户细分",
+      "cost_structure": "成本结构",
+      "revenue_streams": "收入来源"
+    },
+    "agentic": {
+      "opportunity": "智能体机会",
+      "readiness": "就绪度",
+      "impact": "影响",
+      "notes": "备注"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "general": "通用",
+    "integrations": "集成",
+    "users": "用户",
+    "organization": "组织",
+    "profile": "个人资料",
+    "theme": "主题",
+    "language": "语言",
+    "notifications": "通知"
+  },
+  "rag": {
+    "red": "红",
+    "amber": "黄",
+    "green": "绿"
+  },
+  "errors": {
+    "required": "此字段为必填项",
+    "invalidEmail": "请输入有效的邮箱地址",
+    "minLength": "至少需要 {min} 个字符",
+    "maxLength": "最多 {max} 个字符",
+    "network": "网络错误，请检查您的连接",
+    "unauthorized": "您无权执行此操作",
+    "notFound": "未找到资源",
+    "serverError": "服务器错误，请稍后重试"
+  },
+  "success": {
+    "created": "创建成功",
+    "updated": "更新成功",
+    "deleted": "删除成功",
+    "saved": "保存成功"
+  }
+}

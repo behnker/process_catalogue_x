@@ -1,0 +1,76 @@
+# Process Catalogue — Local Development Stack
+# Usage: docker compose up -d
+
+services:
+  # ── PostgreSQL ───────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: process_catalogue
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── FastAPI Backend ──────────────────────────────
+  api:
+    build:
+      context: ../../packages/api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:password@postgres:5432/process_catalogue
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: dev-secret-key-change-in-production
+      MAGIC_LINK_SECRET: dev-magic-link-secret-change-in-production
+      EMAIL_PROVIDER: console
+      FRONTEND_URL: http://localhost:3000
+      ALLOWED_ORIGINS: '["http://localhost:3000"]'
+      ENVIRONMENT: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ../../packages/api/src:/app/src  # Hot reload
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # ── Next.js Frontend ────────────────────────────
+  web:
+    build:
+      context: ../../packages/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      NODE_ENV: development
+    depends_on:
+      - api
+    volumes:
+      - ../../packages/web/src:/app/src  # Hot reload
+      - ../../packages/web/public:/app/public
+    command: pnpm dev
+
+volumes:
+  pgdata:

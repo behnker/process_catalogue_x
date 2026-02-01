@@ -1,0 +1,268 @@
+{
+  "common": {
+    "appName": "Process Catalogue",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "noResults": "No results found",
+    "rowsPerPage": "Rows per page",
+    "page": "Page",
+    "of": "of",
+    "selected": "selected",
+    "all": "All",
+    "none": "None"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "processes": "Processes",
+    "processCanvas": "Process Canvas",
+    "riada": "RIADA",
+    "portfolio": "Portfolio",
+    "businessModel": "Business Model",
+    "surveys": "Surveys",
+    "prompts": "Prompts",
+    "reports": "Reports",
+    "referenceData": "Reference Data",
+    "settings": "Settings"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "sendMagicLink": "Send Magic Link",
+    "checkYourEmail": "Check your email",
+    "magicLinkSent": "We've sent a magic link to {email}",
+    "clickToSignIn": "Click the link in the email to sign in",
+    "linkExpires": "The link expires in 15 minutes",
+    "tryAgain": "Try again"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "stats": {
+      "processes": "Processes",
+      "openRisks": "Open Risks",
+      "openIssues": "Open Issues",
+      "projects": "Projects"
+    }
+  },
+  "processes": {
+    "title": "Process Catalogue",
+    "canvas": "Process Canvas",
+    "list": "Process List",
+    "create": "Create Process",
+    "edit": "Edit Process",
+    "delete": "Delete Process",
+    "deleteConfirm": "Are you sure you want to delete this process?",
+    "fields": {
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "level": "Level",
+      "type": "Type",
+      "status": "Status",
+      "owner": "Owner",
+      "sponsor": "Sponsor",
+      "automation": "Automation",
+      "parent": "Parent Process"
+    },
+    "levels": {
+      "L0": "Value Stream",
+      "L1": "Process Group",
+      "L2": "Process",
+      "L3": "Sub-Process",
+      "L4": "Variation",
+      "L5": "Task"
+    },
+    "types": {
+      "primary": "Primary",
+      "secondary": "Secondary"
+    },
+    "statuses": {
+      "draft": "Draft",
+      "active": "Active",
+      "under_review": "Under Review",
+      "deprecated": "Deprecated",
+      "archived": "Archived"
+    },
+    "automation": {
+      "manual": "Manual",
+      "semi_automated": "Semi-Automated",
+      "fully_automated": "Fully Automated",
+      "ai_assisted": "AI Assisted"
+    }
+  },
+  "riada": {
+    "title": "RIADA",
+    "subtitle": "Risks, Issues, Actions, Dependencies, Assumptions",
+    "create": "Create Item",
+    "edit": "Edit Item",
+    "delete": "Delete Item",
+    "deleteConfirm": "Are you sure you want to delete this item?",
+    "fields": {
+      "code": "Code",
+      "title": "Title",
+      "description": "Description",
+      "type": "Type",
+      "category": "Category",
+      "severity": "Severity",
+      "status": "Status",
+      "probability": "Probability",
+      "impact": "Impact",
+      "riskScore": "Risk Score",
+      "mitigationPlan": "Mitigation Plan",
+      "dueDate": "Due Date",
+      "assignedTo": "Assigned To",
+      "raisedBy": "Raised By",
+      "linkedProcess": "Linked Process"
+    },
+    "types": {
+      "risk": "Risk",
+      "issue": "Issue",
+      "action": "Action",
+      "dependency": "Dependency",
+      "assumption": "Assumption"
+    },
+    "categories": {
+      "people": "People",
+      "process": "Process",
+      "system": "System",
+      "data": "Data"
+    },
+    "severities": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "statuses": {
+      "open": "Open",
+      "in_progress": "In Progress",
+      "mitigated": "Mitigated",
+      "resolved": "Resolved",
+      "closed": "Closed",
+      "accepted": "Accepted"
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "create": "Create Item",
+    "edit": "Edit Item",
+    "delete": "Delete Item",
+    "deleteConfirm": "Are you sure you want to delete this item?",
+    "tree": "Tree View",
+    "table": "Table View",
+    "gantt": "Gantt View",
+    "fields": {
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "level": "Level",
+      "status": "Status",
+      "rag": "RAG",
+      "owner": "Owner",
+      "sponsor": "Sponsor",
+      "plannedStart": "Planned Start",
+      "plannedEnd": "Planned End",
+      "actualStart": "Actual Start",
+      "actualEnd": "Actual End",
+      "budget": "Budget",
+      "wsvf": "WSVF Score"
+    },
+    "levels": {
+      "strategy": "Strategy",
+      "portfolio": "Portfolio",
+      "programme": "Programme",
+      "project": "Project",
+      "workstream": "Workstream",
+      "epic": "Epic",
+      "task": "Task"
+    },
+    "statuses": {
+      "proposed": "Proposed",
+      "approved": "Approved",
+      "in_progress": "In Progress",
+      "on_hold": "On Hold",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "businessModel": {
+    "title": "Business Model Canvas",
+    "create": "Create Entry",
+    "edit": "Edit Entry",
+    "delete": "Delete Entry",
+    "deleteConfirm": "Are you sure you want to delete this entry?",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "components": {
+      "key_partners": "Key Partners",
+      "key_activities": "Key Activities",
+      "key_resources": "Key Resources",
+      "value_propositions": "Value Propositions",
+      "customer_relationships": "Customer Relationships",
+      "channels": "Channels",
+      "customer_segments": "Customer Segments",
+      "cost_structure": "Cost Structure",
+      "revenue_streams": "Revenue Streams"
+    },
+    "agentic": {
+      "opportunity": "Agentic Opportunity",
+      "readiness": "Readiness",
+      "impact": "Impact",
+      "notes": "Notes"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "integrations": "Integrations",
+    "users": "Users",
+    "organization": "Organization",
+    "profile": "Profile",
+    "theme": "Theme",
+    "language": "Language",
+    "notifications": "Notifications"
+  },
+  "rag": {
+    "red": "Red",
+    "amber": "Amber",
+    "green": "Green"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be at most {max} characters",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action",
+    "notFound": "Resource not found",
+    "serverError": "Server error. Please try again later."
+  },
+  "success": {
+    "created": "Successfully created",
+    "updated": "Successfully updated",
+    "deleted": "Successfully deleted",
+    "saved": "Successfully saved"
+  }
+}

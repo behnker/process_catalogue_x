@@ -1,0 +1,19 @@
+{
+  "name": "process-catalogue",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Process Catalogue — Multi-tenant SaaS for operating model design and management",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "db:migrate": "cd packages/api && alembic upgrade head",
+    "db:seed": "cd packages/api && python -m src.utils.seed",
+    "setup": "pnpm install && cd packages/api && pip install -r requirements.txt --break-system-packages"
+  },
+  "packageManager": "pnpm@9.1.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
