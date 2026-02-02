@@ -46,10 +46,9 @@ async def get_tenant_db(
         )
 
     # Set PostgreSQL session variable for Row-Level Security
-    await db.execute(
-        text("SET app.current_organization_id = :org_id"),
-        {"org_id": org_id},
-    )
+    # Note: SET doesn't support parameterized queries, so we use string formatting
+    # The org_id is a UUID from our auth system, so it's safe to interpolate
+    await db.execute(text(f"SET app.current_organization_id = '{org_id}'"))
     set_current_org_id(org_id)
 
     return db

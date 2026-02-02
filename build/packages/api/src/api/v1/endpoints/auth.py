@@ -46,6 +46,101 @@ from src.schemas.auth import (
 router = APIRouter()
 
 
+@router.post("/dev-login")
+async def dev_login(db: AsyncSession = Depends(get_db)):
+    """
+    Development-only: Auto-login as admin without magic link.
+    Creates test org/user if they don't exist.
+    """
+    if settings.ENVIRONMENT not in ("development", "local", "test"):
+        raise HTTPException(status_code=404, detail="Not found")
+
+    # Find or create test organization
+    result = await db.execute(
+        select(Organization).where(Organization.slug == "dev-org")
+    )
+    org = result.scalar_one_or_none()
+
+    if not org:
+        org = Organization(
+            name="Development Organization",
+            slug="dev-org",
+            settings={"theme": "default"},
+        )
+        db.add(org)
+        await db.flush()
+
+        # Add allowed domain
+        allowed = AllowedDomain(
+            organization_id=org.id,
+            domain="dev.local",
+            is_verified=True,
+        )
+        db.add(allowed)
+        await db.flush()
+
+    # Find or create admin user
+    admin_email = "admin@dev.local"
+    result = await db.execute(select(User).where(User.email == admin_email))
+    user = result.scalar_one_or_none()
+
+    if not user:
+        user = User(
+            email=admin_email,
+            display_name="Dev Admin",
+            default_organization_id=org.id,
+        )
+        db.add(user)
+        await db.flush()
+
+    # Ensure admin membership
+    result = await db.execute(
+        select(UserOrganization).where(
+            UserOrganization.user_id == user.id,
+            UserOrganization.organization_id == org.id,
+        )
+    )
+    membership = result.scalar_one_or_none()
+
+    if not membership:
+        membership = UserOrganization(
+            user_id=user.id,
+            organization_id=org.id,
+            role="admin",
+            status="active",
+        )
+        db.add(membership)
+        await db.flush()
+
+    # Update last login
+    user.last_login_at = datetime.now(timezone.utc)
+    await db.commit()
+
+    # Create tokens
+    access_token = create_access_token(
+        user_id=user.id,
+        organization_id=org.id,
+        role="admin",
+        email=user.email,
+    )
+    refresh_token = create_refresh_token(user.id, org.id)
+
+    return TokenVerifyResponse(
+        access_token=access_token,
+        refresh_token=refresh_token,
+        expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+        user=UserBrief(
+            id=user.id,
+            email=user.email,
+            display_name=user.display_name,
+            avatar_url=user.avatar_url,
+            role="admin",
+            organization_id=org.id,
+            organization_name=org.name,
+        ),
+    )
+
+
 @router.post("/magic-link", response_model=MagicLinkResponse)
 async def request_magic_link(
     body: MagicLinkRequest,
@@ -86,13 +181,9 @@ async def request_magic_link(
         # Build magic link URL
         magic_link_url = f"{settings.FRONTEND_URL}/auth/verify?token={full_token}"
 
-        # TODO: Send email via Resend/SendGrid
-        # For development, log to console
-        if settings.EMAIL_PROVIDER == "console":
-            print(f"\n🔗 Magic Link for {email}: {magic_link_url}\n")
-        else:
-            # await send_magic_link_email(email, magic_link_url)
-            pass
+        # Send email
+        from src.services.email import send_magic_link_email
+        await send_magic_link_email(email, magic_link_url)
 
     # Always return same response (prevent enumeration)
     return MagicLinkResponse()

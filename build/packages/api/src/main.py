@@ -12,17 +12,19 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.api.v1.router import api_router
 from src.config import settings
+from src.core.rate_limit import RateLimitMiddleware
+from src.core.security import SecurityHeadersMiddleware, SuspiciousActivityMiddleware
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup and shutdown events."""
     # Startup: verify DB connection, warm caches
-    print(f"🚀 Starting {settings.APP_NAME} v{settings.APP_VERSION}")
+    print(f"Starting {settings.APP_NAME} v{settings.APP_VERSION}")
     print(f"   Environment: {settings.ENVIRONMENT}")
     yield
     # Shutdown: cleanup
-    print("👋 Shutting down")
+    print("Shutting down")
 
 
 app = FastAPI(
@@ -33,6 +35,15 @@ app = FastAPI(
     docs_url="/docs" if not settings.is_production else None,
     redoc_url="/redoc" if not settings.is_production else None,
 )
+
+# Security headers
+app.add_middleware(SecurityHeadersMiddleware)
+
+# Suspicious activity detection
+app.add_middleware(SuspiciousActivityMiddleware)
+
+# Rate limiting (per Blueprint §6.2)
+app.add_middleware(RateLimitMiddleware)
 
 # CORS
 app.add_middleware(

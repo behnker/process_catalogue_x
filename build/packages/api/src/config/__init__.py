@@ -4,14 +4,18 @@ See .env.example for all configuration options.
 """
 
 from functools import lru_cache
+from pathlib import Path
 from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+# Find .env in monorepo root (build/.env)
+_env_file = Path(__file__).resolve().parents[4] / ".env"
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(_env_file) if _env_file.exists() else ".env",
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore",
@@ -20,7 +24,7 @@ class Settings(BaseSettings):
     # ── Application ──────────────────────────────────
     APP_NAME: str = "Process Catalogue"
     APP_VERSION: str = "0.1.0"
-    ENVIRONMENT: Literal["development", "staging", "production"] = "development"
+    ENVIRONMENT: Literal["development", "local", "test", "staging", "production"] = "development"
     DEBUG: bool = True
 
     # ── Database ─────────────────────────────────────
@@ -55,14 +59,33 @@ class Settings(BaseSettings):
     DEFAULT_LLM_PROVIDER: str = "anthropic"
     DEFAULT_LLM_MODEL: str = "claude-sonnet-4-20250514"
 
-    # ── Object Storage ───────────────────────────────
+    # ── Provider Abstractions (Global vs China) ──────
+    STORAGE_PROVIDER: Literal["local", "r2", "oss"] = "local"
+    CACHE_PROVIDER: Literal["memory", "redis"] = "memory"
+    LLM_PROVIDER: Literal["mock", "anthropic", "openai", "qwen"] = "mock"
+
+    # ── Object Storage (Cloudflare R2 - Global) ─────
     R2_ACCOUNT_ID: str = ""
     R2_ACCESS_KEY_ID: str = ""
     R2_SECRET_ACCESS_KEY: str = ""
     R2_BUCKET_NAME: str = "process-catalogue"
+    R2_ENDPOINT_URL: str = ""
+    R2_PUBLIC_URL: str = ""
+
+    # ── Object Storage (Alibaba OSS - China) ────────
+    OSS_ACCESS_KEY_ID: str = ""
+    OSS_SECRET_ACCESS_KEY: str = ""
+    OSS_ENDPOINT: str = ""
+    OSS_BUCKET_NAME: str = ""
+
+    # ── Local Storage (Development) ─────────────────
+    LOCAL_STORAGE_PATH: str = ""
 
     # ── Redis / Cache ────────────────────────────────
     REDIS_URL: str = "redis://localhost:6379"
+
+    # ── China LLM Providers ─────────────────────────
+    DASHSCOPE_API_KEY: str = ""  # Alibaba Qwen
 
     # ── Monitoring ───────────────────────────────────
     SENTRY_DSN: str = ""

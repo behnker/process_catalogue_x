@@ -2,15 +2,50 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/auth-store";
 
 type LoginState = "email" | "sent" | "error";
+
+const isDev = process.env.NODE_ENV === "development";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<LoginState>("email");
   const [isLoading, setIsLoading] = useState(false);
+  const [devLoading, setDevLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const setAuth = useAuthStore((state) => state.setAuth);
+
+  const handleDevLogin = async () => {
+    setDevLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/v1/auth/dev-login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (res.ok) {
+        const data = await res.json();
+        setAuth(data.access_token, data.refresh_token, data.user);
+        router.push("/dashboard");
+      } else {
+        const data = await res.json();
+        setError(data.detail || "Dev login failed");
+        setState("error");
+      }
+    } catch {
+      setError("API not running. Start the backend with: cd build/packages/api && uvicorn src.main:app --reload");
+      setState("error");
+    } finally {
+      setDevLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,6 +135,22 @@ export default function LoginPage() {
                 <br />
                 No password needed.
               </p>
+
+              {isDev && (
+                <div className="mt-6 pt-6 border-t border-[rgb(var(--color-border))]">
+                  <p className="text-center text-caption text-[rgb(var(--color-text-secondary))] mb-3">
+                    Development Mode
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleDevLogin}
+                    disabled={devLoading}
+                    className="w-full px-4 py-2.5 rounded-lg bg-gray-800 hover:bg-gray-900 text-white font-semibold text-body transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {devLoading ? "Logging in..." : "Dev Login (Admin)"}
+                  </button>
+                </div>
+              )}
             </>
           )}
 
