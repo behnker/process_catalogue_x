@@ -15,6 +15,7 @@ from src.api.v1.endpoints import (
     reference,
     riada,
     surveys,
+    systems,
 )
 
 api_router = APIRouter()
@@ -37,3 +38,6 @@ api_router.include_router(reference.router, prefix="/reference", tags=["Referenc
 # Phase 2 features
 api_router.include_router(surveys.router, prefix="/surveys", tags=["Surveys"])
 api_router.include_router(prompts.router, prefix="/prompts", tags=["Prompt Library"])
+
+# System Catalogue
+api_router.include_router(systems.router, prefix="/systems", tags=["System Catalogue"])

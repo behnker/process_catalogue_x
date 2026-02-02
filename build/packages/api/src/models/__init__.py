@@ -35,6 +35,10 @@ from src.models.reference import (
     PromptTemplate,
     ReferenceCatalogue,
 )
+from src.models.system_catalogue import (
+    ProcessSystem,
+    SystemCatalogue,
+)
 
 __all__ = [
     # Organization & Auth
@@ -65,4 +69,7 @@ __all__ = [
     "PromptTemplate",
     "PromptExecution",
     "LLMConfiguration",
+    # System Catalogue
+    "SystemCatalogue",
+    "ProcessSystem",
 ]

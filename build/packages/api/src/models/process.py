@@ -105,6 +105,10 @@ class Process(TenantModel):
         back_populates="process", lazy="noload",
         foreign_keys="RiadaItem.process_id"
     )
+    system_links: Mapped[list["ProcessSystem"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessSystem.process_id"
+    )
 
 
 # ── Operating Model Components (Blueprint §4.4.1) ───
@@ -136,3 +140,4 @@ class ProcessOperatingModel(TenantModel):
 # Import here to avoid circular — these are in separate model files
 # but we declare the string-based relationship above
 from src.models.riada import RiadaItem  # noqa: E402, F401
+from src.models.system_catalogue import ProcessSystem  # noqa: E402, F401
