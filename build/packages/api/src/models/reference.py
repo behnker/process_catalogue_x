@@ -35,7 +35,7 @@ class ReferenceCatalogue(TenantModel):
     status: Mapped[str] = mapped_column(String(20), default="active")
     sort_order: Mapped[int] = mapped_column(Integer, default=0)
     parent_id: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
-    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
 
 # ── Prompt Library (Blueprint §4.4.6) ────────────────
@@ -73,7 +73,7 @@ class PromptTemplate(TenantModel):
     is_published: Mapped[bool] = mapped_column(Boolean, default=True)
     usage_count: Mapped[int] = mapped_column(Integer, default=0)
     avg_rating: Mapped[Optional[float]] = mapped_column(Numeric(3, 2))
-    tags: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    tags: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
 
 class PromptExecution(TenantModel):

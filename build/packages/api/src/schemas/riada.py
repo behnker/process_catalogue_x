@@ -3,7 +3,7 @@ RIADA (Quality Logs) API schemas.
 """
 
 from datetime import date, datetime
-from typing import Optional
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field
 
@@ -61,7 +61,7 @@ class RiadaResponse(BaseModel):
     business_model_entry_id: Optional[str]
     rag_status: Optional[str]
     resolution_notes: Optional[str]
-    tags: list
+    tags: list[str] = []
     created_at: datetime
     updated_at: datetime
 
@@ -69,16 +69,18 @@ class RiadaResponse(BaseModel):
 
 
 class RiadaListResponse(BaseModel):
+    """Paginated list of RIADA items."""
     items: list[RiadaResponse]
     total: int
     page: int = 1
-    page_size: int = 50
+    per_page: int = 50
+    has_more: bool = False
 
 
 class RiadaSummary(BaseModel):
     """Aggregated RIADA counts for dashboard/heatmap."""
     total: int = 0
-    by_type: dict = {}  # {risk: 5, issue: 3, ...}
-    by_severity: dict = {}  # {critical: 1, high: 2, ...}
-    by_status: dict = {}  # {open: 4, resolved: 2, ...}
-    by_category: dict = {}  # {people: 2, process: 3, ...}
+    by_type: dict[str, int] = Field(default_factory=dict)  # {risk: 5, issue: 3, ...}
+    by_severity: dict[str, int] = Field(default_factory=dict)  # {critical: 1, high: 2, ...}
+    by_status: dict[str, int] = Field(default_factory=dict)  # {open: 4, resolved: 2, ...}
+    by_category: dict[str, int] = Field(default_factory=dict)  # {people: 2, process: 3, ...}

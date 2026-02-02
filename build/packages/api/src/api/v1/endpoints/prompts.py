@@ -15,6 +15,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.core.auth import CurrentUser, get_current_user
+from src.core.security import encrypt_sensitive_data
 from src.core.tenancy import get_tenant_db
 from src.models.reference import LLMConfiguration, PromptExecution, PromptTemplate
 from src.schemas.prompts import (
@@ -304,11 +305,17 @@ async def create_llm_config(
     db: AsyncSession = Depends(get_tenant_db),
 ):
     """Create an LLM configuration."""
-    # TODO: Encrypt API key before storage
+    # Encrypt API key before storage
+    config_data = body.model_dump()
+    if config_data.get("api_key_encrypted"):
+        config_data["api_key_encrypted"] = encrypt_sensitive_data(
+            config_data["api_key_encrypted"]
+        )
+
     config = LLMConfiguration(
         id=str(uuid4()),
         organization_id=user.organization_id,
-        **body.model_dump(),
+        **config_data,
     )
     db.add(config)
     await db.flush()
@@ -337,6 +344,12 @@ async def update_llm_config(
         raise HTTPException(status_code=404, detail="LLM configuration not found")
 
     update_data = body.model_dump(exclude_unset=True)
+    # Encrypt API key if being updated
+    if "api_key_encrypted" in update_data and update_data["api_key_encrypted"]:
+        update_data["api_key_encrypted"] = encrypt_sensitive_data(
+            update_data["api_key_encrypted"]
+        )
+
     for field, value in update_data.items():
         setattr(config, field, value)
 

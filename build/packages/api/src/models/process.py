@@ -88,8 +88,8 @@ class Process(TenantModel):
     function_id: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
 
     # ── Metadata ────────────────────────────────────
-    tags: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    tags: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
     # ── Relationships ───────────────────────────────
     parent: Mapped[Optional["Process"]] = relationship(
@@ -126,8 +126,8 @@ class ProcessOperatingModel(TenantModel):
     )  # raci, kpis, policies, systems, timing, governance, sipoc, resources, risks, controls
 
     # Current / Future state (Blueprint §4.4.4)
-    current_state: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
-    future_state: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    current_state: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
+    future_state: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
     transition_notes: Mapped[Optional[str]] = mapped_column(Text)
 
     process: Mapped["Process"] = relationship(back_populates="operating_model")

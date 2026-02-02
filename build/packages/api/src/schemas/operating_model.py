@@ -7,19 +7,20 @@ Blueprint §4.4.1: 10 components with current/future state.
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from typing import Any
 
 
 class OperatingModelComponentCreate(BaseModel):
     component_type: str  # sipoc, raci, kpis, systems, policies, timing, governance, security, data, resources
-    current_state: dict = {}
-    future_state: dict = {}
+    current_state: dict[str, Any] = Field(default_factory=dict)
+    future_state: dict[str, Any] = Field(default_factory=dict)
     transition_notes: Optional[str] = None
 
 
 class OperatingModelComponentUpdate(BaseModel):
-    current_state: Optional[dict] = None
-    future_state: Optional[dict] = None
+    current_state: Optional[dict[str, Any]] = None
+    future_state: Optional[dict[str, Any]] = None
     transition_notes: Optional[str] = None
 
 

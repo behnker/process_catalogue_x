@@ -59,13 +59,13 @@ class Survey(TenantModel):
     status: Mapped[str] = mapped_column(String(20), default=SurveyStatus.DRAFT.value)
 
     # Deployment
-    target_audience: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    target_audience: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
     start_date: Mapped[Optional[date]] = mapped_column(Date)
     end_date: Mapped[Optional[date]] = mapped_column(Date)
     is_anonymous: Mapped[bool] = mapped_column(Boolean, default=False)
 
     # Process linkage (optional — ties survey to specific processes)
-    linked_process_ids: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    linked_process_ids: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
     # Relationships
     questions: Mapped[list["SurveyQuestion"]] = relationship(
@@ -90,7 +90,7 @@ class SurveyQuestion(TenantModel):
     sort_order: Mapped[int] = mapped_column(Integer, default=0)
 
     # Options for choice-based questions
-    options: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    options: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
     # Scoring (for likert/rating questions)
     scoring_weight: Mapped[Optional[float]] = mapped_column(default=1.0)
@@ -115,6 +115,6 @@ class SurveyResponse(TenantModel):
     total_score: Mapped[Optional[float]] = mapped_column()
 
     # Individual answers stored as JSONB array
-    answers: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    answers: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
     survey: Mapped["Survey"] = relationship(back_populates="responses")

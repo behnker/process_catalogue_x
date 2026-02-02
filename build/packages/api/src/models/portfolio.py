@@ -89,11 +89,11 @@ class PortfolioItem(TenantModel):
     sponsor_id: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
 
     # ── Process Linkage (Blueprint §4.5.11) ──────────
-    linked_process_ids: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    linked_process_ids: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
     # ── Metadata ────────────────────────────────────
-    tags: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    tags: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
     # ── Relationships ───────────────────────────────
     parent: Mapped[Optional["PortfolioItem"]] = relationship(

@@ -71,7 +71,7 @@ class ProcessResponse(BaseModel):
     owner_id: Optional[str]
     sponsor_id: Optional[str]
     sort_order: int
-    tags: list
+    tags: list[str] = []
     children_count: int = 0
     riada_count: int = 0
     created_at: datetime
@@ -100,16 +100,18 @@ ProcessTreeNode.model_rebuild()
 
 
 class ProcessListResponse(BaseModel):
+    """Paginated list of processes."""
     items: list[ProcessResponse]
-    total: int
-    page: int = 1
-    page_size: int = 50
+    total: int = Field(..., ge=0)
+    page: int = Field(1, ge=1)
+    per_page: int = Field(50, ge=1, le=100)
+    has_more: bool = False
 
 
 class OperatingModelData(BaseModel):
     component_type: str
-    current_state: dict = {}
-    future_state: dict = {}
+    current_state: Optional[dict] = None
+    future_state: Optional[dict] = None
     transition_notes: Optional[str] = None
 
 

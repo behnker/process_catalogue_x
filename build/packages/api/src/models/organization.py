@@ -59,8 +59,8 @@ class Organization(BaseModel):
     subscription_tier: Mapped[str] = mapped_column(
         String(20), default=SubscriptionTier.FREE.value
     )
-    settings: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
-    branding: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    settings: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
+    branding: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
     data_region: Mapped[str] = mapped_column(String(20), default="global")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 

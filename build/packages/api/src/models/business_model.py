@@ -28,7 +28,7 @@ class BusinessModel(TenantModel):
     status: Mapped[str] = mapped_column(String(20), default="active")
 
     # Canvas metadata
-    canvas_layout: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    canvas_layout: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
     # Relationships
     entries: Mapped[list["BusinessModelEntry"]] = relationship(
@@ -66,7 +66,7 @@ class BusinessModelEntry(TenantModel):
     agentic_notes: Mapped[Optional[str]] = mapped_column(Text)
 
     # Metadata
-    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, default=dict)
+    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
     # Relationships
     business_model: Mapped["BusinessModel"] = relationship(back_populates="entries")
@@ -90,16 +90,16 @@ class BusinessModelMapping(TenantModel):
     )
 
     # Business model dimensions
-    trading_markets: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    clients: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    sourcing_markets: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    product_categories: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    key_partners: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
-    key_suppliers: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    trading_markets: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    clients: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    sourcing_markets: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    product_categories: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    key_partners: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
+    key_suppliers: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
     channel: Mapped[Optional[str]] = mapped_column(String(50))
     revenue_line: Mapped[Optional[str]] = mapped_column(String(100))
     cost_line: Mapped[Optional[str]] = mapped_column(String(100))
-    functions: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    functions: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
     value_proposition: Mapped[Optional[str]] = mapped_column(Text)
     customer_segment: Mapped[Optional[str]] = mapped_column(String(255))
     notes: Mapped[Optional[str]] = mapped_column(Text)

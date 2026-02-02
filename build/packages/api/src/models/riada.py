@@ -104,7 +104,7 @@ class RiadaItem(TenantModel):
     resolved_by_id: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
 
     # ── Metadata ─────────────────────────────────────
-    tags: Mapped[Optional[dict]] = mapped_column(JSONB, default=list)
+    tags: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
 
     # ── Relationships ────────────────────────────────
     process: Mapped[Optional["Process"]] = relationship(

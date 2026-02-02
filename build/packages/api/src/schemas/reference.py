@@ -61,6 +61,9 @@ class ReferenceCatalogueResponse(BaseModel):
 
 
 class ReferenceCatalogueListResponse(BaseModel):
-    """List response for reference catalogue entries."""
+    """Paginated list of reference catalogue entries."""
     items: list[ReferenceCatalogueResponse]
     total: int
+    page: int = 1
+    per_page: int = 50
+    has_more: bool = False

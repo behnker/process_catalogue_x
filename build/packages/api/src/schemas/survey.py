@@ -50,10 +50,12 @@ class SurveyDetailResponse(BaseModel):
 
 
 class SurveyListResponse(BaseModel):
+    """Paginated list of surveys."""
     items: list[SurveyDetailResponse]
     total: int
     page: int = 1
-    page_size: int = 50
+    per_page: int = 50
+    has_more: bool = False
 
 
 # ── Questions ───────────────────────────────────────────

@@ -74,10 +74,12 @@ class PromptTemplateResponse(BaseModel):
 
 
 class PromptTemplateListResponse(BaseModel):
+    """Paginated list of prompt templates."""
     items: list[PromptTemplateResponse]
     total: int
     page: int = 1
-    page_size: int = 50
+    per_page: int = 50
+    has_more: bool = False
 
 
 # ── Prompt Execution ────────────────────────────────────

@@ -85,10 +85,12 @@ class PortfolioItemResponse(BaseModel):
 
 
 class PortfolioListResponse(BaseModel):
+    """Paginated list of portfolio items."""
     items: list[PortfolioItemResponse]
     total: int
     page: int = 1
-    page_size: int = 50
+    per_page: int = 50
+    has_more: bool = False
 
 
 class PortfolioTreeNode(BaseModel):

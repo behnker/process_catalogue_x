@@ -36,6 +36,7 @@ class Settings(BaseSettings):
     # ── Authentication (Passwordless Magic Links) ────
     SECRET_KEY: str = "change-me-in-production"
     MAGIC_LINK_SECRET: str = "change-me-to-a-different-random-string"
+    ENCRYPTION_KEY: str = ""  # 32-byte Fernet key for encrypting sensitive data (API keys)
     MAGIC_LINK_EXPIRY_MINUTES: int = 15
     SESSION_EXPIRY_HOURS: int = 24
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
