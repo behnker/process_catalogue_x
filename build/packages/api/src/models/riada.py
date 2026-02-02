@@ -50,6 +50,51 @@ class RiadaStatus(str, enum.Enum):
     ACCEPTED = "accepted"
 
 
+class RiadaLinkType(str, enum.Enum):
+    """Types of relationships between RIADA items."""
+    MITIGATES = "mitigates"  # Action mitigates a Risk
+    RESOLVES = "resolves"  # Action resolves an Issue
+    BLOCKS = "blocks"  # Dependency blocks another item
+    CAUSED_BY = "caused_by"  # Issue caused by another item
+    RELATED_TO = "related_to"  # General relationship
+    DEPENDS_ON = "depends_on"  # Item depends on another
+    DUPLICATES = "duplicates"  # Duplicate of another item
+    PARENT_OF = "parent_of"  # Parent-child relationship
+
+
+class RiadaLink(TenantModel):
+    """
+    Links between RIADA items (self-referential many-to-many).
+
+    Blueprint §5.3.6: Risk → Linked Actions, Issue → Linked Dependencies, etc.
+    """
+
+    __tablename__ = "riada_links"
+
+    source_id: Mapped[str] = mapped_column(
+        UUID(as_uuid=False), ForeignKey("riada_items.id", ondelete="CASCADE"),
+        nullable=False, index=True
+    )
+    target_id: Mapped[str] = mapped_column(
+        UUID(as_uuid=False), ForeignKey("riada_items.id", ondelete="CASCADE"),
+        nullable=False, index=True
+    )
+    link_type: Mapped[str] = mapped_column(
+        String(30), default=RiadaLinkType.RELATED_TO.value, nullable=False
+    )
+    notes: Mapped[Optional[str]] = mapped_column(Text)
+
+    # Relationships
+    source: Mapped["RiadaItem"] = relationship(
+        foreign_keys=[source_id],
+        back_populates="outgoing_links",
+    )
+    target: Mapped["RiadaItem"] = relationship(
+        foreign_keys=[target_id],
+        back_populates="incoming_links",
+    )
+
+
 class RiadaItem(TenantModel):
     """
     A single RIADA item (Risk, Issue, Action, Dependency, or Assumption).
@@ -115,6 +160,18 @@ class RiadaItem(TenantModel):
     )
     business_model_entry: Mapped[Optional["BusinessModelEntry"]] = relationship(
         back_populates="riada_items", foreign_keys=[business_model_entry_id]
+    )
+
+    # ── RIADA-to-RIADA Links (Blueprint §5.3.6) ─────
+    outgoing_links: Mapped[list["RiadaLink"]] = relationship(
+        foreign_keys="RiadaLink.source_id",
+        back_populates="source",
+        cascade="all, delete-orphan",
+    )
+    incoming_links: Mapped[list["RiadaLink"]] = relationship(
+        foreign_keys="RiadaLink.target_id",
+        back_populates="target",
+        cascade="all, delete-orphan",
     )
 
 

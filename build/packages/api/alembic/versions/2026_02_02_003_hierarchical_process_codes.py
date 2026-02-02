@@ -29,6 +29,17 @@ def upgrade() -> None:
 
     conn = op.get_bind()
 
+    # Check if already migrated - if codes are already hierarchical (contain dots), skip
+    sample = conn.execute(
+        text("SELECT code FROM processes WHERE code LIKE '%.%' LIMIT 1")
+    ).fetchone()
+    if sample:
+        print("  Hierarchical codes already exist, skipping renumbering")
+        return
+
+    # Drop the unique constraint temporarily to allow code updates
+    conn.execute(text("DROP INDEX IF EXISTS ix_processes_org_code"))
+
     # Get all organizations that have processes
     orgs = conn.execute(
         text("SELECT DISTINCT organization_id FROM processes WHERE status != 'archived'")
@@ -59,6 +70,11 @@ def upgrade() -> None:
 
             # Recursively update children
             _renumber_children(conn, org_id, root_id, new_code)
+
+    # Recreate the unique constraint
+    conn.execute(
+        text("CREATE UNIQUE INDEX ix_processes_org_code ON processes (organization_id, code)")
+    )
 
 
 def _renumber_children(conn, org_id: str, parent_id: str, parent_code: str) -> None:

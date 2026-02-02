@@ -71,7 +71,7 @@ class SystemCatalogueCreate(BaseModel):
     compliance_notes: Optional[str] = None
     url: Optional[str] = Field(None, max_length=500)
     status: str = Field(default="evaluate", max_length=20)
-    metadata: Optional[dict] = Field(default_factory=dict)
+    metadata_extra: Optional[dict] = Field(default_factory=dict)
 
 
 class SystemCatalogueUpdate(BaseModel):
@@ -94,7 +94,7 @@ class SystemCatalogueUpdate(BaseModel):
     compliance_notes: Optional[str] = None
     url: Optional[str] = Field(None, max_length=500)
     status: Optional[str] = Field(None, max_length=20)
-    metadata: Optional[dict] = None
+    metadata_extra: Optional[dict] = None
 
 
 class SystemCatalogueResponse(BaseModel):
@@ -119,7 +119,7 @@ class SystemCatalogueResponse(BaseModel):
     compliance_notes: Optional[str]
     url: Optional[str]
     status: str
-    metadata: Optional[dict]
+    metadata_extra: Optional[dict]
     created_at: datetime
     updated_at: datetime
     created_by: Optional[str]

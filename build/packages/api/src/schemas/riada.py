@@ -1,11 +1,26 @@
 """
 RIADA (Quality Logs) API schemas.
+
+Blueprint §5.3.6: RIADA-to-RIADA linking (Risk → Actions, Issue → Dependencies)
 """
 
 from datetime import date, datetime
 from typing import Any, Optional
 
 from pydantic import BaseModel, Field
+
+
+# ── Link Types ────────────────────────────────────────
+RIADA_LINK_TYPES = [
+    "mitigates",  # Action mitigates a Risk
+    "resolves",  # Action resolves an Issue
+    "blocks",  # Dependency blocks another item
+    "caused_by",  # Issue caused by another item
+    "related_to",  # General relationship
+    "depends_on",  # Item depends on another
+    "duplicates",  # Duplicate of another item
+    "parent_of",  # Parent-child relationship
+]
 
 
 class RiadaCreate(BaseModel):
@@ -84,3 +99,54 @@ class RiadaSummary(BaseModel):
     by_severity: dict[str, int] = Field(default_factory=dict)  # {critical: 1, high: 2, ...}
     by_status: dict[str, int] = Field(default_factory=dict)  # {open: 4, resolved: 2, ...}
     by_category: dict[str, int] = Field(default_factory=dict)  # {people: 2, process: 3, ...}
+
+
+# ── Link Schemas ────────────────────────────────────────
+
+
+class RiadaLinkCreate(BaseModel):
+    """Create a link between two RIADA items."""
+    target_id: str = Field(..., description="ID of the RIADA item to link to")
+    link_type: str = Field(
+        default="related_to",
+        description="Type of relationship: mitigates, resolves, blocks, caused_by, related_to, depends_on, duplicates, parent_of"
+    )
+    notes: Optional[str] = Field(None, description="Optional notes about the link")
+
+
+class RiadaLinkResponse(BaseModel):
+    """Response for a single RIADA link."""
+    id: str
+    source_id: str
+    target_id: str
+    link_type: str
+    notes: Optional[str]
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class RiadaLinkedItemBrief(BaseModel):
+    """Brief representation of a linked RIADA item."""
+    id: str
+    code: str
+    title: str
+    riada_type: str
+    severity: str
+    status: str
+    link_id: str
+    link_type: str
+    link_direction: str  # "outgoing" or "incoming"
+
+
+class RiadaLinksResponse(BaseModel):
+    """All links for a RIADA item."""
+    riada_id: str
+    outgoing: list[RiadaLinkedItemBrief] = []  # Links where this item is the source
+    incoming: list[RiadaLinkedItemBrief] = []  # Links where this item is the target
+    total: int = 0
+
+
+class RiadaDetailResponse(RiadaResponse):
+    """Extended response including linked items."""
+    linked_items: RiadaLinksResponse | None = None

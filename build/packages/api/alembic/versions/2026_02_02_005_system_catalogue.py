@@ -52,7 +52,7 @@ def upgrade() -> None:
         sa.Column("compliance_notes", sa.Text),
         sa.Column("url", sa.String(500)),
         sa.Column("status", sa.String(20), nullable=False, server_default="evaluate"),
-        sa.Column("metadata", postgresql.JSONB, server_default="{}"),
+        sa.Column("metadata_extra", postgresql.JSONB, server_default="{}"),
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
         sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
         sa.Column(

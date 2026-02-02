@@ -143,7 +143,7 @@ class SystemCatalogue(TenantModel):
     status: Mapped[str] = mapped_column(
         String(20), nullable=False, default=CatalogueStatus.EVALUATE.value
     )
-    metadata: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
+    metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
     # ── Audit Fields ─────────────────────────────────
     created_by: Mapped[Optional[str]] = mapped_column(

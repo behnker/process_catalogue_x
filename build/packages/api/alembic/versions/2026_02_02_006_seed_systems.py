@@ -123,12 +123,12 @@ def upgrade() -> None:
                      criticality, license_model, status)
                 VALUES
                     (:id, :org_id, :name, :desc, :scope, :sys_type, :provider,
-                     :prov_type, :users, :access::jsonb, :saas, :hosting, :region,
+                     :prov_type, :users, CAST(:access AS jsonb), :saas, :hosting, :region,
                      :crit, :license, :status)
                 ON CONFLICT DO NOTHING
             """),
             {
-                "id": sys[0], "org_id": sys[1], "name": sys[2], "desc": sys[3],
+                "id": sys[0], "org_id": str(sys[1]), "name": sys[2], "desc": sys[3],
                 "scope": sys[4], "sys_type": sys[5], "provider": sys[6],
                 "prov_type": sys[7], "users": sys[8], "access": sys[9],
                 "saas": sys[10], "hosting": sys[11], "region": sys[12],
