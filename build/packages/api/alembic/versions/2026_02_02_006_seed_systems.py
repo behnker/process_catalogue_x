@@ -136,53 +136,63 @@ def upgrade() -> None:
             }
         )
 
-    # ── Get Process IDs by code ───────────────────────────────
-    process_codes = ["L2-05", "L2-10", "L2-20", "L2-28", "L2-37", "L2-39", "L2-44", "L2-47"]
+    # ── Get Process IDs by name (hierarchical codes vary) ─────
+    # Map process names to their system linkage keys
+    process_name_map = {
+        "Data Management": "data_mgmt",
+        "Brief": "brief",
+        "Surity Audit": "surity_audit",
+        "Test Specification": "test_spec",
+        "Order Management": "order_mgmt",
+        "Inspection": "inspection",
+        "Shipment Booking": "shipment",
+        "Documentation & Payment": "doc_payment",
+    }
     process_ids = {}
 
-    for code in process_codes:
+    for name, key in process_name_map.items():
         result = conn.execute(
-            sa.text("SELECT id FROM processes WHERE organization_id = :org AND code = :code"),
-            {"org": org_id, "code": code}
+            sa.text("SELECT id FROM processes WHERE organization_id = :org AND name = :name"),
+            {"org": org_id, "name": name}
         )
         row = result.fetchone()
         if row:
-            process_ids[code] = row[0]
+            process_ids[key] = row[0]
 
     # ── Insert 9 Process-System Linkages ──────────────────────
     linkages = [
-        # L2-05 Data Management -> ERP
-        ("L2-05", "erp", "Product master data repository, order management",
+        # Data Management -> ERP
+        ("data_mgmt", "erp", "Product master data repository, order management",
          "primary", "central_hub", "critical", "All staff"),
-        # L2-05 Data Management -> M365
-        ("L2-05", "m365", "Document management, file storage, collaboration",
+        # Data Management -> M365
+        ("data_mgmt", "m365", "Document management, file storage, collaboration",
          "secondary", "manual_entry", "high", "All staff"),
-        # L2-10 Brief -> M365
-        ("L2-10", "m365", "Client communication, brief receipt",
+        # Brief -> M365
+        ("brief", "m365", "Client communication, brief receipt",
          "primary", "manual_entry", "high", "Account team"),
-        # L2-20 Surity Audit -> ERP
-        ("L2-20", "erp", "Audit scheduling, findings documentation, grading",
+        # Surity Audit -> ERP
+        ("surity_audit", "erp", "Audit scheduling, findings documentation, grading",
          "primary", "manual_export", "medium", "Quality team"),
-        # L2-28 Test Specification -> ERP
-        ("L2-28", "erp", "Test tracking and certificate management",
+        # Test Specification -> ERP
+        ("test_spec", "erp", "Test tracking and certificate management",
          "secondary", "manual_entry", "high", "Quality team"),
-        # L2-37 Order Management -> ERP
-        ("L2-37", "erp", "PO creation, production tracking",
+        # Order Management -> ERP
+        ("order_mgmt", "erp", "PO creation, production tracking",
          "primary", "central_hub", "critical", "Sourcing team"),
-        # L2-39 Inspection -> ERP
-        ("L2-39", "erp", "Inspection scheduling, results tracking, defect logging",
+        # Inspection -> ERP
+        ("inspection", "erp", "Inspection scheduling, results tracking, defect logging",
          "primary", "manual_export", "high", "QC team"),
-        # L2-44 Shipment Booking -> ERP
-        ("L2-44", "erp", "Shipment data and documentation",
+        # Shipment Booking -> ERP
+        ("shipment", "erp", "Shipment data and documentation",
          "secondary", "manual_entry", "high", "Logistics team"),
-        # L2-47 Documentation & Payment -> Kingdee
-        ("L2-47", "kingdee", "Invoice processing, payment tracking, reconciliation",
+        # Documentation & Payment -> Kingdee
+        ("doc_payment", "kingdee", "Invoice processing, payment tracking, reconciliation",
          "primary", "api", "critical", "Finance team"),
     ]
 
     for link in linkages:
-        proc_code, sys_key, purpose, role, method, crit, scope = link
-        proc_id = process_ids.get(proc_code)
+        proc_key, sys_key, purpose, role, method, crit, scope = link
+        proc_id = process_ids.get(proc_key)
         sys_id = SYSTEM_IDS.get(sys_key)
 
         if proc_id and sys_id:

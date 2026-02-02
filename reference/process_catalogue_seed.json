@@ -1,0 +1,1098 @@
+[
+  {
+    "l0": "SUPPORT",
+    "l1": null,
+    "l2": null,
+    "l3": null,
+    "owner": "Operations Director",
+    "desc": "Support functions: governance, standards, sustainability, data systems, documentation, reporting, finance"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Governance, Standards & Sustainability",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Director",
+    "desc": "Quality governance, factory standards, environmental framework"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Governance, Standards & Sustainability",
+    "l2": "Quality Governance Approach",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "Prevention-focused quality management framework"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Governance, Standards & Sustainability",
+    "l2": "Factory Standards Framework (5 Pillars)",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "Management, Employment, H&S, QMS, Environment standards"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Governance, Standards & Sustainability",
+    "l2": "Environment Framework",
+    "l3": null,
+    "owner": "Sustainability Lead",
+    "desc": "Carbon management, packaging optimization, product efficiency"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Data, Systems & Reporting",
+    "l2": null,
+    "l3": null,
+    "owner": "IT & Data Director",
+    "desc": "ERP systems, data management, document library, KPI reporting"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Data, Systems & Reporting",
+    "l2": "ERP Facilitation & Data Flow",
+    "l3": null,
+    "owner": "Systems Manager",
+    "desc": "End-to-end data integration"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Data, Systems & Reporting",
+    "l2": "Data Management",
+    "l3": null,
+    "owner": "Data Manager",
+    "desc": "Product and order data maintenance"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Data, Systems & Reporting",
+    "l2": "Document Library",
+    "l3": null,
+    "owner": "Document Controller",
+    "desc": "Document storage and retrieval"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Data, Systems & Reporting",
+    "l2": "KPI Reporting",
+    "l3": null,
+    "owner": "BI Analyst",
+    "desc": "Client KPI dashboard production"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Commercial & Finance Support",
+    "l2": null,
+    "l3": null,
+    "owner": "Finance Director",
+    "desc": "Commercial support, payment and finance management"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Commercial & Finance Support",
+    "l2": "Payment & Finance",
+    "l3": null,
+    "owner": "Finance Manager",
+    "desc": "Payment processing and financial management"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Issue Resolution & Risk Management",
+    "l2": null,
+    "l3": null,
+    "owner": "Operations Manager",
+    "desc": "Non-conformance, claims, cost recovery, risk mitigation"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Issue Resolution & Risk Management",
+    "l2": "Non-Conformance Management",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "NCR, CAP and RTV processes"
+  },
+  {
+    "l0": "SUPPORT",
+    "l1": "Issue Resolution & Risk Management",
+    "l2": "Claims & Cost Recovery",
+    "l3": null,
+    "owner": "Finance Director",
+    "desc": "Claims processing and cost recovery"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": null,
+    "l2": null,
+    "l3": null,
+    "owner": "Sourcing Director",
+    "desc": "Client intake, vendor engagement, sourcing and factory audit programs"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Client Intake & Commercial Setup",
+    "l2": null,
+    "l3": null,
+    "owner": "Commercial Manager",
+    "desc": "Client briefing, agreements, range confirmation"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Client Intake & Commercial Setup",
+    "l2": "Client Brief",
+    "l3": null,
+    "owner": "Account Manager",
+    "desc": "Client brief and requirements gathering"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Client Intake & Commercial Setup",
+    "l2": "Commercial Agreements",
+    "l3": null,
+    "owner": "Legal/Commercial Lead",
+    "desc": "Sourcing services agreement, terms and conditions"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Client Intake & Commercial Setup",
+    "l2": "Range Confirmation",
+    "l3": null,
+    "owner": "Category Manager",
+    "desc": "Range selection and approval"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Vendor Engagement & Sourcing",
+    "l2": null,
+    "l3": null,
+    "owner": "Sourcing Manager",
+    "desc": "Vendor identification, quotation, tendering, sourcing"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Vendor Engagement & Sourcing",
+    "l2": "Vendor Engagement",
+    "l3": null,
+    "owner": "Vendor Relations Lead",
+    "desc": "Vendor identification and engagement"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Vendor Engagement & Sourcing",
+    "l2": "Quotation Process",
+    "l3": null,
+    "owner": "Sourcing Lead",
+    "desc": "Quotation management and costing"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Vendor Engagement & Sourcing",
+    "l2": "Tender Management",
+    "l3": null,
+    "owner": "Sourcing Lead",
+    "desc": "Tender process and commercial evaluation"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Vendor Engagement & Sourcing",
+    "l2": "Sourcing Execution",
+    "l3": null,
+    "owner": "Sourcing Lead",
+    "desc": "Sourcing cycle execution"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Director",
+    "desc": "Factory profile, Surity audit, CSR audit, contracts, re-audits"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Factory Profile Review",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "Factory assessment and profile report"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Factory Profile Review",
+    "l3": "Factory Profile Report Preparation",
+    "owner": "QA Engineer",
+    "desc": "Review factory basic information, capacity, certifications"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Surity Audit",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "On-site 5 Pillars assessment"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Surity Audit",
+    "l3": "Audit Planning & Scheduling",
+    "owner": "Quality Manager",
+    "desc": "Schedule on-site audit, coordinate with factory"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Surity Audit",
+    "l3": "On-site 5 Pillars Assessment",
+    "owner": "QA Engineer",
+    "desc": "Assess Management, Employment, H&S, QMS, Environment"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Surity Audit",
+    "l3": "Audit Report Preparation",
+    "owner": "QA Engineer",
+    "desc": "Document findings and recommendations"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "CSR Audit (3rd Party)",
+    "l3": null,
+    "owner": "Compliance Manager",
+    "desc": "BSCI, SEDEX, SA8000, ICS audits"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "CSR Audit (3rd Party)",
+    "l3": "CSR Audit Body Selection",
+    "owner": "Compliance Manager",
+    "desc": "Select BSCI, SEDEX, SA8000, or ICS based on client requirements"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "CSR Audit (3rd Party)",
+    "l3": "CSR Audit Coordination",
+    "owner": "Compliance Manager",
+    "desc": "Coordinate 3rd party audit, obtain reports"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Audit Grading & CAP",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "Grade assignment and CAP issuance (Good/Satisfactory/Improvement/Reject)"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Audit Grading & CAP",
+    "l3": "Audit Grading",
+    "owner": "Quality Manager",
+    "desc": "Assign grade: Good, Satisfactory, Improvement Needed, or Reject"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Audit Grading & CAP",
+    "l3": "CAP Issuance",
+    "owner": "Quality Manager",
+    "desc": "Issue Corrective Action Plan for non-compliances"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Factory Contract Execution",
+    "l3": null,
+    "owner": "Legal/Commercial Lead",
+    "desc": "Contract and service agreement execution"
+  },
+  {
+    "l0": "SOURCE",
+    "l1": "Factory Audit Programs",
+    "l2": "Factory Contract Execution",
+    "l3": "Contract Execution",
+    "owner": "Legal/Commercial Lead",
+    "desc": "Execute factory contract and service agreement"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": null,
+    "l2": null,
+    "l3": null,
+    "owner": "Product Development Director",
+    "desc": "Product development, testing, packaging, artwork and instruction manual development"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Director",
+    "desc": "Silver Seal, technical file, Gold Seal, testing"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Silver Seal Process",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "SSS submission, review and pre-production testing"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Silver Seal Process",
+    "l3": "Silver Seal Sample Submission",
+    "owner": "Vendor",
+    "desc": "Vendor submits SSS for initial approval"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Silver Seal Process",
+    "l3": "Silver Seal Review",
+    "owner": "Quality Manager",
+    "desc": "Review SSS against specifications"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Silver Seal Process",
+    "l3": "Pre-production Testing",
+    "owner": "Testing Manager",
+    "desc": "Arrange testing before production"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Technical File Compilation",
+    "l3": null,
+    "owner": "Technical Manager",
+    "desc": "Test reports, certificates, DoC, REACH compliance"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Technical File Compilation",
+    "l3": "Test Reports Collection",
+    "owner": "Technical Manager",
+    "desc": "Collect all required test reports"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Technical File Compilation",
+    "l3": "Certificates Collection",
+    "owner": "Technical Manager",
+    "desc": "Collect product certificates"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Technical File Compilation",
+    "l3": "Declaration of Conformity",
+    "owner": "Technical Manager",
+    "desc": "Prepare DoC documentation"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Technical File Compilation",
+    "l3": "REACH Compliance Check",
+    "owner": "Technical Manager",
+    "desc": "Verify REACH compliance documentation"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Gold Seal Process",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "GSS submission, inspection, sealing and storage (2yr reference)"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Gold Seal Process",
+    "l3": "Gold Seal Sample Submission",
+    "owner": "Vendor",
+    "desc": "Vendor submits GSS (approved production sample)"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Gold Seal Process",
+    "l3": "Gold Seal Inspection",
+    "owner": "Quality Manager",
+    "desc": "Client/Surity inspection and approval"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Gold Seal Process",
+    "l3": "Gold Seal Sealing & Storage",
+    "owner": "Quality Manager",
+    "desc": "Seal and store GSS as 2yr reference standard"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Product Development & Approval",
+    "l2": "Testing & Validation",
+    "l3": null,
+    "owner": "Testing Manager",
+    "desc": "Test specification, functional samples, lab testing"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": null,
+    "l3": null,
+    "owner": "Packaging Manager",
+    "desc": "Physical design, artwork, carton markings"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Physical Packaging Design",
+    "l3": null,
+    "owner": "Packaging Manager",
+    "desc": "Material selection, testing, environmental optimization (FSC/PEFC)"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Physical Packaging Design",
+    "l3": "Packaging Material Selection",
+    "owner": "Packaging Manager",
+    "desc": "Select sustainable materials (paper-based, FSC/PEFC)"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Physical Packaging Design",
+    "l3": "Packaging Testing",
+    "owner": "Packaging Engineer",
+    "desc": "Test packaging for durability and compliance"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Physical Packaging Design",
+    "l3": "Environmental Optimization",
+    "owner": "Sustainability Lead",
+    "desc": "Optimize for sustainability (no PVC/EPS)"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": null,
+    "owner": "Artwork Manager",
+    "desc": "AWCL, artwork creation, die cut, barcode, print proof"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": "AWCL Completion",
+    "owner": "Artwork Manager",
+    "desc": "Complete Artwork Check List"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": "Artwork Creation",
+    "owner": "Artwork Designer",
+    "desc": "Create artwork per specifications"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": "Die Cut Approval",
+    "owner": "Packaging Engineer",
+    "desc": "Approve die cut design"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": "Barcode Verification",
+    "owner": "Quality Manager",
+    "desc": "Verify EAN/UPC barcode accuracy"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Artwork Generation & Approval",
+    "l3": "Print Proof Approval",
+    "owner": "Account Manager",
+    "desc": "Client approval of print proof"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Packaging Development",
+    "l2": "Carton Markings",
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "Retail readiness and carton marking standards"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Instruction Manual Development",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "IM creation, review, translation"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Instruction Manual Development",
+    "l2": "IM Development & Translation",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "IM English creation, review, approval, translation"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Instruction Manual Development",
+    "l2": "IM Development & Translation",
+    "l3": "IM English Creation",
+    "owner": "Technical Writer",
+    "desc": "Create instruction manual in English"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Instruction Manual Development",
+    "l2": "IM Development & Translation",
+    "l3": "IM Review & Approval",
+    "owner": "Quality Manager",
+    "desc": "Review and approve IM content"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "Instruction Manual Development",
+    "l2": "IM Development & Translation",
+    "l3": "IM Translation",
+    "owner": "Translation Agency",
+    "desc": "Translate IM to required languages"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "E-commerce Data & Image Capture",
+    "l2": null,
+    "l3": null,
+    "owner": "Digital Content Manager",
+    "desc": "PIMDAM process, data and image capture"
+  },
+  {
+    "l0": "DEVELOP",
+    "l1": "E-commerce Data & Image Capture",
+    "l2": "PIMDAM Process",
+    "l3": null,
+    "owner": "E-commerce Lead",
+    "desc": "Style guide, data capture, image photography, validation, upload"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": null,
+    "l2": null,
+    "l3": null,
+    "owner": "Operations Director",
+    "desc": "Order management, production oversight, quality inspection, logistics and delivery"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": null,
+    "l3": null,
+    "owner": "Account Manager",
+    "desc": "Quotation, proforma, order confirmation"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Quotation",
+    "l3": null,
+    "owner": "Account Manager",
+    "desc": "Outline and full quotation with data collection"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Quotation",
+    "l3": "Outline Quotation",
+    "owner": "Sourcing Lead",
+    "desc": "Initial quotation with estimated pricing"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Quotation",
+    "l3": "Full Quotation",
+    "owner": "Sourcing Lead",
+    "desc": "Detailed quotation with complete data"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Order Placement",
+    "l3": null,
+    "owner": "Account Manager",
+    "desc": "Proforma, order confirmation, official order"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Order Placement",
+    "l3": "Proforma Order",
+    "owner": "Account Manager",
+    "desc": "Issue proforma order for vendor preparation"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Order Placement",
+    "l3": "Order Confirmation",
+    "owner": "Account Manager",
+    "desc": "Vendor confirms order details"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Order Management",
+    "l2": "Order Placement",
+    "l3": "Official Order",
+    "owner": "Account Manager",
+    "desc": "Issue official purchase order"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Production Management",
+    "l2": null,
+    "l3": null,
+    "owner": "Production Manager",
+    "desc": "Production planning, oversight, coordination"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Production Management",
+    "l2": "Production Coordination",
+    "l3": null,
+    "owner": "Production Coordinator",
+    "desc": "Production planning, oversight and vendor coordination"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Director",
+    "desc": "DUPRO, FRI, self-inspection, guarantee letter"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "DUPRO (During Production)",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "In-process inspection during production"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "DUPRO (During Production)",
+    "l3": "DUPRO Inspection Execution",
+    "owner": "QC Inspector",
+    "desc": "Inspect during production (30-50% complete)"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "FRI (Final Random Inspection)",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "FRI booking, execution, report (AQL: Critical=0, Major≤2.5, Minor≤4.0)"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "FRI (Final Random Inspection)",
+    "l3": "FRI Booking",
+    "owner": "Quality Coordinator",
+    "desc": "Book FRI when 100% production complete, 80% packed"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "FRI (Final Random Inspection)",
+    "l3": "FRI Execution",
+    "owner": "QC Inspector",
+    "desc": "Execute final inspection per AQL standards"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "FRI (Final Random Inspection)",
+    "l3": "FRI Report Review",
+    "owner": "Quality Manager",
+    "desc": "Review report and approve/reject shipment"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "Self-Inspection Program",
+    "l3": null,
+    "owner": "Vendor",
+    "desc": "Vendor self-inspection for qualified vendors"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "Self-Inspection Program",
+    "l3": "Self-Inspection Execution",
+    "owner": "Vendor",
+    "desc": "Qualified vendors conduct self-inspection"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "Defect Classification",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "DCL and inspection criteria definition"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Quality Inspection",
+    "l2": "Defect Classification",
+    "l3": "DCL Definition",
+    "owner": "Quality Manager",
+    "desc": "Define critical, major, and minor defects"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": null,
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "Booking, loading, photo documentation, delivery"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Booking",
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "3PL registration, online booking, shipping order release"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Booking",
+    "l3": "3PL Registration",
+    "owner": "Logistics Coordinator",
+    "desc": "Register new vendors with 3PL"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Booking",
+    "l3": "Online Booking Submission",
+    "owner": "Logistics Coordinator",
+    "desc": "Submit booking to 3PL system"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Booking",
+    "l3": "Shipping Order Release",
+    "owner": "Logistics Coordinator",
+    "desc": "Release shipping order to vendor"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Loading Supervision",
+    "l3": null,
+    "owner": "Vendor",
+    "desc": "Loading supervision, photo documentation, approval (min CBM: 20ft=28, 40ft=56, 40ftHC=66)"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Loading Supervision",
+    "l3": "Loading Supervision",
+    "owner": "Vendor/3PL",
+    "desc": "Supervise container loading process"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Loading Supervision",
+    "l3": "Loading Photo Documentation",
+    "owner": "Vendor",
+    "desc": "Photo documentation of loading (required)"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Container Loading Supervision",
+    "l3": "Loading Approval",
+    "owner": "Logistics Coordinator",
+    "desc": "Approve loading photos and proceed"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Port Delivery",
+    "l3": null,
+    "owner": "Vendor",
+    "desc": "FCL and LCL delivery to port"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Port Delivery",
+    "l3": "FCL Delivery",
+    "owner": "Vendor",
+    "desc": "Full Container Load delivery to port"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Port Delivery",
+    "l3": "LCL Delivery",
+    "owner": "Vendor",
+    "desc": "Less than Container Load delivery to port"
+  },
+  {
+    "l0": "EXECUTE",
+    "l1": "Container Loading & Delivery",
+    "l2": "Loading Guidelines",
+    "l3": null,
+    "owner": "Logistics Manager",
+    "desc": "Palletization and container loading standards"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": null,
+    "l2": null,
+    "l3": null,
+    "owner": "Operations Director",
+    "desc": "Documentation, compliance, payment processing and issue resolution"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": null,
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "Invoice, packing, BL, COO, certificates"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Export Documentation",
+    "l3": null,
+    "owner": "Vendor",
+    "desc": "Commercial invoice, packing list, Bill of Lading/FCR"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Export Documentation",
+    "l3": "Commercial Invoice",
+    "owner": "Vendor",
+    "desc": "Prepare commercial invoice (English, typewritten)"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Export Documentation",
+    "l3": "Packing List",
+    "owner": "Vendor",
+    "desc": "Prepare detailed packing list"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Export Documentation",
+    "l3": "Bill of Lading / FCR",
+    "owner": "Vendor/3PL",
+    "desc": "Prepare BL for ocean or FCR for courier"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Compliance Certificates",
+    "l3": null,
+    "owner": "Vendor",
+    "desc": "Certificate of Origin/GSP, fumigation (Methyl Bromide), vendor self-declarations"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Compliance Certificates",
+    "l3": "Certificate of Origin / GSP",
+    "owner": "Vendor",
+    "desc": "Obtain COO or GSP Form A as required"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Compliance Certificates",
+    "l3": "Fumigation Certificate",
+    "owner": "Vendor",
+    "desc": "Obtain fumigation cert for wooden materials (Methyl Bromide only)"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Compliance Certificates",
+    "l3": "Vendor Self-Declaration",
+    "owner": "Vendor",
+    "desc": "Vendor compliance self-declarations"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Document Review",
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "Document accuracy verification (English, typewritten, consistent)"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Documentation & Compliance",
+    "l2": "Document Review",
+    "l3": "Document Accuracy Check",
+    "owner": "Logistics Coordinator",
+    "desc": "Verify all documents consistent and accurate"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": null,
+    "l3": null,
+    "owner": "Finance Director",
+    "desc": "Payment documentation and release"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": "Payment Documentation",
+    "l3": null,
+    "owner": "Finance Manager",
+    "desc": "Document submission for T/T, D/A, L/C"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": "Payment Documentation",
+    "l3": "T/T Document Submission",
+    "owner": "Finance Analyst",
+    "desc": "Submit docs for Telegraphic Transfer"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": "Payment Documentation",
+    "l3": "D/A or L/C Document Submission",
+    "owner": "Finance Analyst",
+    "desc": "Submit docs for D/A or Letter of Credit"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": "Payment Release",
+    "l3": null,
+    "owner": "Finance Manager",
+    "desc": "Document verification and payment approval"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Payment Processing",
+    "l2": "Payment Release",
+    "l3": "Payment Authorization",
+    "owner": "Finance Manager",
+    "desc": "Authorize payment release after document verification"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": null,
+    "l3": null,
+    "owner": "Quality Director",
+    "desc": "NCR, CAP, RTV, dispute resolution"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "CAP (Corrective Action Plan)",
+    "l3": null,
+    "owner": "Quality Manager",
+    "desc": "CAP documentation and validation (complete before shipment)"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "CAP (Corrective Action Plan)",
+    "l3": "CAP Preparation",
+    "owner": "Quality Manager",
+    "desc": "Document corrective actions required"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "CAP (Corrective Action Plan)",
+    "l3": "CAP Validation",
+    "owner": "Quality Manager",
+    "desc": "Validate CAP completion before shipment"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "Return to Vendor (RTV)",
+    "l3": null,
+    "owner": "Logistics Coordinator",
+    "desc": "RTV collection (35-day window), disposal at vendor cost"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "Return to Vendor (RTV)",
+    "l3": "RTV Collection",
+    "owner": "Logistics Coordinator",
+    "desc": "Arrange collection within 35-day window"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "Return to Vendor (RTV)",
+    "l3": "RTV Disposal",
+    "owner": "Vendor",
+    "desc": "Vendor disposes of goods at their cost after deadline"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "Dispute Resolution",
+    "l3": null,
+    "owner": "Legal/Management",
+    "desc": "Legal dispute resolution and claims management"
+  },
+  {
+    "l0": "DELIVER",
+    "l1": "Issue Resolution",
+    "l2": "Dispute Resolution",
+    "l3": "Legal Dispute Management",
+    "owner": "Legal/Management",
+    "desc": "Manage legal disputes and claims"
+  }
+]
