@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Nunito, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -41,15 +42,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${nunito.variable} ${jetbrainsMono.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              className: "font-sans",
-            }}
-          />
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                className: "font-sans",
+              }}
+            />
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

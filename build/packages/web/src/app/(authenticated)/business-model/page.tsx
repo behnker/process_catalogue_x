@@ -9,7 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useBusinessModels, useBusinessModelWithEntries, useCreateBusinessModelEntry } from "@/hooks/useBusinessModel";
+import { useBusinessModelCanvas, useCreateBusinessModelEntry } from "@/hooks/useBusinessModel";
 import type { BusinessModelEntry, BMCComponent } from "@/types/api";
 import { cn } from "@/lib/utils";
 
@@ -97,17 +97,16 @@ function BMCBox({ component, label, description, entries, onAddEntry }: BMCBoxPr
 
 export default function BusinessModelPage() {
   const [view, setView] = React.useState<"grid" | "list">("grid");
-  const { data: businessModels } = useBusinessModels();
-  const activeModelId = businessModels?.items?.[0]?.id;
-  const { data: activeModel } = useBusinessModelWithEntries(activeModelId);
+  const { data: businessModel } = useBusinessModelCanvas();
   const createEntry = useCreateBusinessModelEntry();
 
   const [addDialogOpen, setAddDialogOpen] = React.useState(false);
   const [addComponent, setAddComponent] = React.useState<BMCComponent | null>(null);
   const [newEntryTitle, setNewEntryTitle] = React.useState("");
 
+  // Use entries_by_component directly from API response
   const entriesByComponent = React.useMemo(() => {
-    const map: Record<BMCComponent, BusinessModelEntry[]> = {
+    const defaultMap: Record<BMCComponent, BusinessModelEntry[]> = {
       key_partners: [],
       key_activities: [],
       key_resources: [],
@@ -118,13 +117,13 @@ export default function BusinessModelPage() {
       cost_structure: [],
       revenue_streams: [],
     };
-    activeModel?.entries?.forEach((entry) => {
-      if (map[entry.component]) {
-        map[entry.component].push(entry);
-      }
-    });
-    return map;
-  }, [activeModel]);
+
+    // API returns entries_by_component object directly
+    if (businessModel?.entries_by_component) {
+      return { ...defaultMap, ...businessModel.entries_by_component };
+    }
+    return defaultMap;
+  }, [businessModel]);
 
   const handleAddEntry = (component: BMCComponent) => {
     setAddComponent(component);
@@ -133,9 +132,9 @@ export default function BusinessModelPage() {
   };
 
   const handleCreateEntry = async () => {
-    if (!addComponent || !newEntryTitle.trim() || !activeModelId) return;
+    if (!addComponent || !newEntryTitle.trim() || !businessModel?.id) return;
     await createEntry.mutateAsync({
-      business_model_id: activeModelId,
+      business_model_id: businessModel.id,
       component: addComponent,
       title: newEntryTitle.trim(),
     });
@@ -149,7 +148,7 @@ export default function BusinessModelPage() {
         <div>
           <h1 className="text-h1">Business Model Canvas</h1>
           <p className="text-muted-foreground mt-1">
-            {activeModel?.name || "Loading..."}
+            {businessModel?.name || "Loading..."}
           </p>
         </div>
         <div className="flex items-center gap-2">

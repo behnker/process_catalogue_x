@@ -53,18 +53,25 @@ export interface Process {
 }
 
 export interface ProcessCreate {
-  code: string;
   name: string;
   description?: string;
   level: ProcessLevel;
   parent_id?: string;
+  sort_order?: number;
   process_type?: ProcessType;
   status?: LifecycleStatus;
   current_automation?: AutomationLevel;
   target_automation?: AutomationLevel;
   owner_id?: string;
   sponsor_id?: string;
+  function_id?: string;
   tags?: string[];
+}
+
+export interface ProcessReorder {
+  process_id: string;
+  new_sort_order: number;
+  new_parent_id?: string;
 }
 
 export interface ProcessUpdate extends Partial<ProcessCreate> {}
@@ -301,5 +308,163 @@ export interface PortfolioFilters extends PaginationParams {
   level?: PortfolioLevel;
   status?: PortfolioStatus;
   parent_id?: string;
+  search?: string;
+}
+
+// Survey types
+export type SurveyMode = "adoption" | "sentiment" | "readiness" | "feedback" | "custom";
+export type SurveyStatus = "draft" | "active" | "paused" | "closed" | "archived";
+export type QuestionType = "single_choice" | "multi_choice" | "rating" | "text" | "scale";
+
+export interface Survey {
+  id: string;
+  organization_id: string;
+  title: string;
+  description?: string;
+  mode: SurveyMode;
+  status: SurveyStatus;
+  start_date?: string;
+  end_date?: string;
+  is_anonymous: boolean;
+  target_role?: string;
+  target_department?: string;
+  linked_process_id?: string;
+  linked_portfolio_id?: string;
+  question_count: number;
+  response_count: number;
+  created_at: string;
+  updated_at: string;
+  questions?: SurveyQuestion[];
+}
+
+export interface SurveyQuestion {
+  id: string;
+  survey_id: string;
+  question_text: string;
+  question_type: QuestionType;
+  options?: string[];
+  is_required: boolean;
+  sort_order: number;
+  help_text?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SurveyResponseItem {
+  id: string;
+  survey_id: string;
+  respondent_id?: string;
+  submitted_at: string;
+  answers: Record<string, unknown>;
+}
+
+export interface SurveyCreate {
+  title: string;
+  description?: string;
+  mode: SurveyMode;
+  start_date?: string;
+  end_date?: string;
+  is_anonymous?: boolean;
+  target_role?: string;
+  target_department?: string;
+  linked_process_id?: string;
+  linked_portfolio_id?: string;
+}
+
+export interface SurveyQuestionCreate {
+  question_text: string;
+  question_type: QuestionType;
+  options?: string[];
+  is_required?: boolean;
+  sort_order?: number;
+  help_text?: string;
+}
+
+export interface SurveyFilters extends PaginationParams {
+  mode?: SurveyMode;
+  status?: SurveyStatus;
+  search?: string;
+}
+
+// Prompt types
+export type PromptCategory = "analysis" | "documentation" | "optimization" | "reporting" | "custom";
+export type ContextType = "process" | "portfolio" | "riada" | "business_model";
+
+export interface PromptTemplate {
+  id: string;
+  organization_id: string;
+  name: string;
+  description?: string;
+  category: PromptCategory;
+  system_prompt?: string;
+  user_prompt_template: string;
+  context_type: ContextType;
+  include_riada: boolean;
+  include_kpis: boolean;
+  include_raci: boolean;
+  is_active: boolean;
+  usage_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PromptTemplateCreate {
+  name: string;
+  description?: string;
+  category: PromptCategory;
+  system_prompt?: string;
+  user_prompt_template: string;
+  context_type?: ContextType;
+  include_riada?: boolean;
+  include_kpis?: boolean;
+  include_raci?: boolean;
+}
+
+export interface PromptExecution {
+  id: string;
+  organization_id: string;
+  template_id?: string;
+  user_id: string;
+  target_entity_type: string;
+  target_entity_id: string;
+  prompt_sent: string;
+  response_received?: string;
+  model_used: string;
+  prompt_tokens?: number;
+  completion_tokens?: number;
+  total_cost?: number;
+  execution_time_ms?: number;
+  status: "pending" | "completed" | "failed";
+  error_message?: string;
+  created_at: string;
+}
+
+export interface PromptExecutionRequest {
+  template_id?: string;
+  custom_prompt?: string;
+  target_entity_type: ContextType;
+  target_entity_id: string;
+  temperature?: number;
+  max_tokens?: number;
+}
+
+export interface LLMConfig {
+  id: string;
+  organization_id: string;
+  provider: string;
+  model: string;
+  endpoint_url?: string;
+  default_temperature: number;
+  default_max_tokens: number;
+  rate_limit_rpm: number;
+  monthly_token_limit?: number;
+  is_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PromptFilters extends PaginationParams {
+  category?: PromptCategory;
+  context_type?: ContextType;
   search?: string;
 }

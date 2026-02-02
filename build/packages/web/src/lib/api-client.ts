@@ -20,6 +20,16 @@ class ApiClient {
     return null;
   }
 
+  // Normalize path to include trailing slash for FastAPI compatibility
+  // This prevents 307 redirects which don't work with POST/PATCH/DELETE
+  private normalizePath(path: string): string {
+    // Don't add slash if path has query params or already ends with slash
+    if (path.includes("?") || path.endsWith("/")) {
+      return path;
+    }
+    return `${path}/`;
+  }
+
   private async request<T>(
     path: string,
     options: RequestInit = {}
@@ -31,7 +41,13 @@ class ApiClient {
       ...(options.headers || {}),
     };
 
-    const res = await fetch(`${API_URL}${path}`, {
+    // Normalize path for mutating methods to avoid 307 redirects
+    const method = options.method || "GET";
+    const normalizedPath = ["POST", "PATCH", "PUT", "DELETE"].includes(method)
+      ? this.normalizePath(path)
+      : path;
+
+    const res = await fetch(`${API_URL}${normalizedPath}`, {
       ...options,
       headers,
     });
@@ -50,7 +66,21 @@ class ApiClient {
 
     if (!res.ok) {
       const error = await res.json().catch(() => ({ detail: "Request failed" }));
-      throw new Error(error.detail || `HTTP ${res.status}`);
+      // Handle FastAPI validation errors (detail is an array of error objects)
+      let message: string;
+      if (Array.isArray(error.detail)) {
+        message = error.detail
+          .map((e: { loc?: string[]; msg?: string }) => {
+            const field = e.loc?.slice(1).join(".") || "unknown";
+            return `${field}: ${e.msg || "validation error"}`;
+          })
+          .join(", ");
+      } else if (typeof error.detail === "string") {
+        message = error.detail;
+      } else {
+        message = `HTTP ${res.status}`;
+      }
+      throw new Error(message);
     }
 
     return res.json();

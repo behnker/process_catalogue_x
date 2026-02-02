@@ -8,6 +8,7 @@ import type {
   ProcessCreate,
   ProcessUpdate,
   ProcessFilters,
+  ProcessReorder,
 } from "@/types/api";
 
 const QUERY_KEY = "processes";
@@ -85,6 +86,17 @@ export function useDeleteProcess() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: string) => api.delete(`/api/v1/processes/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
+    },
+  });
+}
+
+export function useReorderProcess() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: ProcessReorder) =>
+      api.post<Process>("/api/v1/processes/reorder", data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
     },

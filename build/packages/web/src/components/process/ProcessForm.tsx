@@ -17,7 +17,6 @@ import {
 import type { ProcessCreate, ProcessLevel, ProcessType, LifecycleStatus, AutomationLevel } from "@/types/api";
 
 const processSchema = z.object({
-  code: z.string().min(1, "Code is required").max(20, "Code must be 20 characters or less"),
   name: z.string().min(1, "Name is required").max(255, "Name must be 255 characters or less"),
   description: z.string().optional(),
   level: z.enum(["L0", "L1", "L2", "L3", "L4", "L5"]),
@@ -35,6 +34,8 @@ interface ProcessFormProps {
   onSubmit: (data: ProcessCreate) => Promise<void>;
   onCancel: () => void;
   isSubmitting?: boolean;
+  /** When true, level cannot be changed (used when creating under a specific parent) */
+  lockLevel?: boolean;
 }
 
 const levelLabels: Record<ProcessLevel, string> = {
@@ -51,7 +52,10 @@ export function ProcessForm({
   onSubmit,
   onCancel,
   isSubmitting = false,
+  lockLevel = false,
 }: ProcessFormProps) {
+  // Auto-lock level when parent_id is set (creating a child process)
+  const isLevelLocked = lockLevel || !!defaultValues?.parent_id;
   const {
     register,
     handleSubmit,
@@ -81,37 +85,29 @@ export function ProcessForm({
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="code">Code *</Label>
-          <Input
-            id="code"
-            placeholder="e.g., L0-01"
-            {...register("code")}
-          />
-          {errors.code && (
-            <p className="text-sm text-destructive">{errors.code.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="level">Level *</Label>
-          <Select
-            value={level}
-            onValueChange={(v) => setValue("level", v as ProcessLevel)}
-          >
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {(Object.keys(levelLabels) as ProcessLevel[]).map((l) => (
-                <SelectItem key={l} value={l}>
-                  {levelLabels[l]}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+      <div className="space-y-2">
+        <Label htmlFor="level">Level *</Label>
+        <Select
+          value={level}
+          onValueChange={(v) => setValue("level", v as ProcessLevel)}
+          disabled={isLevelLocked}
+        >
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {(Object.keys(levelLabels) as ProcessLevel[]).map((l) => (
+              <SelectItem key={l} value={l}>
+                {levelLabels[l]}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <p className="text-xs text-muted-foreground">
+          {isLevelLocked
+            ? "Level is set based on parent hierarchy"
+            : "Code will be auto-generated based on hierarchy position"}
+        </p>
       </div>
 
       <div className="space-y-2">

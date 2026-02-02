@@ -12,6 +12,7 @@ from src.api.v1.endpoints import (
     portfolio,
     processes,
     prompts,
+    reference,
     riada,
     surveys,
 )
@@ -29,6 +30,9 @@ api_router.include_router(
 api_router.include_router(riada.router, prefix="/riada", tags=["RIADA"])
 api_router.include_router(portfolio.router, prefix="/portfolio", tags=["Portfolio"])
 api_router.include_router(business_model.router, prefix="/business-model", tags=["Business Model"])
+
+# Reference data
+api_router.include_router(reference.router, prefix="/reference", tags=["Reference Data"])
 
 # Phase 2 features
 api_router.include_router(surveys.router, prefix="/surveys", tags=["Surveys"])

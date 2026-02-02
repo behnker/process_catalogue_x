@@ -18,9 +18,18 @@ from src.schemas.process import (
     ProcessCreate,
     ProcessDetailResponse,
     ProcessListResponse,
+    ProcessReorder,
     ProcessResponse,
     ProcessTreeNode,
     ProcessUpdate,
+)
+from src.services.process_numbering import (
+    generate_process_code,
+    get_next_sort_order,
+    renumber_all_processes,
+    renumber_siblings,
+    renumber_subtree,
+    calculate_level_from_parent,
 )
 
 router = APIRouter()
@@ -48,7 +57,7 @@ async def list_processes(
     if parent_id:
         query = query.where(Process.parent_id == parent_id)
     if status:
-        query = query.where(Process.status == status)
+        query = query.where(func.lower(Process.status) == status.lower())
     if process_type:
         query = query.where(Process.process_type == process_type)
     if search:
@@ -86,10 +95,13 @@ async def get_process_tree(
     Get the full process hierarchy as a tree structure.
     Used by the Process Canvas and Tree views.
     """
-    # Get all processes for this org
+    # Get all non-archived processes for this org
     result = await db.execute(
         select(Process)
-        .where(Process.organization_id == user.organization_id)
+        .where(
+            Process.organization_id == user.organization_id,
+            Process.status != "archived",
+        )
         .order_by(Process.level, Process.sort_order)
     )
     all_processes = result.scalars().all()
@@ -153,6 +165,80 @@ async def get_process_tree(
     return sorted(tree, key=lambda x: x.sort_order)
 
 
+@router.post("/reorder", response_model=ProcessResponse)
+async def reorder_process(
+    body: ProcessReorder,
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_tenant_db),
+):
+    """Move a process to a new position or parent with auto-renumbering."""
+    result = await db.execute(
+        select(Process).where(
+            Process.id == body.process_id,
+            Process.organization_id == user.organization_id,
+        )
+    )
+    process = result.scalar_one_or_none()
+
+    if not process:
+        raise HTTPException(status_code=404, detail="Process not found")
+
+    old_parent_id = process.parent_id
+    is_reparenting = body.new_parent_id is not None and body.new_parent_id != old_parent_id
+
+    # If reparenting, validate and update parent
+    if is_reparenting:
+        # Validate new parent exists
+        if body.new_parent_id:
+            parent_result = await db.execute(
+                select(Process).where(
+                    Process.id == body.new_parent_id,
+                    Process.organization_id == user.organization_id,
+                )
+            )
+            new_parent = parent_result.scalar_one_or_none()
+            if not new_parent:
+                raise HTTPException(status_code=400, detail="New parent process not found")
+
+            # Update level based on new parent
+            process.level = calculate_level_from_parent(new_parent.level)
+        else:
+            # Moving to root
+            process.level = "L0"
+
+        process.parent_id = body.new_parent_id
+
+    # Update sort_order
+    process.sort_order = body.new_sort_order
+    await db.flush()
+
+    # Renumber old siblings (close gap where process was removed)
+    updated_ids = await renumber_siblings(db, user.organization_id, old_parent_id)
+
+    # If reparenting, also renumber new siblings
+    if is_reparenting:
+        updated_ids.extend(
+            await renumber_siblings(db, user.organization_id, body.new_parent_id)
+        )
+
+    # Cascade code changes to children if this process's code changed
+    await renumber_subtree(db, user.organization_id, process.id)
+
+    await db.refresh(process)
+    return ProcessResponse.model_validate(process)
+
+
+@router.post("/regenerate-codes")
+async def regenerate_process_codes(
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_tenant_db),
+):
+    """Regenerate all process codes with hierarchical numbering (1, 1.1, 1.1.1, etc.)."""
+    count = await renumber_all_processes(db, user.organization_id)
+    await db.commit()
+    return {"message": f"Regenerated codes for {count} processes"}
+
+
 @router.get("/{process_id}", response_model=ProcessDetailResponse)
 async def get_process(
     process_id: str,
@@ -180,11 +266,25 @@ async def create_process(
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_tenant_db),
 ):
-    """Create a new process."""
+    """Create a new process with auto-generated hierarchical code."""
+    # Determine sort_order if not provided
+    sort_order = body.sort_order
+    if sort_order is None:
+        sort_order = await get_next_sort_order(db, user.organization_id, body.parent_id)
+
+    # Auto-generate hierarchical code
+    code = await generate_process_code(
+        db, user.organization_id, body.parent_id, sort_order
+    )
+
+    # Create process with generated code
+    process_data = body.model_dump(exclude={"sort_order"})
     process = Process(
         id=str(uuid4()),
         organization_id=user.organization_id,
-        **body.model_dump(),
+        code=code,
+        sort_order=sort_order,
+        **process_data,
     )
     db.add(process)
     await db.flush()
@@ -242,3 +342,6 @@ async def delete_process(
 
     process.status = "archived"
     await db.flush()
+
+    # Renumber remaining siblings to close gaps
+    await renumber_siblings(db, user.organization_id, process.parent_id)

@@ -117,18 +117,24 @@ export function ProcessDetailPanel({
             )}
           </SlideOverSection>
 
-          <SlideOverSection title="Metadata">
-            <SlideOverGrid>
-              <SlideOverField
-                label="Created"
-                value={format(new Date(process.created_at), "PPP")}
-              />
-              <SlideOverField
-                label="Updated"
-                value={format(new Date(process.updated_at), "PPP")}
-              />
-            </SlideOverGrid>
-          </SlideOverSection>
+          {(process.created_at || process.updated_at) && (
+            <SlideOverSection title="Metadata">
+              <SlideOverGrid>
+                {process.created_at && (
+                  <SlideOverField
+                    label="Created"
+                    value={format(new Date(process.created_at), "PPP")}
+                  />
+                )}
+                {process.updated_at && (
+                  <SlideOverField
+                    label="Updated"
+                    value={format(new Date(process.updated_at), "PPP")}
+                  />
+                )}
+              </SlideOverGrid>
+            </SlideOverSection>
+          )}
         </div>
       ),
     },

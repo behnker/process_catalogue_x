@@ -1,131 +1,196 @@
 "use client";
 
-import { ChevronRight, AlertCircle, CheckCircle, MinusCircle } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Info, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Process, RagStatus } from "@/types/api";
+import type { Process } from "@/types/api";
 
 interface ProcessCardProps {
   process: Process;
   onClick?: () => void;
   isSelected?: boolean;
-  showChildren?: boolean;
-  size?: "sm" | "md" | "lg";
+  variant?: "l0" | "l1" | "l2" | "l3";
+  showInfoButton?: boolean;
+  onInfoClick?: () => void;
+  // For L2 cards with expand/collapse
+  expandable?: boolean;
+  isExpanded?: boolean;
+  onExpandToggle?: () => void;
 }
 
-const sizeClasses = {
-  sm: "p-2",
-  md: "p-3",
-  lg: "p-4",
-};
-
-const levelColors: Record<string, string> = {
-  L0: "border-l-brand-500",
-  L1: "border-l-blue-500",
-  L2: "border-l-green-500",
-  L3: "border-l-purple-500",
-  L4: "border-l-orange-500",
-  L5: "border-l-gray-500",
-};
-
-function RagIndicator({ status }: { status?: RagStatus }) {
-  if (!status) return null;
-
-  const icons = {
-    red: <AlertCircle className="h-4 w-4 text-rag-red" />,
-    amber: <MinusCircle className="h-4 w-4 text-rag-amber" />,
-    green: <CheckCircle className="h-4 w-4 text-rag-green" />,
-  };
-
-  return icons[status] || null;
-}
-
+/**
+ * Clean process card matching Antigravity design:
+ * - L0: Swimlane header with "LEVEL 0" label
+ * - L1: ALL CAPS text header (no card)
+ * - L2: Card with blue left border, name only
+ * - L3+: Simple indented text
+ */
 export function ProcessCard({
   process,
   onClick,
   isSelected = false,
-  showChildren = false,
-  size = "md",
+  variant = "l2",
+  showInfoButton = false,
+  onInfoClick,
+  expandable = false,
+  isExpanded = false,
+  onExpandToggle,
 }: ProcessCardProps) {
-  const hasChildren = process.children && process.children.length > 0;
+  // L0 - Swimlane Header
+  if (variant === "l0") {
+    return (
+      <div
+        className={cn(
+          "p-4 bg-slate-50 border rounded-lg cursor-pointer",
+          isSelected && "ring-2 ring-primary"
+        )}
+        onClick={onClick}
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
+              Level 0
+            </span>
+            <h2 className="text-lg font-bold uppercase mt-1 text-slate-900">{process.name}</h2>
+          </div>
+          {showInfoButton && (
+            <button
+              type="button"
+              className="p-1 text-muted-foreground hover:text-primary rounded-full hover:bg-muted"
+              onClick={(e) => {
+                e.stopPropagation();
+                onInfoClick?.();
+              }}
+              title="View details"
+            >
+              <Info className="h-5 w-5" />
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
 
+  // L1 - Column Header (ALL CAPS text, no card)
+  if (variant === "l1") {
+    return (
+      <div
+        className={cn(
+          "pb-2 border-b border-slate-200 cursor-pointer",
+          isSelected && "border-primary"
+        )}
+        onClick={onClick}
+      >
+        <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide truncate" title={process.name}>
+          {process.name}
+        </h3>
+      </div>
+    );
+  }
+
+  // L3+ - Simple text (no card border)
+  if (variant === "l3") {
+    return (
+      <div
+        className={cn(
+          "py-2 px-3 cursor-pointer hover:bg-slate-50 rounded transition-colors",
+          isSelected && "bg-primary/5"
+        )}
+        onClick={onClick}
+      >
+        <span className="text-sm text-slate-700">{process.name}</span>
+      </div>
+    );
+  }
+
+  // L2 - Card with blue left border (default)
   return (
     <div
       className={cn(
-        "rounded-lg border bg-card shadow-sm transition-all cursor-pointer hover:shadow-md border-l-4",
-        levelColors[process.level] || "border-l-gray-400",
-        isSelected && "ring-2 ring-primary",
-        sizeClasses[size]
+        "group bg-white border border-slate-200 rounded-lg transition-all hover:shadow-sm",
+        "border-l-[3px] border-l-blue-500",
+        isSelected && "ring-2 ring-primary"
       )}
-      onClick={onClick}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="text-xs shrink-0">
-              {process.code}
-            </Badge>
-            <RagIndicator status={process.metadata_extra?.rag_status as RagStatus} />
-          </div>
-          <h3 className="font-medium mt-1 truncate" title={process.name}>
-            {process.name}
-          </h3>
-          {process.description && size !== "sm" && (
-            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-              {process.description}
-            </p>
-          )}
-        </div>
-        {hasChildren && (
-          <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
-        )}
-      </div>
-
-      {size !== "sm" && (
-        <div className="flex items-center gap-2 mt-2">
-          <Badge
-            variant={process.status === "active" ? "success" : "secondary"}
-            className="text-xs"
+      <div className="flex items-center py-2 px-3 gap-2">
+        {/* Expand/Collapse button - inside card */}
+        {expandable && (
+          <button
+            type="button"
+            className="p-1 text-slate-400 hover:text-slate-600 rounded hover:bg-slate-100 flex-shrink-0"
+            onClick={(e) => {
+              e.stopPropagation();
+              onExpandToggle?.();
+            }}
+            title={isExpanded ? "Collapse" : "Expand"}
           >
-            {process.status}
-          </Badge>
-          <Badge variant="outline" className="text-xs">
-            {process.level}
-          </Badge>
-          {process.current_automation !== "manual" && (
-            <Badge variant="outline" className="text-xs">
-              {process.current_automation.replace("_", " ")}
-            </Badge>
+            {isExpanded ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+          </button>
+        )}
+
+        {/* Process name */}
+        <span
+          className="font-medium text-slate-800 truncate cursor-pointer flex-1"
+          onClick={onClick}
+          title={process.name}
+        >
+          {process.name}
+        </span>
+
+        {/* Info button - visible on hover */}
+        <button
+          type="button"
+          className={cn(
+            "p-1 text-muted-foreground hover:text-primary rounded-full hover:bg-muted flex-shrink-0 transition-opacity",
+            "opacity-0 group-hover:opacity-100"
           )}
-        </div>
-      )}
+          onClick={(e) => {
+            e.stopPropagation();
+            onInfoClick?.();
+          }}
+          title="View details"
+        >
+          <Info className="h-4 w-4" />
+        </button>
+      </div>
     </div>
   );
 }
 
-export function ProcessCardSkeleton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  return (
-    <div
-      className={cn(
-        "rounded-lg border bg-card shadow-sm border-l-4 border-l-gray-200 animate-pulse",
-        sizeClasses[size]
-      )}
-    >
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <div className="h-5 w-16 bg-muted rounded" />
-          </div>
-          <div className="h-5 w-3/4 bg-muted rounded mt-2" />
-          {size !== "sm" && <div className="h-4 w-full bg-muted rounded mt-2" />}
-        </div>
+export function ProcessCardSkeleton({ variant = "l2" }: { variant?: "l0" | "l1" | "l2" | "l3" }) {
+  if (variant === "l0") {
+    return (
+      <div className="p-4 bg-slate-50 border rounded-lg animate-pulse">
+        <div className="h-3 w-12 bg-slate-200 rounded mb-2" />
+        <div className="h-6 w-32 bg-slate-200 rounded" />
       </div>
-      {size !== "sm" && (
-        <div className="flex items-center gap-2 mt-2">
-          <div className="h-5 w-16 bg-muted rounded" />
-          <div className="h-5 w-12 bg-muted rounded" />
-        </div>
-      )}
+    );
+  }
+
+  if (variant === "l1") {
+    return (
+      <div className="pb-2 border-b border-slate-200 animate-pulse">
+        <div className="h-4 w-24 bg-slate-200 rounded" />
+      </div>
+    );
+  }
+
+  if (variant === "l3") {
+    return (
+      <div className="py-2 px-3 animate-pulse">
+        <div className="h-4 w-32 bg-slate-200 rounded" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-lg border-l-[3px] border-l-slate-200 animate-pulse">
+      <div className="p-3">
+        <div className="h-5 w-3/4 bg-slate-200 rounded" />
+      </div>
     </div>
   );
 }

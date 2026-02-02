@@ -24,7 +24,7 @@ import { DataTable, DataTableColumnHeader } from "@/components/shared/DataTable"
 import { ProcessDetailPanel } from "@/components/process/ProcessDetailPanel";
 import { ProcessForm } from "@/components/process/ProcessForm";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useProcesses, useCreateProcess, useDeleteProcess } from "@/hooks/useProcesses";
+import { useProcesses, useCreateProcess, useUpdateProcess, useDeleteProcess } from "@/hooks/useProcesses";
 import type { Process, ProcessLevel, ProcessType, LifecycleStatus } from "@/types/api";
 
 const levelColors: Record<ProcessLevel, string> = {
@@ -58,6 +58,7 @@ export default function ProcessListPage() {
 
   const { data, isLoading } = useProcesses(filters);
   const createProcess = useCreateProcess();
+  const updateProcess = useUpdateProcess();
   const deleteProcess = useDeleteProcess();
 
   const [selectedProcess, setSelectedProcess] = React.useState<Process | null>(null);
@@ -282,10 +283,11 @@ export default function ProcessListPage() {
             <ProcessForm
               defaultValues={editProcess}
               onSubmit={async (data) => {
-                // TODO: Implement update
+                await updateProcess.mutateAsync({ id: editProcess.id, data });
                 setEditProcess(null);
               }}
               onCancel={() => setEditProcess(null)}
+              isSubmitting={updateProcess.isPending}
             />
           )}
         </DialogContent>
