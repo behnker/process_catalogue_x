@@ -7,25 +7,15 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.config import settings
-from src.core.auth import (
-    create_access_token,
-    create_magic_link_token,
-    create_refresh_token,
-    verify_magic_link_token,
-)
+from src.core.auth import create_magic_link_token, verify_magic_link_token
 from src.core.database import get_db
-from src.models.organization import (
-    AllowedDomain,
-    MagicLinkToken,
-    Organization,
-    User,
-    UserOrganization,
-)
-from src.schemas.auth import (
-    MagicLinkRequest,
-    MagicLinkResponse,
-    TokenVerifyResponse,
-    UserBrief,
+from src.models.organization import AllowedDomain, MagicLinkToken, Organization
+from src.schemas.auth import MagicLinkRequest, MagicLinkResponse
+from src.services.auth_service import (
+    build_token_response,
+    create_dev_session,
+    ensure_org_membership,
+    find_or_create_user,
 )
 
 router = APIRouter()
@@ -40,90 +30,7 @@ async def dev_login(db: AsyncSession = Depends(get_db)):
     if settings.ENVIRONMENT not in ("development", "local", "test"):
         raise HTTPException(status_code=404, detail="Not found")
 
-    # Find or create test organization
-    result = await db.execute(
-        select(Organization).where(Organization.slug == "dev-org")
-    )
-    org = result.scalar_one_or_none()
-
-    if not org:
-        org = Organization(
-            name="Development Organization",
-            slug="dev-org",
-            settings={"theme": "default"},
-        )
-        db.add(org)
-        await db.flush()
-
-        # Add allowed domain
-        allowed = AllowedDomain(
-            organization_id=org.id,
-            domain="dev.local",
-            is_verified=True,
-        )
-        db.add(allowed)
-        await db.flush()
-
-    # Find or create admin user
-    admin_email = "admin@dev.local"
-    result = await db.execute(select(User).where(User.email == admin_email))
-    user = result.scalar_one_or_none()
-
-    if not user:
-        user = User(
-            email=admin_email,
-            display_name="Dev Admin",
-            default_organization_id=org.id,
-        )
-        db.add(user)
-        await db.flush()
-
-    # Ensure admin membership
-    result = await db.execute(
-        select(UserOrganization).where(
-            UserOrganization.user_id == user.id,
-            UserOrganization.organization_id == org.id,
-        )
-    )
-    membership = result.scalar_one_or_none()
-
-    if not membership:
-        membership = UserOrganization(
-            user_id=user.id,
-            organization_id=org.id,
-            role="admin",
-            status="active",
-        )
-        db.add(membership)
-        await db.flush()
-
-    # Update last login
-    user.last_login_at = datetime.now(timezone.utc)
-    await db.commit()
-
-    # Create tokens
-    access_token = create_access_token(
-        user_id=user.id,
-        organization_id=org.id,
-        role="admin",
-        email=user.email,
-    )
-    refresh_token = create_refresh_token(user.id, org.id)
-
-    return TokenVerifyResponse(
-        access_token=access_token,
-        refresh_token=refresh_token,
-        expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        user=UserBrief(
-            id=user.id,
-            email=user.email,
-            display_name=user.display_name,
-            avatar_url=user.avatar_url,
-            role="admin",
-            organization_id=org.id,
-            organization_name=org.name,
-        ),
-    )
+    return await create_dev_session(db)
 
 
 @router.post("/magic-link", response_model=MagicLinkResponse)
@@ -133,13 +40,12 @@ async def request_magic_link(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    Step 1: User submits email → system sends magic link.
+    Step 1: User submits email -> system sends magic link.
     Always returns success (prevents email enumeration).
     """
     email = body.email.lower().strip()
     domain = email.split("@")[1]
 
-    # Check if domain is registered for any org
     result = await db.execute(
         select(AllowedDomain).where(
             AllowedDomain.domain == domain,
@@ -149,10 +55,8 @@ async def request_magic_link(
     allowed = result.scalar_one_or_none()
 
     if allowed:
-        # Generate magic link token
         full_token, token_hash, expires_at = create_magic_link_token(email)
 
-        # Store token in DB
         magic_token = MagicLinkToken(
             email=email,
             token_hash=token_hash,
@@ -163,14 +67,11 @@ async def request_magic_link(
         db.add(magic_token)
         await db.flush()
 
-        # Build magic link URL
         magic_link_url = f"{settings.FRONTEND_URL}/auth/verify?token={full_token}"
 
-        # Send email
         from src.services.email import send_magic_link_email
         await send_magic_link_email(email, magic_link_url)
 
-    # Always return same response (prevent enumeration)
     return MagicLinkResponse()
 
 
@@ -180,9 +81,8 @@ async def verify_magic_link(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    Step 2: User clicks magic link → system validates and creates session.
+    Step 2: User clicks magic link -> system validates and creates session.
     """
-    # Find token in DB
     try:
         token_id = token.split(".")[0]
     except (ValueError, IndexError):
@@ -199,33 +99,19 @@ async def verify_magic_link(
     if not magic_token:
         raise HTTPException(status_code=400, detail="Invalid or expired token")
 
-    # Check expiry
     if magic_token.expires_at.replace(tzinfo=timezone.utc) < datetime.now(timezone.utc):
         raise HTTPException(status_code=400, detail="Token has expired")
 
-    # Verify HMAC
     if not verify_magic_link_token(token, magic_token.email, magic_token.token_hash):
         raise HTTPException(status_code=400, detail="Invalid token")
 
-    # Mark as used
     magic_token.is_used = True
     magic_token.used_at = datetime.now(timezone.utc)
 
-    # Find or create user
     email = magic_token.email
-    result = await db.execute(select(User).where(User.email == email))
-    user = result.scalar_one_or_none()
+    user = await find_or_create_user(db, email)
 
-    if not user:
-        # Auto-create user on first login (self-registration)
-        user = User(
-            email=email,
-            display_name=email.split("@")[0].replace(".", " ").title(),
-        )
-        db.add(user)
-        await db.flush()
-
-    # Find org membership
+    # Resolve organization from domain
     domain = email.split("@")[1]
     result = await db.execute(
         select(AllowedDomain).where(AllowedDomain.domain == domain)
@@ -236,55 +122,13 @@ async def verify_magic_link(
         raise HTTPException(status_code=403, detail="Organization not found for this domain")
 
     org_id = allowed_domain.organization_id
+    membership = await ensure_org_membership(db, user.id, org_id)
 
-    # Ensure user has membership
-    result = await db.execute(
-        select(UserOrganization).where(
-            UserOrganization.user_id == user.id,
-            UserOrganization.organization_id == org_id,
-        )
-    )
-    membership = result.scalar_one_or_none()
-
-    if not membership:
-        membership = UserOrganization(
-            user_id=user.id,
-            organization_id=org_id,
-            role="viewer",
-            status="active",
-        )
-        db.add(membership)
-        await db.flush()
-
-    # Update last login
     user.last_login_at = datetime.now(timezone.utc)
     if not user.default_organization_id:
         user.default_organization_id = org_id
 
-    # Get org name
     result = await db.execute(select(Organization).where(Organization.id == org_id))
     org = result.scalar_one()
 
-    # Create tokens
-    access_token = create_access_token(
-        user_id=user.id,
-        organization_id=org_id,
-        role=membership.role,
-        email=user.email,
-    )
-    refresh_token = create_refresh_token(user.id, org_id)
-
-    return TokenVerifyResponse(
-        access_token=access_token,
-        refresh_token=refresh_token,
-        expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
-        user=UserBrief(
-            id=user.id,
-            email=user.email,
-            display_name=user.display_name,
-            avatar_url=user.avatar_url,
-            role=membership.role,
-            organization_id=org_id,
-            organization_name=org.name,
-        ),
-    )
+    return build_token_response(user, org, role=membership.role)

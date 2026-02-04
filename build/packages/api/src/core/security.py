@@ -3,113 +3,31 @@ Security middleware and utilities.
 
 Implements security hardening per OWASP Top 10:
 - Security headers
-- Audit logging
+- Suspicious activity detection
 - Request validation
-- Data encryption for sensitive fields (API keys, etc.)
 """
 
-import base64
-import hashlib
-import logging
-import os
 import uuid
-from datetime import datetime, timezone
-from typing import Callable, Optional
+from typing import Callable
 
-from cryptography.fernet import Fernet, InvalidToken
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from src.config import settings
 
-
-# ── Encryption Utilities ─────────────────────────────
-
-def _get_fernet_key() -> bytes:
-    """
-    Get or derive a Fernet key from settings.
-
-    If ENCRYPTION_KEY is not set, derives one from SECRET_KEY.
-    For production, always set a dedicated ENCRYPTION_KEY.
-    """
-    if settings.ENCRYPTION_KEY:
-        # Use provided key (should be 32 bytes, base64-encoded for Fernet)
-        key = settings.ENCRYPTION_KEY.encode()
-        # If it's not a valid Fernet key, derive one
-        if len(key) != 44:  # Fernet keys are 44 chars base64-encoded
-            key = base64.urlsafe_b64encode(
-                hashlib.sha256(key).digest()
-            )
-        return key
-    else:
-        # Derive from SECRET_KEY (fallback for development)
-        return base64.urlsafe_b64encode(
-            hashlib.sha256(settings.SECRET_KEY.encode()).digest()
-        )
-
-
-def encrypt_sensitive_data(plaintext: str) -> str:
-    """
-    Encrypt sensitive data (API keys, tokens, etc.) using Fernet symmetric encryption.
-
-    Args:
-        plaintext: The sensitive string to encrypt
-
-    Returns:
-        Base64-encoded encrypted string
-    """
-    if not plaintext:
-        return ""
-
-    fernet = Fernet(_get_fernet_key())
-    encrypted = fernet.encrypt(plaintext.encode())
-    return encrypted.decode()
-
-
-def decrypt_sensitive_data(ciphertext: str) -> str:
-    """
-    Decrypt sensitive data that was encrypted with encrypt_sensitive_data().
-
-    Args:
-        ciphertext: The encrypted string
-
-    Returns:
-        Decrypted plaintext string
-
-    Raises:
-        ValueError: If decryption fails (invalid key or corrupted data)
-    """
-    if not ciphertext:
-        return ""
-
-    try:
-        fernet = Fernet(_get_fernet_key())
-        decrypted = fernet.decrypt(ciphertext.encode())
-        return decrypted.decode()
-    except InvalidToken:
-        raise ValueError("Failed to decrypt data - invalid key or corrupted ciphertext")
-
-
-def generate_encryption_key() -> str:
-    """
-    Generate a new Fernet encryption key.
-
-    Use this to generate a key for the ENCRYPTION_KEY setting.
-    Run: python -c "from src.core.security import generate_encryption_key; print(generate_encryption_key())"
-    """
-    return Fernet.generate_key().decode()
-
-# Audit logger - separate from application logs
-audit_logger = logging.getLogger("audit")
-audit_logger.setLevel(logging.INFO)
-
-# Create file handler for audit logs
-if not audit_logger.handlers:
-    handler = logging.FileHandler("audit.log")
-    handler.setFormatter(
-        logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    )
-    audit_logger.addHandler(handler)
+# Backward-compatible re-exports
+from src.core.encryption import (  # noqa: F401
+    decrypt_sensitive_data,
+    encrypt_sensitive_data,
+    generate_encryption_key,
+)
+from src.core.audit import (  # noqa: F401
+    AuditEvent,
+    audit_logger,
+    detect_suspicious_activity,
+    get_client_ip,
+    log_audit_event,
+)
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
@@ -129,156 +47,33 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         response = await call_next(request)
 
-        # Security headers
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-XSS-Protection"] = "1; mode=block"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
 
-        # HSTS (only in production)
         if settings.is_production:
             response.headers["Strict-Transport-Security"] = (
                 "max-age=31536000; includeSubDomains"
             )
 
-        # CSP for API (restrictive since we're not serving HTML)
         response.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'"
 
-        # Permissions Policy
         response.headers["Permissions-Policy"] = (
             "accelerometer=(), camera=(), geolocation=(), gyroscope=(), "
             "magnetometer=(), microphone=(), payment=(), usb=()"
         )
 
-        # Remove server header
         if "server" in response.headers:
             del response.headers["server"]
 
         return response
 
 
-class AuditEvent:
-    """Audit event types."""
-    LOGIN_ATTEMPT = "login_attempt"
-    LOGIN_SUCCESS = "login_success"
-    LOGIN_FAILURE = "login_failure"
-    LOGOUT = "logout"
-    TOKEN_REFRESH = "token_refresh"
-    PASSWORD_RESET_REQUEST = "password_reset_request"
-    PERMISSION_DENIED = "permission_denied"
-    RATE_LIMIT_EXCEEDED = "rate_limit_exceeded"
-    DATA_ACCESS = "data_access"
-    DATA_MUTATION = "data_mutation"
-    ADMIN_ACTION = "admin_action"
-    SUSPICIOUS_ACTIVITY = "suspicious_activity"
-
-
-def log_audit_event(
-    event_type: str,
-    user_id: Optional[str] = None,
-    organization_id: Optional[str] = None,
-    resource_type: Optional[str] = None,
-    resource_id: Optional[str] = None,
-    action: Optional[str] = None,
-    ip_address: Optional[str] = None,
-    user_agent: Optional[str] = None,
-    details: Optional[dict] = None,
-    success: bool = True,
-):
-    """
-    Log an audit event.
-
-    Blueprint §Security: All auth events, data mutations, admin actions logged.
-    """
-    event = {
-        "event_id": str(uuid.uuid4()),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "event_type": event_type,
-        "user_id": user_id,
-        "organization_id": organization_id,
-        "resource_type": resource_type,
-        "resource_id": resource_id,
-        "action": action,
-        "ip_address": ip_address,
-        "user_agent": user_agent,
-        "success": success,
-        "details": details or {},
-    }
-
-    # Log to audit file
-    audit_logger.info(str(event))
-
-    # In production, also send to external audit service (SIEM)
-    if settings.is_production:
-        # TODO: Send to external audit service
-        pass
-
-
-def get_client_ip(request: Request) -> str:
-    """Extract client IP from request, handling proxies."""
-    forwarded = request.headers.get("x-forwarded-for")
-    if forwarded:
-        return forwarded.split(",")[0].strip()
-    real_ip = request.headers.get("x-real-ip")
-    if real_ip:
-        return real_ip
-    return request.client.host if request.client else "unknown"
-
-
-def detect_suspicious_activity(request: Request) -> Optional[str]:
-    """
-    Detect potentially suspicious activity.
-
-    Checks:
-    - SQL injection patterns
-    - XSS patterns
-    - Path traversal
-    - Command injection
-    """
-    suspicious_patterns = [
-        # SQL Injection
-        "' OR '1'='1",
-        "'; DROP TABLE",
-        "UNION SELECT",
-        "1=1--",
-        # XSS
-        "<script>",
-        "javascript:",
-        "onerror=",
-        "onload=",
-        # Path traversal
-        "../",
-        "..\\",
-        "%2e%2e%2f",
-        # Command injection
-        "; cat /etc/passwd",
-        "| ls -la",
-        "&& whoami",
-    ]
-
-    # Check URL path
-    path = request.url.path.lower()
-    for pattern in suspicious_patterns:
-        if pattern.lower() in path:
-            return f"Suspicious pattern in path: {pattern}"
-
-    # Check query parameters
-    for key, value in request.query_params.items():
-        combined = f"{key}={value}".lower()
-        for pattern in suspicious_patterns:
-            if pattern.lower() in combined:
-                return f"Suspicious pattern in query: {pattern}"
-
-    return None
-
-
 class SuspiciousActivityMiddleware(BaseHTTPMiddleware):
-    """
-    Detect and log suspicious activity.
-    """
+    """Detect and log suspicious activity."""
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
-        # Check for suspicious activity
         suspicious = detect_suspicious_activity(request)
 
         if suspicious:
@@ -290,8 +85,6 @@ class SuspiciousActivityMiddleware(BaseHTTPMiddleware):
                 success=False,
             )
 
-            # In production, you might want to block the request
-            # For now, we just log and continue
             if settings.is_production:
                 pass  # Consider blocking or additional validation
 
@@ -311,8 +104,6 @@ def sanitize_string(value: str, max_length: int = 1000) -> str:
     """Sanitize string input."""
     if not value:
         return ""
-    # Truncate
     value = value[:max_length]
-    # Remove null bytes
     value = value.replace("\x00", "")
     return value
