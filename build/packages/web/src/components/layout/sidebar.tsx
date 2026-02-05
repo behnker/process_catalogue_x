@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import {
   Home, LayoutGrid, List, Target, AlertTriangle, FolderKanban,
   TrendingUp, FileText, Bot, FileBarChart, BookOpen, Settings,
-  HelpCircle, ChevronLeft, ChevronRight,
+  HelpCircle, ChevronLeft, ChevronRight, AlertCircle, Monitor,
 } from "lucide-react";
 
 interface NavItem {
@@ -24,8 +24,10 @@ const navigation: NavItem[] = [
   { label: "Process List", href: "/processes", icon: List },
   { label: "Business Model", href: "/business-model", icon: Target },
   // OPERATE
-  { label: "Quality Logs (RIADA)", href: "/riada", icon: AlertTriangle, section: "OPERATE" },
+  { label: "Issue Log", href: "/issues", icon: AlertCircle, section: "OPERATE" },
+  { label: "Quality Logs (RIADA)", href: "/riada", icon: AlertTriangle },
   { label: "Portfolio", href: "/portfolio", icon: FolderKanban },
+  { label: "Systems", href: "/systems", icon: Monitor },
   { label: "Change & Adoption", href: "/surveys", icon: TrendingUp },
   { label: "Surveys", href: "/surveys", icon: FileText },
   // INTELLIGENCE

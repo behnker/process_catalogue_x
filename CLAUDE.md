@@ -75,6 +75,46 @@ You write code that works in production — not code that demonstrates clevernes
 | Cache | Upstash Redis | Alibaba Redis |
 | LLM | Anthropic Claude / OpenAI | Alibaba Qwen / Baidu ERNIE |
 
+### Local Development Environment
+
+**Current approach:** Supabase-direct (no Docker).
+
+The API and frontend run natively on the developer's Windows machine, connecting directly to the hosted Supabase PostgreSQL instance. Redis is not required locally — the application falls back to in-memory caching.
+
+```
+Developer machine (Windows)
+├── FastAPI (uvicorn)       → localhost:8000
+├── Next.js (pnpm dev)     → localhost:3000
+└── Database                → Supabase (remote PostgreSQL)
+```
+
+**Quick start:**
+```bash
+# 1. Install backend dependencies
+cd build/packages/api
+pip install -r requirements.txt
+
+# 2. Install frontend dependencies (if needed)
+cd build
+pnpm install
+
+# 3. Start API server
+cd build/packages/api
+uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+# 4. Start frontend (separate terminal)
+cd build/packages/web
+pnpm dev
+```
+
+**Environment:** Copy `.env.example` to `.env` and set `DATABASE_URL` to your Supabase connection string. Set `EMAIL_PROVIDER=console` for local development (magic links print to terminal).
+
+**Known Windows constraints:**
+- Python 3.13 + asyncpg may have event loop issues — if so, install Python 3.11 as an alternative
+- WeasyPrint requires system libraries — PDF generation may not work locally (not needed for core development)
+
+> **Future consideration:** Docker Compose is available in `infrastructure/docker/` for containerised local development (PostgreSQL, Redis, API, Web). This requires hardware virtualisation (Intel VT-x / AMD-V) to be enabled in BIOS. When virtualisation is available, Docker provides a fully self-contained local stack that avoids Windows-specific issues. See `infrastructure/docker/docker-compose.yml`.
+
 ---
 
 ## Architectural Principles
@@ -411,7 +451,7 @@ process_catalogue_x/
 | **2** | Advanced | Operating Model, Portfolio, Surveys, Prompt Library, LLM integration, benchmark regression |
 | **3** | Hardening | E2E tests (Playwright), load testing (k6), China deployment, i18n completion |
 
-**Current status:** Pre-Phase 0. Scaffold complete, specification finalised.
+**Current status:** Phases 0–1 complete, Phase 2 partial, Phase 3 in progress. See `IMPLEMENTATION_GUIDE.md` for details.
 
 ---
 
@@ -429,4 +469,4 @@ process_catalogue_x/
 
 ---
 
-*Context Version: 2.1 | Last Updated: February 2026 | Methodology: Disciplined AI Software Development (CC BY-SA 4.0, Jay Baleine)*
+*Context Version: 2.2 | Last Updated: 4 February 2026 | Methodology: Disciplined AI Software Development (CC BY-SA 4.0, Jay Baleine)*

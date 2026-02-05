@@ -50,6 +50,14 @@ export interface Process {
   created_at: string;
   updated_at: string;
   children?: Process[];
+
+  // RAG status (Issue Log alignment)
+  rag_process?: RagStatusExtended;
+  rag_system?: RagStatusExtended;
+  rag_people?: RagStatusExtended;
+  rag_data?: RagStatusExtended;
+  rag_overall?: RagStatusExtended;
+  rag_last_reviewed?: string;
 }
 
 export interface ProcessCreate {
@@ -90,6 +98,7 @@ export type RiadaCategory = "people" | "process" | "system" | "data";
 export type RiadaSeverity = "critical" | "high" | "medium" | "low";
 export type RiadaStatus = "open" | "in_progress" | "mitigated" | "resolved" | "closed" | "accepted";
 export type RagStatus = "red" | "amber" | "green";
+export type RagStatusExtended = "red" | "amber" | "green" | "neutral";
 
 export interface RiadaItem {
   id: string;

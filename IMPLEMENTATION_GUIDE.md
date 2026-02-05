@@ -14,7 +14,7 @@
 | **2** | Advanced | Operating Model, Portfolio, Surveys, Prompt Library, LLM integration |
 | **3** | Hardening | E2E tests (Playwright), load testing (k6), China deployment, i18n |
 
-**Current status:** Pre-Phase 0. Scaffold complete, specification finalised.
+**Current status:** Phases 0–1 complete. Phase 2 partial (endpoints done, UI scaffolded). Phase 3 in progress (load testing done, E2E/i18n/China pending).
 
 ---
 
@@ -271,4 +271,71 @@ Resolved decisions (see `CLAUDE.md` for details):
 
 ---
 
-*Guide Version: 2.0 | Last Updated: February 2026*
+---
+
+## Local Development Setup
+
+### Current Approach: Supabase-Direct (No Docker)
+
+The local development environment connects directly to the hosted Supabase PostgreSQL instance. No local database or Docker containers required.
+
+**Prerequisites:**
+- Python 3.11+ (3.11 recommended; 3.13 has asyncpg event loop issues on Windows)
+- Node.js 20+ with pnpm
+- A `.env` file with valid Supabase credentials (copy from `.env.example`)
+
+**Setup steps:**
+
+```bash
+# 1. Install backend dependencies
+cd build/packages/api
+pip install -r requirements.txt
+
+# 2. Install frontend dependencies
+cd build
+pnpm install
+
+# 3. Run database migrations (against Supabase)
+cd build/packages/api
+alembic upgrade head
+
+# 4. Start the API server (terminal 1)
+cd build/packages/api
+uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+# 5. Start the frontend (terminal 2)
+cd build/packages/web
+pnpm dev
+```
+
+**Access points:**
+- Frontend: http://localhost:3000
+- API: http://localhost:8000
+- API docs (Swagger): http://localhost:8000/docs
+- Magic links print to terminal when `EMAIL_PROVIDER=console`
+
+**Notes:**
+- Redis is optional — the app falls back to in-memory caching when `REDIS_URL` is unavailable
+- WeasyPrint (PDF generation) requires system libraries that may not install on Windows — not needed for core development
+- Set `EMAIL_PROVIDER=console` in `.env` to see magic link tokens in the terminal instead of sending real emails
+
+### Future Consideration: Docker Compose
+
+A Docker Compose configuration exists at `infrastructure/docker/docker-compose.yml` that provides a fully containerised local stack (PostgreSQL 16, Redis 7, FastAPI, Next.js). This requires hardware virtualisation (Intel VT-x / AMD-V) enabled in BIOS, which is a prerequisite for Docker Desktop on Windows.
+
+When Docker is available, the setup simplifies to:
+
+```bash
+cd build/infrastructure/docker
+docker compose up -d
+```
+
+This is the recommended approach when virtualisation is enabled, as it:
+- Avoids Windows-specific Python/asyncpg issues (runs Python 3.11 in Linux containers)
+- Provides a local PostgreSQL that doesn't touch the Supabase production database
+- Handles WeasyPrint system dependencies automatically
+- Matches the CI/CD environment more closely
+
+---
+
+*Guide Version: 2.1 | Last Updated: 4 February 2026*

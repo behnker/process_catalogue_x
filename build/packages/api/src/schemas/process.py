@@ -74,6 +74,15 @@ class ProcessResponse(BaseModel):
     tags: list[str] = []
     children_count: int = 0
     riada_count: int = 0
+
+    # RAG status (Issue Log alignment)
+    rag_process: Optional[str] = "neutral"
+    rag_system: Optional[str] = "neutral"
+    rag_people: Optional[str] = "neutral"
+    rag_data: Optional[str] = "neutral"
+    rag_overall: Optional[str] = "neutral"
+    rag_last_reviewed: Optional[datetime] = None
+
     created_at: datetime
     updated_at: datetime
 
@@ -92,6 +101,13 @@ class ProcessTreeNode(BaseModel):
     sort_order: int
     children: list["ProcessTreeNode"] = []
     riada_summary: Optional[dict] = None  # {red: 0, amber: 0, green: 0}
+
+    # RAG status for heatmap overlay
+    rag_process: Optional[str] = "neutral"
+    rag_system: Optional[str] = "neutral"
+    rag_people: Optional[str] = "neutral"
+    rag_data: Optional[str] = "neutral"
+    rag_overall: Optional[str] = "neutral"
 
     model_config = {"from_attributes": True}
 

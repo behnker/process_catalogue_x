@@ -7,9 +7,10 @@ Blueprint §4.2.1: Primary processes (SOURCE, DEVELOP, EXECUTE) vs
                    Secondary processes (DATA, PEOPLE, FINANCE, COMPLIANCE).
 """
 
+from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import Boolean, ForeignKey, Integer, Numeric, String, Text
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, Numeric, String, Text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -91,6 +92,29 @@ class Process(TenantModel):
     tags: Mapped[Optional[list]] = mapped_column(JSONB, nullable=True)
     metadata_extra: Mapped[Optional[dict]] = mapped_column(JSONB, nullable=True)
 
+    # ── RAG Status (Issue Log alignment) ────────────
+    # Per RAG_Issue_Alignment_Addendum.docx
+    # 4 dimensions match issue_classification enum
+    rag_process: Mapped[Optional[str]] = mapped_column(String(10), default="neutral")
+    rag_system: Mapped[Optional[str]] = mapped_column(String(10), default="neutral")
+    rag_people: Mapped[Optional[str]] = mapped_column(String(10), default="neutral")
+    rag_data: Mapped[Optional[str]] = mapped_column(String(10), default="neutral")
+    # rag_overall is a generated column in DB - read-only in model
+    rag_last_reviewed: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
+    rag_reviewed_by: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
+
+    @property
+    def rag_overall(self) -> str:
+        """Computed weakest-link RAG (mirrors DB generated column)."""
+        statuses = [self.rag_process, self.rag_system, self.rag_people, self.rag_data]
+        if any(s == "red" for s in statuses):
+            return "red"
+        if any(s == "amber" for s in statuses):
+            return "amber"
+        if all(s == "green" for s in statuses):
+            return "green"
+        return "neutral"
+
     # ── Relationships ───────────────────────────────
     parent: Mapped[Optional["Process"]] = relationship(
         back_populates="children", remote_side="Process.id"
@@ -108,6 +132,10 @@ class Process(TenantModel):
     system_links: Mapped[list["ProcessSystem"]] = relationship(
         back_populates="process", lazy="noload",
         foreign_keys="ProcessSystem.process_id"
+    )
+    issues: Mapped[list["IssueLog"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="IssueLog.process_id"
     )
 
 
@@ -141,3 +169,4 @@ class ProcessOperatingModel(TenantModel):
 # but we declare the string-based relationship above
 from src.models.riada import RiadaItem  # noqa: E402, F401
 from src.models.system_catalogue import ProcessSystem  # noqa: E402, F401
+from src.models.issue_log import IssueLog  # noqa: E402, F401

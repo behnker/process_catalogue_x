@@ -8,6 +8,7 @@ from fastapi import APIRouter
 from src.api.v1.endpoints import (
     auth,
     business_model,
+    issues,
     operating_model,
     portfolio,
     processes,
@@ -41,3 +42,6 @@ api_router.include_router(prompts.router, prefix="/prompts", tags=["Prompt Libra
 
 # System Catalogue
 api_router.include_router(systems.router, prefix="/systems", tags=["System Catalogue"])
+
+# Issue Log
+api_router.include_router(issues.router, prefix="/issues", tags=["Issue Log"])

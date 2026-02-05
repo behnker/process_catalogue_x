@@ -5,3 +5,5 @@ export * from "./usePortfolio";
 export * from "./useDashboard";
 export * from "./useSurveys";
 export * from "./usePrompts";
+export * from "./useIssues";
+export * from "./useRAGAssessment";

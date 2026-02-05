@@ -39,6 +39,10 @@ from src.models.system_catalogue import (
     ProcessSystem,
     SystemCatalogue,
 )
+from src.models.issue_log import (
+    IssueLog,
+    IssueLogHistory,
+)
 
 __all__ = [
     # Organization & Auth
@@ -72,4 +76,7 @@ __all__ = [
     # System Catalogue
     "SystemCatalogue",
     "ProcessSystem",
+    # Issue Log
+    "IssueLog",
+    "IssueLogHistory",
 ]
