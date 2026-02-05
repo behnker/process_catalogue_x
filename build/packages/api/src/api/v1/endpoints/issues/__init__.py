@@ -7,6 +7,7 @@ OPS- prefix for operational issues (distinct from RIADA ISS- project issues).
 from fastapi import APIRouter
 
 from .crud import router as crud_router
+from .mutations import router as mutations_router
 from .analytics import router as analytics_router
 from .export import router as export_router
 
@@ -16,3 +17,4 @@ router = APIRouter()
 router.include_router(analytics_router, tags=["issue-analytics"])
 router.include_router(export_router, tags=["issue-export"])
 router.include_router(crud_router, tags=["issue-crud"])
+router.include_router(mutations_router, tags=["issue-crud"])
