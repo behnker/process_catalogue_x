@@ -173,7 +173,7 @@ export function DataTable<TData, TValue>({
                 }
                 className="pl-9 w-[200px] lg:w-[300px]"
               />
-              {table.getColumn(searchKey)?.getFilterValue() && (
+              {(table.getColumn(searchKey)?.getFilterValue() as string) && (
                 <button
                   onClick={() => table.getColumn(searchKey)?.setFilterValue("")}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
