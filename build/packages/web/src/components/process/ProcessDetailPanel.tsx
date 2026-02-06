@@ -12,6 +12,7 @@ import {
   SlideOverGrid,
 } from "@/components/shared/SlideOver";
 import { useRiadaByProcess } from "@/hooks/useRiada";
+import { OperatingModelTab } from "./OperatingModelTab";
 import type { Process, RiadaItem } from "@/types/api";
 
 interface ProcessDetailPanelProps {
@@ -141,14 +142,7 @@ export function ProcessDetailPanel({
     {
       id: "operating-model",
       label: "Operating Model",
-      content: (
-        <div className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            Operating model components (RACI, KPIs, SIPOC, etc.) will be shown here.
-          </p>
-          {/* TODO: Fetch and display ProcessOperatingModel components */}
-        </div>
-      ),
+      content: <OperatingModelTab processId={process.id} />,
     },
     {
       id: "riada",

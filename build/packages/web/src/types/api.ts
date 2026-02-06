@@ -477,3 +477,36 @@ export interface PromptFilters extends PaginationParams {
   context_type?: ContextType;
   search?: string;
 }
+
+// Operating Model types
+export type OperatingModelComponentType =
+  | "sipoc"
+  | "raci"
+  | "kpis"
+  | "systems"
+  | "policies"
+  | "timing"
+  | "governance"
+  | "security"
+  | "data"
+  | "resources";
+
+export interface OperatingModelComponent {
+  id: string;
+  process_id: string;
+  component_type: OperatingModelComponentType;
+  current_state: Record<string, unknown>;
+  future_state: Record<string, unknown>;
+  transition_notes?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface OperatingModelSummary {
+  process_id: string;
+  total_components: number;
+  defined_components: string[];
+  missing_components: string[];
+  components_with_gaps: string[];
+  completion_percentage: number;
+}
