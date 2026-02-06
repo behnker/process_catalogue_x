@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ProcessCard, ProcessCardSkeleton } from "./ProcessCard";
 import { ProcessCanvasToolbar } from "./ProcessCanvasToolbar";
 import { ExpandableL2Card } from "./ExpandableProcessCards";
+import { HeatmapMatrix } from "./HeatmapMatrix";
+import { useIssueHeatmap } from "@/hooks/useIssues";
+import type { OverlayMode } from "./HeatmapOverlayControls";
+import type { HeatmapCell } from "@/types/issue.types";
 import type { Process, ProcessType, LifecycleStatus } from "@/types/api";
 
 interface ProcessCanvasProps {
@@ -28,6 +32,19 @@ export function ProcessCanvas({
   const [statusFilter, setStatusFilter] = React.useState<LifecycleStatus[]>([]);
   const [cardSize, setCardSize] = React.useState<"sm" | "md" | "lg">("md");
   const [zoom, setZoom] = React.useState(1);
+  const [overlayMode, setOverlayMode] = React.useState<OverlayMode>("off");
+  const [rollup, setRollup] = React.useState(false);
+
+  // Fetch heatmap data only when overlay is active
+  const { data: heatmapData } = useIssueHeatmap(rollup);
+  const heatmapMap = React.useMemo(() => {
+    const map = new Map<string, HeatmapCell>();
+    if (overlayMode === "off" || !heatmapData?.cells) return map;
+    for (const cell of heatmapData.cells) {
+      map.set(cell.process_id, cell);
+    }
+    return map;
+  }, [overlayMode, heatmapData]);
 
   // Filter L0 processes
   const filteredL0 = React.useMemo(() => {
@@ -67,6 +84,10 @@ export function ProcessCanvas({
           onZoomIn={handleZoomIn}
           onZoomOut={handleZoomOut}
           onResetZoom={handleResetZoom}
+          overlayMode={overlayMode}
+          onOverlayModeChange={setOverlayMode}
+          rollup={rollup}
+          onRollupChange={setRollup}
         />
         <div className="flex-1 overflow-x-auto p-6 bg-slate-50">
           <div className="flex gap-8">
@@ -105,7 +126,24 @@ export function ProcessCanvas({
         onZoomIn={handleZoomIn}
         onZoomOut={handleZoomOut}
         onResetZoom={handleResetZoom}
+        overlayMode={overlayMode}
+        onOverlayModeChange={setOverlayMode}
+        rollup={rollup}
+        onRollupChange={setRollup}
       />
+
+      {/* Heatmap summary matrix */}
+      {overlayMode !== "off" && heatmapData?.cells && heatmapData.cells.length > 0 && (
+        <div className="px-6 pt-4">
+          <HeatmapMatrix
+            cells={heatmapData.cells}
+            onProcessClick={(id) => {
+              const proc = processes.find((p) => p.id === id);
+              if (proc) onProcessClick?.(proc);
+            }}
+          />
+        </div>
+      )}
 
       {/* Main canvas area */}
       <div
@@ -137,6 +175,8 @@ export function ProcessCanvas({
                     isSelected={selectedProcessId === l0Process.id}
                     showInfoButton
                     onInfoClick={() => onProcessClick?.(l0Process)}
+                    overlayMode={overlayMode}
+                    heatmapCell={heatmapMap.get(l0Process.id)}
                   />
 
                   {/* L1 Columns */}
@@ -153,6 +193,8 @@ export function ProcessCanvas({
                               variant="l1"
                               isSelected={selectedProcessId === l1Process.id}
                               onClick={() => onProcessClick?.(l1Process)}
+                              overlayMode={overlayMode}
+                              heatmapCell={heatmapMap.get(l1Process.id)}
                             />
                           </div>
 
@@ -164,6 +206,8 @@ export function ProcessCanvas({
                                 process={l2Process}
                                 onProcessClick={onProcessClick}
                                 selectedProcessId={selectedProcessId}
+                                overlayMode={overlayMode}
+                                heatmapMap={heatmapMap}
                               />
                             ))}
 

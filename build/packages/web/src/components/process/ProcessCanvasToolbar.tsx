@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { HeatmapOverlayControls, type OverlayMode } from "./HeatmapOverlayControls";
 import type { ProcessType, LifecycleStatus } from "@/types/api";
 
 interface ProcessCanvasToolbarProps {
@@ -33,6 +34,10 @@ interface ProcessCanvasToolbarProps {
   onZoomIn: () => void;
   onZoomOut: () => void;
   onResetZoom: () => void;
+  overlayMode: OverlayMode;
+  onOverlayModeChange: (mode: OverlayMode) => void;
+  rollup: boolean;
+  onRollupChange: (rollup: boolean) => void;
 }
 
 const statuses: LifecycleStatus[] = ["draft", "active", "under_review", "deprecated", "archived"];
@@ -50,6 +55,10 @@ export function ProcessCanvasToolbar({
   onZoomIn,
   onZoomOut,
   onResetZoom,
+  overlayMode,
+  onOverlayModeChange,
+  rollup,
+  onRollupChange,
 }: ProcessCanvasToolbarProps) {
   const toggleStatus = (status: LifecycleStatus) => {
     if (statusFilter.includes(status)) {
@@ -128,6 +137,16 @@ export function ProcessCanvasToolbar({
             <SelectItem value="lg">Large</SelectItem>
           </SelectContent>
         </Select>
+
+        {/* Heatmap Overlay */}
+        <div className="border-l pl-2">
+          <HeatmapOverlayControls
+            overlayMode={overlayMode}
+            onOverlayModeChange={onOverlayModeChange}
+            rollup={rollup}
+            onRollupChange={onRollupChange}
+          />
+        </div>
 
         {/* Zoom Controls */}
         <div className="flex items-center gap-1 border rounded-md">

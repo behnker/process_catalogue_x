@@ -2,6 +2,9 @@
 
 import { Info, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RAGDot, RAGDimensions } from "@/components/shared/RAGBadge";
+import type { OverlayMode } from "./HeatmapOverlayControls";
+import type { HeatmapCell } from "@/types/issue.types";
 import type { Process } from "@/types/api";
 
 interface ProcessCardProps {
@@ -15,6 +18,9 @@ interface ProcessCardProps {
   expandable?: boolean;
   isExpanded?: boolean;
   onExpandToggle?: () => void;
+  // Heatmap overlay
+  overlayMode?: OverlayMode;
+  heatmapCell?: HeatmapCell;
 }
 
 /**
@@ -34,14 +40,34 @@ export function ProcessCard({
   expandable = false,
   isExpanded = false,
   onExpandToggle,
+  overlayMode = "off",
+  heatmapCell,
 }: ProcessCardProps) {
+  const isOverlayActive = overlayMode !== "off" && heatmapCell !== undefined;
+  const isFaded = overlayMode !== "off" && (!heatmapCell || heatmapCell.overall_colour === "neutral");
+
+  const ragIndicator = isOverlayActive ? (
+    overlayMode === "overall" ? (
+      <RAGDot status={heatmapCell.overall_colour} size="sm" />
+    ) : (
+      <RAGDimensions
+        people={heatmapCell.people_colour}
+        process={heatmapCell.process_colour}
+        system={heatmapCell.system_colour}
+        data={heatmapCell.data_colour}
+        size="sm"
+      />
+    )
+  ) : null;
+
   // L0 - Swimlane Header
   if (variant === "l0") {
     return (
       <div
         className={cn(
-          "p-4 bg-slate-50 border rounded-lg cursor-pointer",
-          isSelected && "ring-2 ring-primary"
+          "p-4 bg-slate-50 border rounded-lg cursor-pointer transition-opacity",
+          isSelected && "ring-2 ring-primary",
+          isFaded && "opacity-50"
         )}
         onClick={onClick}
       >
@@ -52,19 +78,22 @@ export function ProcessCard({
             </span>
             <h2 className="text-lg font-bold uppercase mt-1 text-slate-900">{process.name}</h2>
           </div>
-          {showInfoButton && (
-            <button
-              type="button"
-              className="p-1 text-muted-foreground hover:text-primary rounded-full hover:bg-muted"
-              onClick={(e) => {
-                e.stopPropagation();
-                onInfoClick?.();
-              }}
-              title="View details"
-            >
-              <Info className="h-5 w-5" />
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            {ragIndicator}
+            {showInfoButton && (
+              <button
+                type="button"
+                className="p-1 text-muted-foreground hover:text-primary rounded-full hover:bg-muted"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onInfoClick?.();
+                }}
+                title="View details"
+              >
+                <Info className="h-5 w-5" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -75,14 +104,18 @@ export function ProcessCard({
     return (
       <div
         className={cn(
-          "pb-2 border-b border-slate-200 cursor-pointer",
-          isSelected && "border-primary"
+          "pb-2 border-b border-slate-200 cursor-pointer transition-opacity",
+          isSelected && "border-primary",
+          isFaded && "opacity-50"
         )}
         onClick={onClick}
       >
-        <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide truncate" title={process.name}>
-          {process.name}
-        </h3>
+        <div className="flex items-center gap-1.5">
+          <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide truncate flex-1" title={process.name}>
+            {process.name}
+          </h3>
+          {ragIndicator}
+        </div>
       </div>
     );
   }
@@ -92,12 +125,16 @@ export function ProcessCard({
     return (
       <div
         className={cn(
-          "py-2 px-3 cursor-pointer hover:bg-slate-50 rounded transition-colors",
-          isSelected && "bg-primary/5"
+          "py-2 px-3 cursor-pointer hover:bg-slate-50 rounded transition-colors transition-opacity",
+          isSelected && "bg-primary/5",
+          isFaded && "opacity-50"
         )}
         onClick={onClick}
       >
-        <span className="text-sm text-slate-700">{process.name}</span>
+        <div className="flex items-center gap-1.5">
+          {ragIndicator}
+          <span className="text-sm text-slate-700">{process.name}</span>
+        </div>
       </div>
     );
   }
@@ -108,7 +145,8 @@ export function ProcessCard({
       className={cn(
         "group bg-white border border-slate-200 rounded-lg transition-all hover:shadow-sm",
         "border-l-[3px] border-l-blue-500",
-        isSelected && "ring-2 ring-primary"
+        isSelected && "ring-2 ring-primary",
+        isFaded && "opacity-50"
       )}
     >
       <div className="flex items-center py-2 px-3 gap-2">
@@ -139,6 +177,9 @@ export function ProcessCard({
         >
           {process.name}
         </span>
+
+        {/* RAG indicator */}
+        {ragIndicator}
 
         {/* Info button - visible on hover */}
         <button
