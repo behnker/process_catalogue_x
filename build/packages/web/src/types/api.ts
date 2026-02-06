@@ -478,6 +478,38 @@ export interface PromptFilters extends PaginationParams {
   search?: string;
 }
 
+// System Catalogue types (for Operating Model → Systems renderer)
+export interface SystemBrief {
+  id: string;
+  name: string;
+  system_type: string;
+  criticality: string;
+  status: string;
+}
+
+export interface ProcessSystemLink {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  system_id: string;
+  purpose?: string;
+  system_role: string;
+  integration_method?: string;
+  criticality: string;
+  user_scope?: string;
+  pain_points?: string;
+  automation_potential?: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  system?: SystemBrief;
+}
+
+export interface ProcessSystemsResponse {
+  items: ProcessSystemLink[];
+  total: number;
+}
+
 // Operating Model types
 export type OperatingModelComponentType =
   | "sipoc"
