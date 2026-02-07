@@ -20,9 +20,9 @@ branch_labels = None
 depends_on = None
 
 
-# Governance data keyed by process code
+# Governance data keyed by process code (codes are numeric strings in seed data)
 GOVERNANCE_BY_PROCESS = {
-    "L0-02": {  # SOURCE
+    "2": {  # SOURCE
         "forums": [
             {
                 "name": "Sourcing Steering Committee",
@@ -40,7 +40,7 @@ GOVERNANCE_BY_PROCESS = {
             },
         ],
     },
-    "L0-03": {  # DEVELOP
+    "3": {  # DEVELOP
         "forums": [
             {
                 "name": "Product Development Committee",
@@ -51,7 +51,7 @@ GOVERNANCE_BY_PROCESS = {
             },
         ],
     },
-    "L0-04": {  # EXECUTE
+    "4": {  # EXECUTE
         "forums": [
             {
                 "name": "Operations Review",
@@ -62,7 +62,7 @@ GOVERNANCE_BY_PROCESS = {
             },
         ],
     },
-    "L0-05": {  # DELIVER
+    "5": {  # DELIVER
         "forums": [
             {
                 "name": "Delivery Performance Review",
@@ -73,7 +73,7 @@ GOVERNANCE_BY_PROCESS = {
             },
         ],
     },
-    "L0-01": {  # SUPPORT
+    "1": {  # SUPPORT
         "forums": [
             {
                 "name": "Executive Leadership Team",
