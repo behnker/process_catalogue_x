@@ -73,6 +73,10 @@ def rate_limit(limit_type: str = "api"):
 
     def decorator(func: Callable) -> Callable:
         async def wrapper(request: Request, *args, **kwargs):
+            # Skip in test environment (consistent with middleware)
+            if settings.ENVIRONMENT == "test":
+                return await func(request, *args, **kwargs)
+
             user_id = getattr(request.state, "user_id", None)
             key = f"{limit_type}:{get_rate_limit_key(request, user_id)}"
 

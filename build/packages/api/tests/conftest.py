@@ -8,6 +8,12 @@ Provides:
 - RLS context setup
 """
 
+import os
+
+# Set test environment before app/settings are imported.
+# This disables rate limiting middleware and decorator checks.
+os.environ["ENVIRONMENT"] = "test"
+
 from typing import AsyncGenerator
 from uuid import uuid4
 
