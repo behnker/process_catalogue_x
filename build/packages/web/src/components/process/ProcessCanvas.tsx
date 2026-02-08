@@ -17,6 +17,7 @@ interface ProcessCanvasProps {
   isLoading?: boolean;
   onProcessClick?: (process: Process) => void;
   onCreateProcess?: (level: string, parentId?: string) => void;
+  onRaiseIssue?: (process: Process) => void;
   selectedProcessId?: string;
 }
 
@@ -25,6 +26,7 @@ export function ProcessCanvas({
   isLoading = false,
   onProcessClick,
   onCreateProcess,
+  onRaiseIssue,
   selectedProcessId,
 }: ProcessCanvasProps) {
   const [search, setSearch] = React.useState("");
@@ -175,6 +177,7 @@ export function ProcessCanvas({
                     isSelected={selectedProcessId === l0Process.id}
                     showInfoButton
                     onInfoClick={() => onProcessClick?.(l0Process)}
+                    onRaiseIssue={onRaiseIssue ? () => onRaiseIssue(l0Process) : undefined}
                     overlayMode={overlayMode}
                     heatmapCell={heatmapMap.get(l0Process.id)}
                   />
@@ -193,6 +196,7 @@ export function ProcessCanvas({
                               variant="l1"
                               isSelected={selectedProcessId === l1Process.id}
                               onClick={() => onProcessClick?.(l1Process)}
+                              onRaiseIssue={onRaiseIssue ? () => onRaiseIssue(l1Process) : undefined}
                               overlayMode={overlayMode}
                               heatmapCell={heatmapMap.get(l1Process.id)}
                             />
@@ -205,6 +209,7 @@ export function ProcessCanvas({
                                 key={l2Process.id}
                                 process={l2Process}
                                 onProcessClick={onProcessClick}
+                                onRaiseIssue={onRaiseIssue}
                                 selectedProcessId={selectedProcessId}
                                 overlayMode={overlayMode}
                                 heatmapMap={heatmapMap}

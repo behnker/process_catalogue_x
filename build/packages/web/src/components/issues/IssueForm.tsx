@@ -51,11 +51,12 @@ type IssueFormValues = z.infer<typeof issueFormSchema>;
 
 interface IssueFormProps {
   issue?: Issue;
+  defaultProcessId?: string;
   onSuccess?: () => void;
   onCancel?: () => void;
 }
 
-export function IssueForm({ issue, onSuccess, onCancel }: IssueFormProps) {
+export function IssueForm({ issue, defaultProcessId, onSuccess, onCancel }: IssueFormProps) {
   const isEdit = !!issue;
   const createIssue = useCreateIssue();
   const updateIssue = useUpdateIssue();
@@ -72,7 +73,7 @@ export function IssueForm({ issue, onSuccess, onCancel }: IssueFormProps) {
       issue_criticality: issue?.issue_criticality || "medium",
       issue_complexity: issue?.issue_complexity || "medium",
       issue_status: issue?.issue_status || "open",
-      process_id: issue?.process_id || "",
+      process_id: issue?.process_id || defaultProcessId || "",
       target_resolution_date: issue?.target_resolution_date?.split("T")[0] || "",
       actual_resolution_date: issue?.actual_resolution_date?.split("T")[0] || "",
       resolution_summary: issue?.resolution_summary || "",
@@ -169,7 +170,7 @@ export function IssueForm({ issue, onSuccess, onCancel }: IssueFormProps) {
               <Select
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                disabled={processesLoading}
+                disabled={processesLoading || (!!defaultProcessId && !isEdit)}
               >
                 <FormControl>
                   <SelectTrigger>

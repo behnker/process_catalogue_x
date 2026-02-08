@@ -78,9 +78,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface-muted p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--color-background))] p-4">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 dark:opacity-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 dark:opacity-5" />
 
       <div className="relative w-full max-w-md">
         {/* Logo & Title */}
@@ -97,13 +97,13 @@ export default function LoginPage() {
         <div className="bg-white dark:bg-[rgb(var(--color-surface))] rounded-xl shadow-lg border border-[rgb(var(--color-border))] p-8">
           {state === "email" && (
             <>
-              <h2 className="text-h3 mb-1">Sign in</h2>
+              <h2 className="text-h3 text-[rgb(var(--color-text))] mb-1">Sign in</h2>
               <p className="text-[rgb(var(--color-text-secondary))] text-body mb-6">
                 Enter your work email address
               </p>
 
               <form onSubmit={handleSubmit}>
-                <label htmlFor="email" className="block text-body-sm font-medium mb-1.5">
+                <label htmlFor="email" className="block text-body-sm font-medium text-[rgb(var(--color-text))] mb-1.5">
                   Email address
                 </label>
                 <input
@@ -114,7 +114,7 @@ export default function LoginPage() {
                   placeholder="you@company.com"
                   required
                   autoFocus
-                  className="w-full px-3 py-2.5 rounded-lg border border-[rgb(var(--color-border))] bg-white dark:bg-[rgb(var(--color-background))] text-body focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
+                  className="w-full px-3 py-2.5 rounded-lg border border-[rgb(var(--color-border))] bg-white dark:bg-[rgb(var(--color-background))] text-body text-[rgb(var(--color-text))] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
                 />
 
                 {error && (
@@ -157,11 +157,11 @@ export default function LoginPage() {
           {state === "sent" && (
             <div className="text-center">
               <div className="text-4xl mb-4">✉️</div>
-              <h2 className="text-h3 mb-2">Check your email</h2>
+              <h2 className="text-h3 text-[rgb(var(--color-text))] mb-2">Check your email</h2>
               <p className="text-[rgb(var(--color-text-secondary))] text-body mb-1">
                 We sent a login link to
               </p>
-              <p className="font-semibold text-body mb-4">{email}</p>
+              <p className="font-semibold text-body text-[rgb(var(--color-text))] mb-4">{email}</p>
               <p className="text-caption text-[rgb(var(--color-text-secondary))] mb-6">
                 The link expires in 15 minutes.
               </p>
@@ -193,7 +193,7 @@ export default function LoginPage() {
           {state === "error" && (
             <div className="text-center">
               <div className="text-4xl mb-4">😕</div>
-              <h2 className="text-h3 mb-2">Something went wrong</h2>
+              <h2 className="text-h3 text-[rgb(var(--color-text))] mb-2">Something went wrong</h2>
               <p className="text-[rgb(var(--color-text-secondary))] text-body mb-4">
                 {error}
               </p>

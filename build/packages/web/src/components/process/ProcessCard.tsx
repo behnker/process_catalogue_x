@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, ChevronDown, ChevronUp } from "lucide-react";
+import { Info, ChevronDown, ChevronUp, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RAGDot, RAGDimensions } from "@/components/shared/RAGBadge";
 import type { OverlayMode } from "./HeatmapOverlayControls";
@@ -18,6 +18,7 @@ interface ProcessCardProps {
   expandable?: boolean;
   isExpanded?: boolean;
   onExpandToggle?: () => void;
+  onRaiseIssue?: () => void;
   // Heatmap overlay
   overlayMode?: OverlayMode;
   heatmapCell?: HeatmapCell;
@@ -40,6 +41,7 @@ export function ProcessCard({
   expandable = false,
   isExpanded = false,
   onExpandToggle,
+  onRaiseIssue,
   overlayMode = "off",
   heatmapCell,
 }: ProcessCardProps) {
@@ -80,6 +82,19 @@ export function ProcessCard({
           </div>
           <div className="flex items-center gap-2">
             {ragIndicator}
+            {onRaiseIssue && (
+              <button
+                type="button"
+                className="p-1 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onRaiseIssue();
+                }}
+                title="Raise issue"
+              >
+                <AlertTriangle className="h-5 w-5" />
+              </button>
+            )}
             {showInfoButton && (
               <button
                 type="button"
@@ -104,7 +119,7 @@ export function ProcessCard({
     return (
       <div
         className={cn(
-          "pb-2 border-b border-slate-200 cursor-pointer transition-opacity",
+          "group pb-2 border-b border-slate-200 cursor-pointer transition-opacity",
           isSelected && "border-primary",
           isFaded && "opacity-50"
         )}
@@ -115,6 +130,19 @@ export function ProcessCard({
             {process.name}
           </h3>
           {ragIndicator}
+          {onRaiseIssue && (
+            <button
+              type="button"
+              className="p-0.5 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 opacity-0 group-hover:opacity-100 transition-opacity"
+              onClick={(e) => {
+                e.stopPropagation();
+                onRaiseIssue();
+              }}
+              title="Raise issue"
+            >
+              <AlertTriangle className="h-3.5 w-3.5" />
+            </button>
+          )}
         </div>
       </div>
     );
@@ -125,7 +153,7 @@ export function ProcessCard({
     return (
       <div
         className={cn(
-          "py-2 px-3 cursor-pointer hover:bg-slate-50 rounded transition-colors transition-opacity",
+          "group py-2 px-3 cursor-pointer hover:bg-slate-50 rounded transition-colors transition-opacity",
           isSelected && "bg-primary/5",
           isFaded && "opacity-50"
         )}
@@ -133,7 +161,20 @@ export function ProcessCard({
       >
         <div className="flex items-center gap-1.5">
           {ragIndicator}
-          <span className="text-sm text-slate-700">{process.name}</span>
+          <span className="text-sm text-slate-700 flex-1">{process.name}</span>
+          {onRaiseIssue && (
+            <button
+              type="button"
+              className="p-0.5 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 opacity-0 group-hover:opacity-100 transition-opacity"
+              onClick={(e) => {
+                e.stopPropagation();
+                onRaiseIssue();
+              }}
+              title="Raise issue"
+            >
+              <AlertTriangle className="h-3.5 w-3.5" />
+            </button>
+          )}
         </div>
       </div>
     );
@@ -180,6 +221,24 @@ export function ProcessCard({
 
         {/* RAG indicator */}
         {ragIndicator}
+
+        {/* Raise issue button - visible on hover */}
+        {onRaiseIssue && (
+          <button
+            type="button"
+            className={cn(
+              "p-1 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 flex-shrink-0 transition-opacity",
+              "opacity-0 group-hover:opacity-100"
+            )}
+            onClick={(e) => {
+              e.stopPropagation();
+              onRaiseIssue();
+            }}
+            title="Raise issue"
+          >
+            <AlertTriangle className="h-4 w-4" />
+          </button>
+        )}
 
         {/* Info button - visible on hover */}
         <button

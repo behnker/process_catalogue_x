@@ -6,6 +6,8 @@ import { ProcessDetailModal } from "@/components/process/ProcessDetailModal";
 import { ProcessForm } from "@/components/process/ProcessForm";
 import { useProcessTree, useCreateProcess, useDeleteProcess, useUpdateProcess } from "@/hooks/useProcesses";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { SlideOver } from "@/components/shared/SlideOver";
+import { IssueForm } from "@/components/issues/IssueForm";
 import { Button } from "@/components/ui/button";
 import type { Process, ProcessLevel } from "@/types/api";
 
@@ -23,6 +25,7 @@ export default function ProcessCanvasPage() {
   const [processToDelete, setProcessToDelete] = React.useState<Process | null>(null);
   const [editDialogOpen, setEditDialogOpen] = React.useState(false);
   const [processToEdit, setProcessToEdit] = React.useState<Process | null>(null);
+  const [raiseIssueProcess, setRaiseIssueProcess] = React.useState<Process | null>(null);
 
   const handleProcessClick = (process: Process) => {
     setSelectedProcess(process);
@@ -76,6 +79,10 @@ export default function ProcessCanvasPage() {
     }
   };
 
+  const handleRaiseIssue = (process: Process) => {
+    setRaiseIssueProcess(process);
+  };
+
   const handleAddChild = (level: string, parentId: string) => {
     setCreateLevel(level as ProcessLevel);
     setCreateParentId(parentId);
@@ -90,6 +97,7 @@ export default function ProcessCanvasPage() {
         isLoading={isLoading}
         onProcessClick={handleProcessClick}
         onCreateProcess={handleCreateProcess}
+        onRaiseIssue={handleRaiseIssue}
         selectedProcessId={selectedProcess?.id}
       />
 
@@ -173,6 +181,20 @@ export default function ProcessCanvasPage() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Raise Issue SlideOver */}
+      <SlideOver
+        open={!!raiseIssueProcess}
+        onOpenChange={(open) => { if (!open) setRaiseIssueProcess(null); }}
+        title={`Raise Issue — ${raiseIssueProcess?.code} ${raiseIssueProcess?.name}`}
+        size="lg"
+      >
+        <IssueForm
+          defaultProcessId={raiseIssueProcess?.id}
+          onSuccess={() => setRaiseIssueProcess(null)}
+          onCancel={() => setRaiseIssueProcess(null)}
+        />
+      </SlideOver>
     </div>
   );
 }

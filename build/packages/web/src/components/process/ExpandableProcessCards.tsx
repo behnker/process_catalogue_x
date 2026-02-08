@@ -10,6 +10,7 @@ import type { Process } from "@/types/api";
 interface ExpandableL2CardProps {
   process: Process;
   onProcessClick?: (process: Process) => void;
+  onRaiseIssue?: (process: Process) => void;
   selectedProcessId?: string;
   overlayMode?: OverlayMode;
   heatmapMap?: Map<string, HeatmapCell>;
@@ -22,6 +23,7 @@ interface ExpandableL2CardProps {
 export function ExpandableL2Card({
   process,
   onProcessClick,
+  onRaiseIssue,
   selectedProcessId,
   overlayMode = "off",
   heatmapMap,
@@ -38,6 +40,7 @@ export function ExpandableL2Card({
         variant="l2"
         isSelected={selectedProcessId === process.id}
         onInfoClick={() => onProcessClick?.(process)}
+        onRaiseIssue={onRaiseIssue ? () => onRaiseIssue(process) : undefined}
         expandable={hasChildren}
         isExpanded={isExpanded}
         onExpandToggle={() => setIsExpanded(!isExpanded)}
@@ -53,6 +56,7 @@ export function ExpandableL2Card({
               key={child.id}
               process={child}
               onProcessClick={onProcessClick}
+              onRaiseIssue={onRaiseIssue}
               selectedProcessId={selectedProcessId}
               depth={0}
               overlayMode={overlayMode}
@@ -68,6 +72,7 @@ export function ExpandableL2Card({
 interface ExpandableChildCardProps {
   process: Process;
   onProcessClick?: (process: Process) => void;
+  onRaiseIssue?: (process: Process) => void;
   selectedProcessId?: string;
   depth: number;
   overlayMode?: OverlayMode;
@@ -81,6 +86,7 @@ interface ExpandableChildCardProps {
 export function ExpandableChildCard({
   process,
   onProcessClick,
+  onRaiseIssue,
   selectedProcessId,
   depth,
   overlayMode = "off",
@@ -115,6 +121,7 @@ export function ExpandableChildCard({
             variant="l3"
             isSelected={selectedProcessId === process.id}
             onClick={() => onProcessClick?.(process)}
+            onRaiseIssue={onRaiseIssue ? () => onRaiseIssue(process) : undefined}
             overlayMode={overlayMode}
             heatmapCell={heatmapMap?.get(process.id)}
           />
@@ -129,6 +136,7 @@ export function ExpandableChildCard({
               key={child.id}
               process={child}
               onProcessClick={onProcessClick}
+              onRaiseIssue={onRaiseIssue}
               selectedProcessId={selectedProcessId}
               depth={0}
               overlayMode={overlayMode}
