@@ -3,7 +3,8 @@
 import * as React from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProcessCard, ProcessCardSkeleton } from "./ProcessCard";
+import { ProcessCard } from "./ProcessCard";
+import { ProcessCardSkeleton } from "./ProcessCardSkeleton";
 import { ProcessCanvasToolbar } from "./ProcessCanvasToolbar";
 import { ExpandableL2Card } from "./ExpandableProcessCards";
 import { HeatmapMatrix } from "./HeatmapMatrix";

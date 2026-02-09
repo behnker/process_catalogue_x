@@ -24,6 +24,24 @@ interface ProcessCardProps {
   heatmapCell?: HeatmapCell;
 }
 
+function RaiseIssueButton({ onClick, size = "sm" }: { onClick: () => void; size?: "sm" | "md" }) {
+  const iconClass = size === "md" ? "h-5 w-5" : "h-3.5 w-3.5";
+  const padClass = size === "md" ? "p-1" : "p-0.5";
+  return (
+    <button
+      type="button"
+      className={cn(padClass, "text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50")}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+      title="Raise issue"
+    >
+      <AlertTriangle className={iconClass} />
+    </button>
+  );
+}
+
 /**
  * Clean process card matching Antigravity design:
  * - L0: Swimlane header with "LEVEL 0" label
@@ -82,19 +100,7 @@ export function ProcessCard({
           </div>
           <div className="flex items-center gap-2">
             {ragIndicator}
-            {onRaiseIssue && (
-              <button
-                type="button"
-                className="p-1 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRaiseIssue();
-                }}
-                title="Raise issue"
-              >
-                <AlertTriangle className="h-5 w-5" />
-              </button>
-            )}
+            {onRaiseIssue && <RaiseIssueButton onClick={onRaiseIssue} size="md" />}
             {showInfoButton && (
               <button
                 type="button"
@@ -131,17 +137,9 @@ export function ProcessCard({
           </h3>
           {ragIndicator}
           {onRaiseIssue && (
-            <button
-              type="button"
-              className="p-0.5 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 opacity-0 group-hover:opacity-100 transition-opacity"
-              onClick={(e) => {
-                e.stopPropagation();
-                onRaiseIssue();
-              }}
-              title="Raise issue"
-            >
-              <AlertTriangle className="h-3.5 w-3.5" />
-            </button>
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+              <RaiseIssueButton onClick={onRaiseIssue} />
+            </span>
           )}
         </div>
       </div>
@@ -163,17 +161,9 @@ export function ProcessCard({
           {ragIndicator}
           <span className="text-sm text-slate-700 flex-1">{process.name}</span>
           {onRaiseIssue && (
-            <button
-              type="button"
-              className="p-0.5 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 opacity-0 group-hover:opacity-100 transition-opacity"
-              onClick={(e) => {
-                e.stopPropagation();
-                onRaiseIssue();
-              }}
-              title="Raise issue"
-            >
-              <AlertTriangle className="h-3.5 w-3.5" />
-            </button>
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+              <RaiseIssueButton onClick={onRaiseIssue} />
+            </span>
           )}
         </div>
       </div>
@@ -191,7 +181,6 @@ export function ProcessCard({
       )}
     >
       <div className="flex items-center py-2 px-3 gap-2">
-        {/* Expand/Collapse button - inside card */}
         {expandable && (
           <button
             type="button"
@@ -202,15 +191,10 @@ export function ProcessCard({
             }}
             title={isExpanded ? "Collapse" : "Expand"}
           >
-            {isExpanded ? (
-              <ChevronUp className="h-4 w-4" />
-            ) : (
-              <ChevronDown className="h-4 w-4" />
-            )}
+            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         )}
 
-        {/* Process name */}
         <span
           className="font-medium text-slate-800 truncate cursor-pointer flex-1"
           onClick={onClick}
@@ -219,28 +203,14 @@ export function ProcessCard({
           {process.name}
         </span>
 
-        {/* RAG indicator */}
         {ragIndicator}
 
-        {/* Raise issue button - visible on hover */}
         {onRaiseIssue && (
-          <button
-            type="button"
-            className={cn(
-              "p-1 text-muted-foreground hover:text-amber-600 rounded-full hover:bg-amber-50 flex-shrink-0 transition-opacity",
-              "opacity-0 group-hover:opacity-100"
-            )}
-            onClick={(e) => {
-              e.stopPropagation();
-              onRaiseIssue();
-            }}
-            title="Raise issue"
-          >
-            <AlertTriangle className="h-4 w-4" />
-          </button>
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+            <RaiseIssueButton onClick={onRaiseIssue} />
+          </span>
         )}
 
-        {/* Info button - visible on hover */}
         <button
           type="button"
           className={cn(
@@ -255,41 +225,6 @@ export function ProcessCard({
         >
           <Info className="h-4 w-4" />
         </button>
-      </div>
-    </div>
-  );
-}
-
-export function ProcessCardSkeleton({ variant = "l2" }: { variant?: "l0" | "l1" | "l2" | "l3" }) {
-  if (variant === "l0") {
-    return (
-      <div className="p-4 bg-slate-50 border rounded-lg animate-pulse">
-        <div className="h-3 w-12 bg-slate-200 rounded mb-2" />
-        <div className="h-6 w-32 bg-slate-200 rounded" />
-      </div>
-    );
-  }
-
-  if (variant === "l1") {
-    return (
-      <div className="pb-2 border-b border-slate-200 animate-pulse">
-        <div className="h-4 w-24 bg-slate-200 rounded" />
-      </div>
-    );
-  }
-
-  if (variant === "l3") {
-    return (
-      <div className="py-2 px-3 animate-pulse">
-        <div className="h-4 w-32 bg-slate-200 rounded" />
-      </div>
-    );
-  }
-
-  return (
-    <div className="bg-white border border-slate-200 rounded-lg border-l-[3px] border-l-slate-200 animate-pulse">
-      <div className="p-3">
-        <div className="h-5 w-3/4 bg-slate-200 rounded" />
       </div>
     </div>
   );
