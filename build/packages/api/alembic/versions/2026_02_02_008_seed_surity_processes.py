@@ -43,7 +43,7 @@ def upgrade() -> None:
     migration_dir = os.path.dirname(__file__)
     # Go up: versions -> alembic -> api -> packages -> build -> project_root
     project_root = os.path.normpath(os.path.join(migration_dir, "..", "..", "..", "..", ".."))
-    seed_file = os.path.join(project_root, "reference", "process_catalogue_seed.json")
+    seed_file = os.path.join(project_root, "reference", "process_catalogue_v3_seed.json")
 
     if not os.path.exists(seed_file):
         print(f"  Seed file not found: {seed_file}")

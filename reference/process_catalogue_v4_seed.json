@@ -1,0 +1,2712 @@
+[
+  {
+    "ref": "1",
+    "level": 0,
+    "name": "Strategy",
+    "l0": "Strategy"
+  },
+  {
+    "ref": "1.1",
+    "level": 1,
+    "name": "Client & Account Management"
+  },
+  {
+    "ref": "1.1.1",
+    "level": 2,
+    "name": "Client Onboarding"
+  },
+  {
+    "ref": "1.1.1.1",
+    "level": 3,
+    "name": "Sourcing Services Agreement Execution",
+    "description": "Finalise and execute multi-year Sourcing Services Agreement covering scope, fees, and T&Cs.",
+    "responsible": "Managing Director - Surity Europe",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Sourcing Director",
+    "kpi": "Agreement signed within target timeline"
+  },
+  {
+    "ref": "1.1.1.2",
+    "level": 3,
+    "name": "Service Scope Definition",
+    "description": "Confirm which of the 4 pillars (Source, Develop, Execute, Support) are in scope for the client.",
+    "responsible": "Managing Director - Surity Europe",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Sourcing Director, Head of Quality",
+    "kpi": "Scope document sign-off within 5 days"
+  },
+  {
+    "ref": "1.1.1.3",
+    "level": 3,
+    "name": "Client System Requirements Alignment",
+    "description": "Map client ERP, data formats, reporting templates, and approval workflows to Surity processes.",
+    "responsible": "Head of Operation",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Client, IT Manager",
+    "informed": "Category Supply Chain Manager",
+    "kpi": "System alignment completed pre-first order"
+  },
+  {
+    "ref": "1.1.1.4",
+    "level": 3,
+    "name": "Client Supply Chain Requirements Capture",
+    "description": "Document pallet specs, container loading rules, labelling standards, and documentation templates.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Client, Head of Quality",
+    "informed": "Logistics Manager",
+    "kpi": "Requirements captured and distributed to ops"
+  },
+  {
+    "ref": "1.1.2",
+    "level": 2,
+    "name": "Stakeholder Communication Plan"
+  },
+  {
+    "ref": "1.1.2.1",
+    "level": 3,
+    "name": "Communication Plan Definition",
+    "description": "Define reporting frequency, format, escalation paths, and key contacts for each client project.",
+    "responsible": "Sourcing Director",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Client",
+    "informed": "Head of Quality, Head of Operation",
+    "kpi": "Plan agreed before project kick-off"
+  },
+  {
+    "ref": "1.1.3",
+    "level": 2,
+    "name": "Change Management"
+  },
+  {
+    "ref": "1.1.3.1",
+    "level": 3,
+    "name": "Scope Change Request Processing",
+    "description": "Formal process for handling contractual and commercial scope changes from client. Technical specification changes are managed through QA; forecast adjustments through Supply Chain.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client, Vendor",
+    "informed": "Head of Quality",
+    "kpi": "Change requests processed within 3 working days"
+  },
+  {
+    "ref": "1.1.4",
+    "level": 2,
+    "name": "Client Feedback & Satisfaction"
+  },
+  {
+    "ref": "1.1.4.1",
+    "level": 3,
+    "name": "Client Satisfaction Survey Execution",
+    "description": "Systematic collection and action planning on client feedback and satisfaction metrics.",
+    "responsible": "Managing Director - Surity Europe",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Sourcing Director",
+    "kpi": "Survey completion rate >80%; action plan within 10 days"
+  },
+  {
+    "ref": "1.2",
+    "level": 1,
+    "name": "Trade Compliance & TLC Modeling"
+  },
+  {
+    "ref": "1.2.1",
+    "level": 2,
+    "name": "Tariff & Duty Optimisation Advisory"
+  },
+  {
+    "ref": "1.2.1.1",
+    "level": 3,
+    "name": "HS Code Classification & FTA Analysis",
+    "description": "HS code classification support, rules of origin analysis for FTAs, and tariff mitigation strategies.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Classification accuracy >99%"
+  },
+  {
+    "ref": "1.2.2",
+    "level": 2,
+    "name": "Factory Tiering & Mapping"
+  },
+  {
+    "ref": "1.2.2.1",
+    "level": 3,
+    "name": "Supplier Capability Categorisation",
+    "description": "Categorise suppliers by capability tier (Tier 1 = full in-house tooling + R&D; Tier 3 = assembly-only).",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "100% of active vendors tiered"
+  },
+  {
+    "ref": "1.2.3",
+    "level": 2,
+    "name": "Category Sourcing Heatmaps"
+  },
+  {
+    "ref": "1.2.3.1",
+    "level": 3,
+    "name": "Cost-Quality-Lead Time Dashboard",
+    "description": "Visual dashboards showing cost-quality-lead time trade-offs by product sub-category and origin.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "General Manager",
+    "kpi": "Dashboard updated quarterly"
+  },
+  {
+    "ref": "1.2.4",
+    "level": 2,
+    "name": "Regulatory Readiness Assessments"
+  },
+  {
+    "ref": "1.2.4.1",
+    "level": 3,
+    "name": "Pre-Market Compliance Gap Analysis",
+    "description": "Gap analysis for EU GPSR, UKCA, REACH, FDA; RSL/MSDS management and chemical compliance roadmap.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Assessments completed before product launch"
+  },
+  {
+    "ref": "1.2.5",
+    "level": 2,
+    "name": "Total Landed Cost Modeling"
+  },
+  {
+    "ref": "1.2.5.1",
+    "level": 3,
+    "name": "End-to-End Cost Simulation",
+    "description": "Full cost simulation: ex-works, freight, insurance, duties, inbound logistics, quality failure costs, inventory holding.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Sourcing Director",
+    "consulted": "Client, Logistics Manager",
+    "informed": "General Manager",
+    "kpi": "TLC model accuracy within 3% of actual"
+  },
+  {
+    "ref": "1.3",
+    "level": 1,
+    "name": "Business Development - Existing Clients"
+  },
+  {
+    "ref": "1.3.1",
+    "level": 2,
+    "name": "Cost-Out & Value Engineering"
+  },
+  {
+    "ref": "1.3.1.1",
+    "level": 3,
+    "name": "Product Redesign for Savings",
+    "description": "Proactive redesign of existing products for material savings, simplified assembly, or sustainability.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor, Client",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Cost savings achieved vs target"
+  },
+  {
+    "ref": "1.3.2",
+    "level": 2,
+    "name": "Category Feasibility Studies"
+  },
+  {
+    "ref": "1.3.2.1",
+    "level": 3,
+    "name": "New Category Risk Assessment",
+    "description": "Assess technical complexity, supplier availability, and compliance risks for new categories.",
+    "responsible": "Sourcing Director",
+    "accountable": "General Manager",
+    "consulted": "Head of Quality, Category Sourcing Manager",
+    "informed": "Client",
+    "kpi": "Study completed within agreed timeline"
+  },
+  {
+    "ref": "1.3.3",
+    "level": 2,
+    "name": "Cross-Category Synergy Mapping"
+  },
+  {
+    "ref": "1.3.3.1",
+    "level": 3,
+    "name": "Supplier Capability Cross-Match",
+    "description": "Leverage existing supplier relationships across multiple categories and retailers.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Cross-category supplier utilisation rate"
+  },
+  {
+    "ref": "1.3.4",
+    "level": 2,
+    "name": "Vendor Rationalisation Projects"
+  },
+  {
+    "ref": "1.3.4.1",
+    "level": 3,
+    "name": "Supplier Base Consolidation",
+    "description": "Help clients reduce supplier base while improving quality and service through strategic consolidation.",
+    "responsible": "Sourcing Director",
+    "accountable": "General Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Head of Quality",
+    "kpi": "Vendor count reduction vs quality/service metrics"
+  },
+  {
+    "ref": "1.3.5",
+    "level": 2,
+    "name": "Joint Business Planning"
+  },
+  {
+    "ref": "1.3.5.1",
+    "level": 3,
+    "name": "Buying Trip Facilitation",
+    "description": "Facilitate buying trips and co-creation sessions between the retailer's buying team and top-tier suppliers.",
+    "responsible": "Sourcing Director",
+    "accountable": "General Manager",
+    "consulted": "Client, Vendor",
+    "informed": "Managing Director - Surity Europe",
+    "kpi": "Workshop output: concepts progressed to development"
+  },
+  {
+    "ref": "2",
+    "level": 0,
+    "name": "Support",
+    "l0": "Support"
+  },
+  {
+    "ref": "2.1",
+    "level": 1,
+    "name": "Supplier Management & Development"
+  },
+  {
+    "ref": "2.1.1",
+    "level": 2,
+    "name": "Supplier Onboarding & Vetting"
+  },
+  {
+    "ref": "2.1.1.1",
+    "level": 3,
+    "name": "New Factory Registration & Risk Assessment",
+    "description": "Standardised process for new factory registration including initial risk assessment.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Head of Quality",
+    "kpi": "Registration completed within 10 working days"
+  },
+  {
+    "ref": "2.1.2",
+    "level": 2,
+    "name": "Supplier Performance Management"
+  },
+  {
+    "ref": "2.1.2.1",
+    "level": 3,
+    "name": "Vendor KPI Tracking & Review",
+    "description": "Track on-time delivery, quality yield, responsiveness KPIs and conduct regular performance reviews.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Quarterly scorecard completion rate 100%"
+  },
+  {
+    "ref": "2.1.3",
+    "level": 2,
+    "name": "Supplier Relationship Management"
+  },
+  {
+    "ref": "2.1.3.1",
+    "level": 3,
+    "name": "Strategic Vendor Engagement",
+    "description": "Strategic engagement with key vendors for capacity planning, cost reduction, and innovation.",
+    "responsible": "Sourcing Director",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Annual strategic review completion rate"
+  },
+  {
+    "ref": "2.1.4",
+    "level": 2,
+    "name": "Approved Supplier List Maintenance"
+  },
+  {
+    "ref": "2.1.4.1",
+    "level": 3,
+    "name": "Qualified Vendor Database Management",
+    "description": "Dynamic management of the qualified vendor database by category and capability.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "ASL accuracy and currency; quarterly review"
+  },
+  {
+    "ref": "2.1.5",
+    "level": 2,
+    "name": "Supplier Development Programs"
+  },
+  {
+    "ref": "2.1.5.1",
+    "level": 3,
+    "name": "Vendor Capability Improvement Initiatives",
+    "description": "Initiatives to help key suppliers improve quality systems, sustainability, or technical capabilities.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Development plan completion rate"
+  },
+  {
+    "ref": "2.2",
+    "level": 1,
+    "name": "Quality Management System (QMS)"
+  },
+  {
+    "ref": "2.2.1",
+    "level": 2,
+    "name": "Quality Policy & Manual Maintenance"
+  },
+  {
+    "ref": "2.2.1.1",
+    "level": 3,
+    "name": "QMS Documentation Management",
+    "description": "Maintain documented framework for all quality activities, policies and manuals.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "General Manager",
+    "informed": "Client",
+    "kpi": "Annual review and sign-off"
+  },
+  {
+    "ref": "2.2.2",
+    "level": 2,
+    "name": "Standard Operating Procedures"
+  },
+  {
+    "ref": "2.2.2.1",
+    "level": 3,
+    "name": "SOP Maintenance & Distribution",
+    "description": "Detailed instructions for inspections, testing protocols, and non-conformance handling.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Category QA Manager",
+    "informed": "Vendor",
+    "kpi": "SOP review cycle adherence"
+  },
+  {
+    "ref": "2.2.3",
+    "level": 2,
+    "name": "CAPA System"
+  },
+  {
+    "ref": "2.2.3.1",
+    "level": 3,
+    "name": "Root Cause Analysis & Corrective Action",
+    "description": "Structured process for root cause analysis and implementing fixes for quality failures.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor, QA Technologist",
+    "informed": "Client",
+    "kpi": "CAPA closure rate within target timeframe"
+  },
+  {
+    "ref": "2.2.4",
+    "level": 2,
+    "name": "Internal Audits"
+  },
+  {
+    "ref": "2.2.4.1",
+    "level": 3,
+    "name": "Agency Process Audit Execution",
+    "description": "Regular audits of internal processes to ensure compliance with Quality, ESG and strategic differentiation.",
+    "responsible": "Senior QA Manager",
+    "accountable": "General Manager",
+    "consulted": "Head of Quality",
+    "informed": "Client",
+    "kpi": "Audit schedule adherence; finding closure rate"
+  },
+  {
+    "ref": "2.2.5",
+    "level": 2,
+    "name": "Calibration & Equipment Management"
+  },
+  {
+    "ref": "2.2.5.1",
+    "level": 3,
+    "name": "Testing Equipment Calibration",
+    "description": "Manage calibration schedules for any agency-owned testing or measuring equipment.",
+    "responsible": "QA Technologist",
+    "accountable": "Senior QA Manager",
+    "consulted": "Category QA Manager",
+    "informed": "Head of Quality",
+    "kpi": "100% calibration currency"
+  },
+  {
+    "ref": "2.3",
+    "level": 1,
+    "name": "Compliance & Regulatory Affairs"
+  },
+  {
+    "ref": "2.3.1",
+    "level": 2,
+    "name": "Regulatory Intelligence"
+  },
+  {
+    "ref": "2.3.1.1",
+    "level": 3,
+    "name": "Regulatory Change Monitoring",
+    "description": "Monitor and interpret changes in EU/UK/AU regulations (REACH, RoHS, GPSR, UKCA, Prop 65, packaging laws).",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Regulatory updates communicated within 5 days"
+  },
+  {
+    "ref": "2.3.2",
+    "level": 2,
+    "name": "Product Safety & Certification Management"
+  },
+  {
+    "ref": "2.3.2.1",
+    "level": 3,
+    "name": "Certification Lifecycle Management",
+    "description": "Manage process for obtaining and maintaining required certifications (CE, UKCA, GS, RCM, WaterMark).",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Certification currency rate 100%"
+  },
+  {
+    "ref": "2.3.3",
+    "level": 2,
+    "name": "RSL & Chemical Management"
+  },
+  {
+    "ref": "2.3.3.1",
+    "level": 3,
+    "name": "Restricted Substances Compliance",
+    "description": "Maintain and communicate client RSL to suppliers and verify compliance.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "RSL compliance verification rate"
+  },
+  {
+    "ref": "2.3.4",
+    "level": 2,
+    "name": "Trade Compliance"
+  },
+  {
+    "ref": "2.3.4.1",
+    "level": 3,
+    "name": "Import/Export Regulation Adherence",
+    "description": "Ensure adherence to import/export regulations, sanctions, and anti-boycott rules.",
+    "responsible": "Head of Quality",
+    "accountable": "General Manager",
+    "consulted": "Client, Logistics Manager",
+    "informed": "Vendor",
+    "kpi": "Zero trade compliance violations"
+  },
+  {
+    "ref": "2.4",
+    "level": 1,
+    "name": "Sustainability & Ethical Sourcing"
+  },
+  {
+    "ref": "2.4.1",
+    "level": 2,
+    "name": "CSR/ESG Policy Management"
+  },
+  {
+    "ref": "2.4.1.1",
+    "level": 3,
+    "name": "ESG Framework Maintenance",
+    "description": "Define the agency's stance and client-specific requirements on environmental and social governance.",
+    "responsible": "Senior QA Manager",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Annual ESG policy review and update"
+  },
+  {
+    "ref": "2.4.2",
+    "level": 2,
+    "name": "Sustainability Reporting"
+  },
+  {
+    "ref": "2.4.2.1",
+    "level": 3,
+    "name": "Environmental Metrics Tracking",
+    "description": "Track and report on carbon footprint, recycled content, and packaging waste metrics.",
+    "responsible": "QA Technologist",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Quarterly sustainability report delivery"
+  },
+  {
+    "ref": "2.4.3",
+    "level": 2,
+    "name": "Ethical Sourcing Program"
+  },
+  {
+    "ref": "2.4.3.1",
+    "level": 3,
+    "name": "Worker Welfare & Modern Slavery Due Diligence",
+    "description": "Worker well-being initiatives, grievance mechanisms, and modern slavery due diligence.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Ethical sourcing audit completion rate"
+  },
+  {
+    "ref": "2.4.4",
+    "level": 2,
+    "name": "Environmental Product Compliance"
+  },
+  {
+    "ref": "2.4.4.1",
+    "level": 3,
+    "name": "Material-Specific Environmental Standards",
+    "description": "Manage FSC certification for wood, organic cotton standards, and other material-specific environmental requirements.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Environmental certification currency"
+  },
+  {
+    "ref": "2.5",
+    "level": 1,
+    "name": "Finance & Commercial Operations"
+  },
+  {
+    "ref": "2.5.1",
+    "level": 2,
+    "name": "Agency Fee & Costing Model"
+  },
+  {
+    "ref": "2.5.1.1",
+    "level": 3,
+    "name": "Commercial Structure Management",
+    "description": "Define and manage commercial structure (retainer, % of order value, fixed fee per project).",
+    "responsible": "Managing Director - Surity Europe",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Accounting Manager",
+    "kpi": "Fee model reviewed annually"
+  },
+  {
+    "ref": "2.5.2",
+    "level": 2,
+    "name": "Internal Budgeting & Forecasting"
+  },
+  {
+    "ref": "2.5.2.1",
+    "level": 3,
+    "name": "Operational Budget Management",
+    "description": "Manage the agency's own operational cost budgets and forecasts.",
+    "responsible": "Accounting Manager",
+    "accountable": "General Manager",
+    "consulted": "Managing Director - Surity Europe",
+    "informed": "Head of Operation",
+    "kpi": "Budget variance <5%"
+  },
+  {
+    "ref": "2.5.3",
+    "level": 2,
+    "name": "Invoicing & Receivables Management"
+  },
+  {
+    "ref": "2.5.3.1",
+    "level": 3,
+    "name": "Client Fee Invoicing",
+    "description": "Manage invoicing and collection of agency fees from retailers.",
+    "responsible": "Assistant Accountant",
+    "accountable": "Accounting Manager",
+    "consulted": "Client",
+    "informed": "General Manager",
+    "kpi": "DSO <30 days; collection rate >98%"
+  },
+  {
+    "ref": "2.5.4",
+    "level": 2,
+    "name": "Commercial Risk Management"
+  },
+  {
+    "ref": "2.5.4.1",
+    "level": 3,
+    "name": "Client Creditworthiness Assessment",
+    "description": "Assess client creditworthiness and manage contract terms.",
+    "responsible": "Head of Operation",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Managing Director - Surity Europe",
+    "kpi": "Annual credit review completion"
+  },
+  {
+    "ref": "2.6",
+    "level": 1,
+    "name": "HR & Competency Development"
+  },
+  {
+    "ref": "2.6.1",
+    "level": 2,
+    "name": "Role Definition & Competency Frameworks"
+  },
+  {
+    "ref": "2.6.1.1",
+    "level": 3,
+    "name": "Job Description & Competency Mapping",
+    "description": "Clear job descriptions for all roles including Sourcing, QA, Supply Chain, and support functions.",
+    "responsible": "HR Manager",
+    "accountable": "General Manager",
+    "consulted": "Sourcing Director, Head of Quality",
+    "informed": "All Staff",
+    "kpi": "Annual competency framework review"
+  },
+  {
+    "ref": "2.6.2",
+    "level": 2,
+    "name": "Training & Development Programs"
+  },
+  {
+    "ref": "2.6.2.1",
+    "level": 3,
+    "name": "Staff Training Delivery",
+    "description": "Ongoing training on regulations, inspection techniques, negotiation skills, and category expertise.",
+    "responsible": "HR Manager",
+    "accountable": "General Manager",
+    "consulted": "Head of Quality, Sourcing Director",
+    "informed": "All Staff",
+    "kpi": "Training hours per employee per year"
+  },
+  {
+    "ref": "2.6.3",
+    "level": 2,
+    "name": "Performance Management"
+  },
+  {
+    "ref": "2.6.3.1",
+    "level": 3,
+    "name": "Individual Performance Review",
+    "description": "Link individual performance to project and agency goals.",
+    "responsible": "HR Manager",
+    "accountable": "General Manager",
+    "consulted": "Sourcing Director, Head of Quality, Head of Operation",
+    "informed": "All Staff",
+    "kpi": "Review completion rate; goal achievement %"
+  },
+  {
+    "ref": "2.7",
+    "level": 1,
+    "name": "Technology & Systems Management"
+  },
+  {
+    "ref": "2.7.1",
+    "level": 2,
+    "name": "IT Infrastructure & Security"
+  },
+  {
+    "ref": "2.7.1.1",
+    "level": 3,
+    "name": "Secure Data & Communication Management",
+    "description": "Manage secure communication and data storage for protecting client IP and supplier data.",
+    "responsible": "IT Manager",
+    "accountable": "Head of Operation",
+    "consulted": "General Manager",
+    "informed": "Client",
+    "kpi": "Zero security breaches; annual pen test"
+  },
+  {
+    "ref": "2.7.2",
+    "level": 2,
+    "name": "Technology Supplier Management"
+  },
+  {
+    "ref": "2.7.2.1",
+    "level": 3,
+    "name": "L1/L2 Support & Vendor Contracts",
+    "description": "Level 1 and Level 2 support management and technology supplier contracts.",
+    "responsible": "IT Support Officer",
+    "accountable": "IT Manager",
+    "consulted": "Head of Operation",
+    "informed": "All Staff",
+    "kpi": "SLA adherence >95%"
+  },
+  {
+    "ref": "2.7.3",
+    "level": 2,
+    "name": "ERP/Audit Application Administration"
+  },
+  {
+    "ref": "2.7.3.1",
+    "level": 3,
+    "name": "Core System Maintenance",
+    "description": "Maintain core operational software for tracking orders, finances, and projects.",
+    "responsible": "IT Manager",
+    "accountable": "Head of Operation",
+    "consulted": "IT Support Officer",
+    "informed": "All Staff",
+    "kpi": "System uptime >99.5%"
+  },
+  {
+    "ref": "2.8",
+    "level": 1,
+    "name": "Knowledge & Information Management"
+  },
+  {
+    "ref": "2.8.1",
+    "level": 2,
+    "name": "Product & Category Knowledge Base"
+  },
+  {
+    "ref": "2.8.1.1",
+    "level": 3,
+    "name": "Technical Knowledge Repository",
+    "description": "Central repository for technical specs, material data, testing standards, and market trends.",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Knowledge base currency; quarterly review"
+  },
+  {
+    "ref": "2.8.2",
+    "level": 2,
+    "name": "Lessons Learned Repository"
+  },
+  {
+    "ref": "2.8.2.1",
+    "level": 3,
+    "name": "Project Success & Failure Capture",
+    "description": "Capture project successes and failures to prevent repeat mistakes.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "All Staff",
+    "informed": "General Manager",
+    "kpi": "Lessons captured per project"
+  },
+  {
+    "ref": "2.8.3",
+    "level": 2,
+    "name": "Document Library Management"
+  },
+  {
+    "ref": "2.8.3.1",
+    "level": 3,
+    "name": "Version Control & Document Archival",
+    "description": "Manage version control for all critical documents (specs, artwork, contracts, test reports).",
+    "responsible": "QA Administrator",
+    "accountable": "Senior QA Manager",
+    "consulted": "All Staff",
+    "informed": "Client",
+    "kpi": "Document retrieval time <2 mins"
+  },
+  {
+    "ref": "2.8.4",
+    "level": 2,
+    "name": "Market Intelligence"
+  },
+  {
+    "ref": "2.8.4.1",
+    "level": 3,
+    "name": "Market Trend & Cost Tracking",
+    "description": "Track raw material price fluctuations, logistics costs, foreign exchange rates, and competitor product launches.",
+    "responsible": "Accounting Manager",
+    "accountable": "General Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Monthly intelligence brief delivery"
+  },
+  {
+    "ref": "2.8.5",
+    "level": 2,
+    "name": "Data Management"
+  },
+  {
+    "ref": "2.8.5.1",
+    "level": 3,
+    "name": "Reference Data Management",
+    "description": "Reference data management in Core ERP, Audit and Finance Systems.",
+    "responsible": "IT Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Accounting Manager",
+    "informed": "All Staff",
+    "kpi": "Data accuracy >99%; duplicate rate <1%"
+  },
+  {
+    "ref": "3",
+    "level": 0,
+    "name": "Source",
+    "l0": "Source"
+  },
+  {
+    "ref": "3.1",
+    "level": 1,
+    "name": "Project Initiation & Briefing"
+  },
+  {
+    "ref": "3.1.1",
+    "level": 2,
+    "name": "Project Brief Receipt & Alignment"
+  },
+  {
+    "ref": "3.1.1.1",
+    "level": 3,
+    "name": "Brief Receipt & Logging",
+    "description": "Receive and log client project brief covering product type, specification, quality, and timeline.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "Head of Quality",
+    "kpi": "Brief acknowledged within 1 working day"
+  },
+  {
+    "ref": "3.1.1.2",
+    "level": 3,
+    "name": "Cross-Team Brief Alignment",
+    "description": "Review brief and align understanding across Sourcing, QA, and Commercial teams.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Head of Quality, Head of Operation",
+    "informed": "Client",
+    "kpi": "Alignment meeting within 2 working days"
+  },
+  {
+    "ref": "3.1.1.3",
+    "level": 3,
+    "name": "Macro Project CPA Agreement",
+    "description": "Agree macro Critical Path Analysis covering Asia and Europe milestones.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "CPA agreed before sourcing commences"
+  },
+  {
+    "ref": "3.1.1.4",
+    "level": 3,
+    "name": "Store Sample Receipt",
+    "description": "Receive store samples from client for reference (if applicable).",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Client, Category Sourcing Manager",
+    "informed": "Vendor",
+    "kpi": "Samples logged within 2 working days"
+  },
+  {
+    "ref": "3.1.1.5",
+    "level": 3,
+    "name": "QA Definition Receipt",
+    "description": "Receive QA definition from client specifying quality requirements (if applicable).",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "QA definition confirmed within 3 working days"
+  },
+  {
+    "ref": "3.2",
+    "level": 1,
+    "name": "Competitive & Market Intelligence"
+  },
+  {
+    "ref": "3.2.1",
+    "level": 2,
+    "name": "Private Label Benchmarking"
+  },
+  {
+    "ref": "3.2.1.1",
+    "level": 3,
+    "name": "Competitor Product Analysis",
+    "description": "Reverse-engineer competitor products covering price, quality, features, and packaging from retail shelves.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Benchmark reports per category per season"
+  },
+  {
+    "ref": "3.2.2",
+    "level": 2,
+    "name": "Supplier Landscape Reports"
+  },
+  {
+    "ref": "3.2.2.1",
+    "level": 3,
+    "name": "Emerging Manufacturer Identification",
+    "description": "Identify emerging manufacturers or niche specialists not yet on the client's radar.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "New supplier leads per quarter"
+  },
+  {
+    "ref": "3.2.3",
+    "level": 2,
+    "name": "Country/Region Sourcing Playbooks"
+  },
+  {
+    "ref": "3.2.3.1",
+    "level": 3,
+    "name": "Regional Manufacturing Capability Assessment",
+    "description": "Deep-dive reports on manufacturing hubs covering cluster strengths, logistics readiness, labour costs, and risk scoring.",
+    "responsible": "Sourcing Director",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Playbook refreshed annually per active region"
+  },
+  {
+    "ref": "3.2.4",
+    "level": 2,
+    "name": "Range Development"
+  },
+  {
+    "ref": "3.2.4.1",
+    "level": 3,
+    "name": "Range Gap Identification",
+    "description": "Identify gaps in the client's current range where the agency can add value.",
+    "responsible": "Sourcing Director",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Opportunities identified per review cycle"
+  },
+  {
+    "ref": "3.2.4.2",
+    "level": 3,
+    "name": "Rapid-Turnaround Development",
+    "description": "Rapid development for limited-edition or campaign-driven products.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Lead time vs brief deadline"
+  },
+  {
+    "ref": "3.3",
+    "level": 1,
+    "name": "Vendor Sourcing & Qualification"
+  },
+  {
+    "ref": "3.3.1",
+    "level": 2,
+    "name": "Vendor Identification & Selection"
+  },
+  {
+    "ref": "3.3.1.1",
+    "level": 3,
+    "name": "Specification Set Up",
+    "description": "Set up product specifications to guide vendor search and evaluation.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Spec document issued within 3 working days"
+  },
+  {
+    "ref": "3.3.1.2",
+    "level": 3,
+    "name": "Tender Document Preparation",
+    "description": "Prepare tender document covering Sourcing and QA requirements.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Head of Quality",
+    "informed": "Client",
+    "kpi": "Tender document quality score"
+  },
+  {
+    "ref": "3.3.1.3",
+    "level": 3,
+    "name": "Sourcing Trip & Kick-Off Meeting",
+    "description": "Conduct sourcing trip and kick-off meeting for major projects.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor, Client",
+    "informed": "Head of Quality",
+    "kpi": "Meeting conducted within CPA timeline"
+  },
+  {
+    "ref": "3.3.1.4",
+    "level": 3,
+    "name": "Vendor Search & Identification",
+    "description": "Search and identify potential vendors by product family, geography, and capability.",
+    "responsible": "Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Vendors identified within 5 working days"
+  },
+  {
+    "ref": "3.3.1.5",
+    "level": 3,
+    "name": "Initial Vendor Evaluation & Factory Visit",
+    "description": "Conduct initial vendor evaluation including factory visit by Sourcing and QA.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Factory visit report within 3 working days"
+  },
+  {
+    "ref": "3.3.1.6",
+    "level": 3,
+    "name": "Vendor Profile Collection & Review",
+    "description": "Collect and review vendor profiles against qualification criteria.",
+    "responsible": "Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Head of Quality",
+    "kpi": "Profiles reviewed within 5 working days"
+  },
+  {
+    "ref": "3.3.1.7",
+    "level": 3,
+    "name": "Vendor Short List Confirmation",
+    "description": "Confirm short list of qualified vendors for the project.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Head of Quality, Client",
+    "informed": "Vendor",
+    "kpi": "Short list confirmed within CPA timeline"
+  },
+  {
+    "ref": "3.3.1.8",
+    "level": 3,
+    "name": "Buying Sample Request & Evaluation",
+    "description": "Request and evaluate buying samples from shortlisted vendors.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Samples evaluated within 5 working days"
+  },
+  {
+    "ref": "3.4",
+    "level": 1,
+    "name": "Quotation & Commercial Negotiation"
+  },
+  {
+    "ref": "3.4.1",
+    "level": 2,
+    "name": "Tender & Quotation Management"
+  },
+  {
+    "ref": "3.4.1.1",
+    "level": 3,
+    "name": "Tender Release",
+    "description": "Release tender to qualified vendors.",
+    "responsible": "Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Tender released per CPA schedule"
+  },
+  {
+    "ref": "3.4.1.2",
+    "level": 3,
+    "name": "Vendor Quotation Receipt",
+    "description": "Receive and log vendor quotations.",
+    "responsible": "Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Quotations received within tender deadline"
+  },
+  {
+    "ref": "3.4.1.3",
+    "level": 3,
+    "name": "Quotation Benchmarking & 1st Round Negotiation",
+    "description": "Benchmark competing quotations and conduct first round of commercial negotiation.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Cost savings vs initial quote"
+  },
+  {
+    "ref": "3.4.1.4",
+    "level": 3,
+    "name": "DC Cost Estimation",
+    "description": "Estimate landed/DC cost for client evaluation.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Sourcing Director",
+    "consulted": "Client, Logistics Manager",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Estimate accuracy within 3% of actual"
+  },
+  {
+    "ref": "3.4.1.5",
+    "level": 3,
+    "name": "Product Short List Confirmation",
+    "description": "Confirm product short list from sourcing evaluation.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Short list confirmed within CPA timeline"
+  },
+  {
+    "ref": "3.4.1.6",
+    "level": 3,
+    "name": "Proposal Submission to Client",
+    "description": "Submit sourcing proposal to client in response to brief.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "Head of Quality",
+    "kpi": "Proposal submitted by CPA deadline"
+  },
+  {
+    "ref": "3.4.1.7",
+    "level": 3,
+    "name": "Range Selection Trip & Confirmation",
+    "description": "Conduct sourcing trip for range selection and confirmation.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client, Vendor",
+    "informed": "Head of Quality",
+    "kpi": "Range confirmed within CPA timeline"
+  },
+  {
+    "ref": "3.4.1.8",
+    "level": 3,
+    "name": "Buying Sample Submission",
+    "description": "Submit buying samples to client for final evaluation.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Samples delivered by agreed date"
+  },
+  {
+    "ref": "3.4.1.9",
+    "level": 3,
+    "name": "Buyer Feedback Processing",
+    "description": "Process and action buyer feedback on proposal.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Feedback actioned within 3 working days"
+  },
+  {
+    "ref": "3.4.1.10",
+    "level": 3,
+    "name": "Proposal Amendment & Resubmission",
+    "description": "Amend, update, and resubmit proposal based on client feedback.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Client, Vendor",
+    "informed": "Head of Quality",
+    "kpi": "Resubmission within 5 working days"
+  },
+  {
+    "ref": "3.4.1.11",
+    "level": 3,
+    "name": "2nd Round Vendor Negotiation",
+    "description": "Conduct 2nd round negotiation with vendor on tender result (if required).",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Additional savings vs 1st round"
+  },
+  {
+    "ref": "3.4.1.12",
+    "level": 3,
+    "name": "Final Quotation Confirmation",
+    "description": "Confirm final quotation with all commercial terms agreed.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Final quotation signed off"
+  },
+  {
+    "ref": "3.4.1.13",
+    "level": 3,
+    "name": "Range Confirmation with Revised Forecast",
+    "description": "Confirm range with revised SKU-level forecast from client.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Managing Director - Surity Europe",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Forecast received and distributed"
+  },
+  {
+    "ref": "3.4.1.14",
+    "level": 3,
+    "name": "Quotation Data Validation",
+    "description": "Validate quotation data using macro-enabled form checks for completeness and accuracy.",
+    "responsible": "Assistant Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Data error rate <2%"
+  },
+  {
+    "ref": "3.5",
+    "level": 1,
+    "name": "Technical & CSR Audit"
+  },
+  {
+    "ref": "3.5.1",
+    "level": 2,
+    "name": "Factory Audit Execution"
+  },
+  {
+    "ref": "3.5.1.1",
+    "level": 3,
+    "name": "Factory Profile Report Preparation",
+    "description": "Step 1: Vendor submits Factory Profile Report for desk-top review.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "Category Sourcing Manager",
+    "informed": "Client",
+    "kpi": "Profile submitted before audit booking"
+  },
+  {
+    "ref": "3.5.1.2",
+    "level": 3,
+    "name": "Audit Planning & Scheduling",
+    "description": "Plan and schedule Surity Technical and CSR audits.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Audit scheduled within 10 days of profile approval"
+  },
+  {
+    "ref": "3.5.1.3",
+    "level": 3,
+    "name": "On-Site 5 Pillars Assessment",
+    "description": "Step 2: Conduct Surity Audit covering 5 Compliance Pillars on-site.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Audit completed per schedule"
+  },
+  {
+    "ref": "3.5.1.4",
+    "level": 3,
+    "name": "Audit Report Preparation",
+    "description": "Prepare detailed audit report with findings, scoring, and recommendations.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Report issued within 5 working days of audit"
+  },
+  {
+    "ref": "3.5.1.5",
+    "level": 3,
+    "name": "CSR Audit Body Selection",
+    "description": "Step 3: Select appropriate CSR audit body (BSCI/SEDEX/SA8000/ICS).",
+    "responsible": "Senior QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Audit body selected per client requirements"
+  },
+  {
+    "ref": "3.5.1.6",
+    "level": 3,
+    "name": "CSR Audit Coordination",
+    "description": "Coordinate CSR audit execution between vendor and audit body.",
+    "responsible": "QA Administrator",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "CSR audit completed within 30 days of booking"
+  },
+  {
+    "ref": "3.5.1.7",
+    "level": 3,
+    "name": "Audit Grading & Result",
+    "description": "Grade vendor based on Surity Audit + CSR Audit results; determine re-audit cycle (1-4 years).",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Grading completed within 3 days of report"
+  },
+  {
+    "ref": "3.5.1.8",
+    "level": 3,
+    "name": "Corrective Action Plan Issuance",
+    "description": "Issue CAP for non-conformances found during audit.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "CAP closure rate within agreed timeline"
+  },
+  {
+    "ref": "3.6",
+    "level": 1,
+    "name": "Contract"
+  },
+  {
+    "ref": "3.6.1",
+    "level": 2,
+    "name": "Vendor Contract Execution"
+  },
+  {
+    "ref": "3.6.1.1",
+    "level": 3,
+    "name": "Buying Agreement Execution",
+    "description": "Step 4: Execute Buying Agreement covering terms, T&Cs, and Ops Manual acknowledgement.",
+    "responsible": "Category Sourcing Manager",
+    "accountable": "Sourcing Director",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Agreement signed before first order"
+  },
+  {
+    "ref": "3.6.1.2",
+    "level": 3,
+    "name": "Vendor System Registration",
+    "description": "Register vendor on 3PL system with unique ID and password setup.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor",
+    "informed": "Logistics Manager",
+    "kpi": "Registration completed within 5 working days"
+  },
+  {
+    "ref": "4",
+    "level": 0,
+    "name": "Develop",
+    "l0": "Develop"
+  },
+  {
+    "ref": "4.1",
+    "level": 1,
+    "name": "Product Specification, Testing & Sealing"
+  },
+  {
+    "ref": "4.1.1",
+    "level": 2,
+    "name": "Technical File Completion"
+  },
+  {
+    "ref": "4.1.1.1",
+    "level": 3,
+    "name": "Technical Product Specification Compilation",
+    "description": "Compile TPS covering all product parameters, materials, and performance requirements.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "TPS completed before Silver Seal submission"
+  },
+  {
+    "ref": "4.1.1.2",
+    "level": 3,
+    "name": "BOM/CDF/Drawing Collation",
+    "description": "Collate Bill of Materials, Component Data Forms, and technical drawings.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Documentation completeness >98%"
+  },
+  {
+    "ref": "4.1.1.3",
+    "level": 3,
+    "name": "Product Complexity Classification",
+    "description": "Classify product as Low, Standard, or High complexity.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Classification completed per GPS"
+  },
+  {
+    "ref": "4.1.1.4",
+    "level": 3,
+    "name": "General Quality Standards Assignment",
+    "description": "Assign applicable General Quality Standards (GQS) to the product.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "GQS assigned before development starts"
+  },
+  {
+    "ref": "4.1.1.5",
+    "level": 3,
+    "name": "General Product Specification Creation",
+    "description": "Create GPS following Input - Draft - Validate - Confirm workflow.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Client, Vendor",
+    "informed": "Category Sourcing Manager",
+    "kpi": "GPS signed off before Silver Seal"
+  },
+  {
+    "ref": "4.1.1.6",
+    "level": 3,
+    "name": "Defect Classification List Creation",
+    "description": "Create DCL defining critical, major, and minor defect criteria.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "DCL issued before production"
+  },
+  {
+    "ref": "4.1.2",
+    "level": 2,
+    "name": "Testing & Sealing"
+  },
+  {
+    "ref": "4.1.2.1",
+    "level": 3,
+    "name": "Silver Seal Sample Submission",
+    "description": "Vendor submits Silver Seal samples for initial product assessment.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Submission within CPA timeline"
+  },
+  {
+    "ref": "4.1.2.2",
+    "level": 3,
+    "name": "Silver Seal Review & Assessment",
+    "description": "Assess Silver Seal sample against GPS/GQS criteria.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Review completed within 5 working days"
+  },
+  {
+    "ref": "4.1.2.3",
+    "level": 3,
+    "name": "Pre-Production Testing",
+    "description": "Commission 3rd party testing for safety, EMC, FFU, and chemical compliance.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Test reports received within 15 working days"
+  },
+  {
+    "ref": "4.1.2.4",
+    "level": 3,
+    "name": "Test Reports Collection & Validation",
+    "description": "Collect test reports and validate lab accreditation and methodology.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "100% of reports validated before Gold Seal"
+  },
+  {
+    "ref": "4.1.2.5",
+    "level": 3,
+    "name": "Certificates Collection",
+    "description": "Collect all required product and component certificates.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Certificate completeness 100%"
+  },
+  {
+    "ref": "4.1.2.6",
+    "level": 3,
+    "name": "Declaration of Conformity Preparation",
+    "description": "Prepare CE/UKCA Declaration of Conformity.",
+    "responsible": "Senior QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "DoC issued before Gold Seal"
+  },
+  {
+    "ref": "4.1.2.7",
+    "level": 3,
+    "name": "REACH/RoHS/WEEE Compliance Check",
+    "description": "Verify regulatory compliance for REACH, RoHS, WEEE, ErP, WaterMark, WELS.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "100% compliance verification before Gold Seal"
+  },
+  {
+    "ref": "4.1.2.8",
+    "level": 3,
+    "name": "Gold Seal Sample Submission",
+    "description": "Vendor submits 3 production samples for Gold Seal assessment.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Submission per CPA; 3 samples received"
+  },
+  {
+    "ref": "4.1.2.9",
+    "level": 3,
+    "name": "Gold Seal Assessment & Inspection",
+    "description": "Assess Gold Seal: tech file complete, Silver CAP closed, packaging approved, no deviations.",
+    "responsible": "Senior QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Assessment completed within 5 working days"
+  },
+  {
+    "ref": "4.1.2.10",
+    "level": 3,
+    "name": "Dimension/Material/Weight Data Validation",
+    "description": "Validate all physical data against specifications.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Data accuracy 100%"
+  },
+  {
+    "ref": "4.1.2.11",
+    "level": 3,
+    "name": "Manage Reject Loops",
+    "description": "Manage Silver/Gold Seal rejection, CAP issuance, vendor revision, and re-assessment cycle.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Reject loop closure within 10 working days"
+  },
+  {
+    "ref": "4.1.2.12",
+    "level": 3,
+    "name": "Gold Seal Sign-Off & Distribution",
+    "description": "Sign off Gold Seal and distribute to Surity, client, and factory with reference numbers.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Sign-off within 2 working days of assessment pass"
+  },
+  {
+    "ref": "4.1.2.13",
+    "level": 3,
+    "name": "Gold Seal Storage",
+    "description": "Store Gold Seal reference sample for minimum 2-year retention.",
+    "responsible": "QA Administrator",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "100% sample retention compliance"
+  },
+  {
+    "ref": "4.1.2.14",
+    "level": 3,
+    "name": "Product Amendment Management",
+    "description": "Manage change control: retest, new Gold Seal for product amendments.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Amendment processed within 10 working days"
+  },
+  {
+    "ref": "4.1.2.15",
+    "level": 3,
+    "name": "Repeat Order Compliance Verification",
+    "description": "Verify that repeat orders still comply with original Gold Seal approval; check for spec changes, test report validity, and certification currency before reorder.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Verification before order issuance"
+  },
+  {
+    "ref": "4.2",
+    "level": 1,
+    "name": "Artwork & Packaging"
+  },
+  {
+    "ref": "4.2.1",
+    "level": 2,
+    "name": "Physical Packaging Development"
+  },
+  {
+    "ref": "4.2.1.1",
+    "level": 3,
+    "name": "Brand Requirements Confirmation",
+    "description": "Confirm client brand guidelines and packaging standards.",
+    "responsible": "Packaging Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Brand brief confirmed before artwork starts"
+  },
+  {
+    "ref": "4.2.1.2",
+    "level": 3,
+    "name": "Packaging Format Confirmation",
+    "description": "Confirm packaging format selection (box/open/blister/polybag/shrink).",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Client, Vendor",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Format confirmed within CPA timeline"
+  },
+  {
+    "ref": "4.2.1.3",
+    "level": 3,
+    "name": "Packaging Brief Release to Vendor",
+    "description": "Issue packaging brief to vendor covering format, materials, and policy requirements.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Brief issued within 3 working days"
+  },
+  {
+    "ref": "4.2.1.4",
+    "level": 3,
+    "name": "Packaging Material Selection",
+    "description": "Specify packaging materials (paper/plastic/corrugated) with weight thresholds.",
+    "responsible": "Senior Packaging Engineer",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Material spec approved"
+  },
+  {
+    "ref": "4.2.1.5",
+    "level": 3,
+    "name": "Packaging Testing & Validation",
+    "description": "Test packaging per GPS requirements.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Test pass rate"
+  },
+  {
+    "ref": "4.2.1.6",
+    "level": 3,
+    "name": "Environmental Packaging Optimisation",
+    "description": "Review recyclability, FSC/PEFC certification, and plastic policy compliance.",
+    "responsible": "Senior Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Environmental compliance rate"
+  },
+  {
+    "ref": "4.2.1.7",
+    "level": 3,
+    "name": "Packaging Data Collection & Vendor Declaration",
+    "description": "Collect packaging data and vendor environmental declarations.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Data completeness 100%"
+  },
+  {
+    "ref": "4.2.2",
+    "level": 2,
+    "name": "Artwork Development"
+  },
+  {
+    "ref": "4.2.2.1",
+    "level": 3,
+    "name": "AWCL Preparation",
+    "description": "Prepare Artwork Checklist covering marketing copy, technical symbols, and dimensions.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "AWCL completed before artwork generation"
+  },
+  {
+    "ref": "4.2.2.2",
+    "level": 3,
+    "name": "AWCL Vendor Completion",
+    "description": "Send AWCL to vendor for completion with product-specific data.",
+    "responsible": "Vendor",
+    "accountable": "Packaging Manager",
+    "consulted": "Packaging Technologist",
+    "informed": "Client",
+    "kpi": "Vendor returns within 5 working days"
+  },
+  {
+    "ref": "4.2.2.3",
+    "level": 3,
+    "name": "Artwork Creation",
+    "description": "Generate artwork via Surity-approved agency or vendor in-house design team.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Category QA Manager",
+    "kpi": "Artwork created within CPA timeline"
+  },
+  {
+    "ref": "4.2.2.4",
+    "level": 3,
+    "name": "Die Cut Submission & Approval",
+    "description": "Submit die cut (AI format, 100% scale, panel labelling) for approval.",
+    "responsible": "Vendor",
+    "accountable": "Packaging Manager",
+    "consulted": "Packaging Technologist",
+    "informed": "Client",
+    "kpi": "Die cut approved within 3 working days"
+  },
+  {
+    "ref": "4.2.2.5",
+    "level": 3,
+    "name": "Product Photo Submission & Approval",
+    "description": "Submit product photos (300dpi TIF, background removed) for artwork inclusion.",
+    "responsible": "Vendor",
+    "accountable": "Packaging Manager",
+    "consulted": "Packaging Technologist",
+    "informed": "Client",
+    "kpi": "Photos approved within 3 working days"
+  },
+  {
+    "ref": "4.2.2.6",
+    "level": 3,
+    "name": "Barcode Verification",
+    "description": "Verify barcode format, grade, and readability.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Barcode scan pass rate 100%"
+  },
+  {
+    "ref": "4.2.2.7",
+    "level": 3,
+    "name": "Regulatory Symbol Placement",
+    "description": "Place CE, UKCA, RCM, WEEE, ErP, FSC symbols per regulation requirements.",
+    "responsible": "Senior Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Symbol compliance 100%"
+  },
+  {
+    "ref": "4.2.2.8",
+    "level": 3,
+    "name": "Artwork Review & Approval Cycle",
+    "description": "Surity review and client approval cycle for artwork drafts.",
+    "responsible": "Packaging Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Approval cycle iterations ≤3"
+  },
+  {
+    "ref": "4.2.2.9",
+    "level": 3,
+    "name": "Print Proof Submission & Approval",
+    "description": "Submit print proof for colour, barcode grade, and print quality checklist review.",
+    "responsible": "Vendor",
+    "accountable": "Packaging Manager",
+    "consulted": "Packaging Technologist",
+    "informed": "Client",
+    "kpi": "Print proof approved within 3 working days"
+  },
+  {
+    "ref": "4.2.2.10",
+    "level": 3,
+    "name": "Translation Pack with Manual & Labels",
+    "description": "Prepare translation pack including instruction manual and label text for all markets.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Translation pack completed within CPA timeline"
+  },
+  {
+    "ref": "4.2.2.11",
+    "level": 3,
+    "name": "Final Artwork Sign Off",
+    "description": "Final sign-off on all artwork before print authorisation.",
+    "responsible": "Packaging Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Sign-off achieved by CPA deadline"
+  },
+  {
+    "ref": "4.2.2.12",
+    "level": 3,
+    "name": "Carton Marking Specification",
+    "description": "Apply inner/outer carton mark and pallet label templates.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client, Logistics Manager",
+    "kpi": "Marking compliance 100%"
+  },
+  {
+    "ref": "4.3",
+    "level": 1,
+    "name": "Instruction Manual"
+  },
+  {
+    "ref": "4.3.1",
+    "level": 2,
+    "name": "Instruction Manual Development"
+  },
+  {
+    "ref": "4.3.1.1",
+    "level": 3,
+    "name": "IM Brief & Template Issuance",
+    "description": "Issue instruction manual brief and format template to vendor.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Brief issued within 3 working days of GPS"
+  },
+  {
+    "ref": "4.3.1.2",
+    "level": 3,
+    "name": "Instruction Manual Origination",
+    "description": "Vendor drafts English version covering content, visuals, and format.",
+    "responsible": "Vendor",
+    "accountable": "Packaging Manager",
+    "consulted": "Packaging Technologist",
+    "informed": "Client",
+    "kpi": "Draft submitted within CPA timeline"
+  },
+  {
+    "ref": "4.3.1.3",
+    "level": 3,
+    "name": "English Version Creation & Review",
+    "description": "Surity reviews English manual for content, accuracy, compliance, and copy quality including grammar, spelling, and clarity for non-native speakers.",
+    "responsible": "Senior Packaging Engineer",
+    "accountable": "Packaging Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Review completed within 5 working days"
+  },
+  {
+    "ref": "4.3.1.4",
+    "level": 3,
+    "name": "Master Manual Approval",
+    "description": "Approve format template for multi-SKU ranges.",
+    "responsible": "Packaging Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Master approved before translations"
+  },
+  {
+    "ref": "4.3.1.5",
+    "level": 3,
+    "name": "Translation Commissioning",
+    "description": "Commission translations via approved agency for all destination market languages.",
+    "responsible": "Packaging Technologist",
+    "accountable": "Packaging Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Translations delivered within 10 working days"
+  },
+  {
+    "ref": "4.3.1.6",
+    "level": 3,
+    "name": "Final IM Approval & Print Authorisation",
+    "description": "Final approval and print authorisation for instruction manual.",
+    "responsible": "Packaging Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Approval by CPA deadline"
+  },
+  {
+    "ref": "5",
+    "level": 0,
+    "name": "Execute",
+    "l0": "Execute"
+  },
+  {
+    "ref": "5.1",
+    "level": 1,
+    "name": "Order Management"
+  },
+  {
+    "ref": "5.1.1",
+    "level": 2,
+    "name": "Order Processing"
+  },
+  {
+    "ref": "5.1.1.1",
+    "level": 3,
+    "name": "Outline Quotation Processing",
+    "description": "Process outline quotation with minimum data for in-store cost estimate.",
+    "responsible": "Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Quotation processed within 3 working days"
+  },
+  {
+    "ref": "5.1.1.2",
+    "level": 3,
+    "name": "Full Quotation Processing",
+    "description": "Process full quotation with all statutory and system setup data.",
+    "responsible": "Senior Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Quotation completeness 100%"
+  },
+  {
+    "ref": "5.1.1.3",
+    "level": 3,
+    "name": "Product Data Confirmation",
+    "description": "Confirm all product master data for accuracy.",
+    "responsible": "Assistant Merchandiser",
+    "accountable": "Category Sourcing Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Data error rate <1%"
+  },
+  {
+    "ref": "5.1.1.4",
+    "level": 3,
+    "name": "Product Master Data Upload to Client Systems",
+    "description": "Upload product master data to client ERP/systems.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Client, IT Manager",
+    "informed": "Vendor",
+    "kpi": "Upload completed within 5 working days"
+  },
+  {
+    "ref": "5.1.1.5",
+    "level": 3,
+    "name": "Product Marketing Data Upload",
+    "description": "Upload marketing data (images, descriptions, features) to client systems.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Upload completed within 5 working days"
+  },
+  {
+    "ref": "5.1.1.6",
+    "level": 3,
+    "name": "Product Live in Client ERP",
+    "description": "Activate product in client ERP systems for ordering.",
+    "responsible": "Client",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "IT Manager",
+    "informed": "Vendor",
+    "kpi": "Product live within 2 working days of upload"
+  },
+  {
+    "ref": "5.1.1.7",
+    "level": 3,
+    "name": "Proforma Order Generation & Issuance",
+    "description": "Generate and issue proforma order to vendor.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Proforma issued per CPA timeline"
+  },
+  {
+    "ref": "5.1.1.8",
+    "level": 3,
+    "name": "Vendor Order Confirmation",
+    "description": "Receive vendor order confirmation within 3 working days; note amendments.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Supply Chain Analyst",
+    "informed": "Client",
+    "kpi": "Confirmation within 3 working days"
+  },
+  {
+    "ref": "5.1.1.9",
+    "level": 3,
+    "name": "Official Order Issuance",
+    "description": "Issue official order as binding contract.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Official order issued within 2 days of confirmation"
+  },
+  {
+    "ref": "5.1.1.10",
+    "level": 3,
+    "name": "Lead Time Confirmation",
+    "description": "Confirm lead times (first order vs repeat order).",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Supply Chain Analyst",
+    "informed": "Client",
+    "kpi": "Lead time adherence rate"
+  },
+  {
+    "ref": "5.1.1.11",
+    "level": 3,
+    "name": "Order Amendment Management",
+    "description": "Process and manage order amendments through formal change control.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Category QA Manager",
+    "kpi": "Amendment turnaround within 3 working days"
+  },
+  {
+    "ref": "5.2",
+    "level": 1,
+    "name": "Production Management"
+  },
+  {
+    "ref": "5.2.1",
+    "level": 2,
+    "name": "NPD & Production Control"
+  },
+  {
+    "ref": "5.2.1.1",
+    "level": 3,
+    "name": "NPD Design Sign Off",
+    "description": "Sign off NPD design before tooling release.",
+    "responsible": "Client",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Category Sourcing Manager",
+    "kpi": "Design sign-off per CPA timeline"
+  },
+  {
+    "ref": "5.2.1.2",
+    "level": 3,
+    "name": "NPD Tooling Release",
+    "description": "Authorise tooling production for NPD.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Tooling released per CPA timeline"
+  },
+  {
+    "ref": "5.2.1.3",
+    "level": 3,
+    "name": "NPD ESL Stage",
+    "description": "Engineering Sample Lot: sample check and testing.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "ESL pass rate"
+  },
+  {
+    "ref": "5.2.1.4",
+    "level": 3,
+    "name": "NPD Tooling Amendment (ESL)",
+    "description": "Amend tooling based on ESL testing results.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Amendment turnaround time"
+  },
+  {
+    "ref": "5.2.1.5",
+    "level": 3,
+    "name": "Pilot Production Run",
+    "description": "Execute pilot production run for validation.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Pilot run pass rate"
+  },
+  {
+    "ref": "5.2.1.6",
+    "level": 3,
+    "name": "Mass Production Release",
+    "description": "Mass production is authorised upon Gold Seal approval and order confirmation. Monitor production start and progress.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Production on-time start rate"
+  },
+  {
+    "ref": "5.2.1.7",
+    "level": 3,
+    "name": "DUPRO Inspection Execution",
+    "description": "During-production inspection at 10-20% completion.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "DUPRO pass rate; issues identified early"
+  },
+  {
+    "ref": "5.2.1.8",
+    "level": 3,
+    "name": "Production Status Tracking",
+    "description": "Monitor production progress against schedule.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Production milestone adherence"
+  },
+  {
+    "ref": "5.3",
+    "level": 1,
+    "name": "Inspection"
+  },
+  {
+    "ref": "5.3.1",
+    "level": 2,
+    "name": "Pre-Shipment Inspection"
+  },
+  {
+    "ref": "5.3.1.1",
+    "level": 3,
+    "name": "FRI Booking",
+    "description": "Book Final Random Inspection with agency 10 working days before LRD.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Supply Chain Analyst",
+    "kpi": "Booking submitted on time"
+  },
+  {
+    "ref": "5.3.1.2",
+    "level": 3,
+    "name": "FRI Execution",
+    "description": "Execute FRI at 100% complete / 80% packed per AQL ISO 2859.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "FRI first-pass rate"
+  },
+  {
+    "ref": "5.3.1.3",
+    "level": 3,
+    "name": "FRI Report Review",
+    "description": "Review FRI report and determine pass/fail/pending status.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Report reviewed within 1 working day"
+  },
+  {
+    "ref": "5.3.1.4",
+    "level": 3,
+    "name": "First Production Run Lab Testing",
+    "description": "Commission 3rd party lab testing for safety-critical items on first production run.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Test results within 10 working days"
+  },
+  {
+    "ref": "5.3.1.5",
+    "level": 3,
+    "name": "Self-Inspection Qualification & Execution",
+    "description": "Qualify and manage factory self-inspection for approved vendors.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Self-inspection qualification rate"
+  },
+  {
+    "ref": "5.3.1.6",
+    "level": 3,
+    "name": "Self-Inspection Report & Guarantee Letter",
+    "description": "Receive self-inspection report and guarantee letter from vendor.",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Report submitted within 2 working days"
+  },
+  {
+    "ref": "5.3.1.7",
+    "level": 3,
+    "name": "Inspection Certificate Issuance",
+    "description": "Issue inspection certificate to authorise shipment release.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client, Logistics Manager",
+    "kpi": "Certificate issued within 1 working day of pass"
+  },
+  {
+    "ref": "5.3.1.8",
+    "level": 3,
+    "name": "Inspection Cost Allocation",
+    "description": "Allocate inspection costs (Surity years 1-2 primary factories; vendor thereafter).",
+    "responsible": "Accounting Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Cost allocation per policy"
+  },
+  {
+    "ref": "5.4",
+    "level": 1,
+    "name": "Freight Management"
+  },
+  {
+    "ref": "5.4.1",
+    "level": 2,
+    "name": "Shipment Preparation & Delivery"
+  },
+  {
+    "ref": "5.4.1.1",
+    "level": 3,
+    "name": "DCL Definition",
+    "description": "Define Defect Classification List for freight/loading inspection.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Logistics Manager",
+    "kpi": "DCL issued before first shipment"
+  },
+  {
+    "ref": "5.4.1.2",
+    "level": 3,
+    "name": "3PL Registration",
+    "description": "Register vendor on 3PL online booking system.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Logistics Manager",
+    "informed": "Client",
+    "kpi": "Registration within 5 working days"
+  },
+  {
+    "ref": "5.4.1.3",
+    "level": 3,
+    "name": "Online Booking Submission",
+    "description": "Submit shipment booking online 15 calendar days before shipment.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Logistics Manager",
+    "informed": "Client",
+    "kpi": "Booking submitted on time"
+  },
+  {
+    "ref": "5.4.1.4",
+    "level": 3,
+    "name": "Container Booking (FCL/LCL)",
+    "description": "Book container allocation based on volume requirements.",
+    "responsible": "Logistics Analyst",
+    "accountable": "Logistics Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Booking confirmation within 3 working days"
+  },
+  {
+    "ref": "5.4.1.5",
+    "level": 3,
+    "name": "Shipping Order Release",
+    "description": "Release shipping order for loading.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor, Logistics Manager",
+    "informed": "Client",
+    "kpi": "Order released per timeline"
+  },
+  {
+    "ref": "5.4.1.6",
+    "level": 3,
+    "name": "Loading Supervision",
+    "description": "Supervise container loading (loose fill or pallet).",
+    "responsible": "Vendor",
+    "accountable": "Category QA Manager",
+    "consulted": "Logistics Manager",
+    "informed": "Client",
+    "kpi": "Loading compliance rate"
+  },
+  {
+    "ref": "5.4.1.7",
+    "level": 3,
+    "name": "Loading Photo Documentation",
+    "description": "Capture and submit photo evidence of container loading.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Supply Chain Analyst",
+    "informed": "Client",
+    "kpi": "Photos submitted within 24 hours of loading"
+  },
+  {
+    "ref": "5.4.1.8",
+    "level": 3,
+    "name": "Loading Approval & Shipment Release",
+    "description": "Confirm loading standards met and release shipment.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor, Logistics Manager",
+    "informed": "Client",
+    "kpi": "Approval within 1 working day"
+  },
+  {
+    "ref": "5.4.1.9",
+    "level": 3,
+    "name": "Mixed Loading Management",
+    "description": "Manage sequential order loading for mixed containers.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor, Logistics Manager",
+    "informed": "Client",
+    "kpi": "Loading sequence accuracy 100%"
+  },
+  {
+    "ref": "5.4.2",
+    "level": 2,
+    "name": "Palletisation"
+  },
+  {
+    "ref": "5.4.2.1",
+    "level": 3,
+    "name": "Pallet Specification Confirmation",
+    "description": "Confirm pallet specs by market (Europe/UK/Australia/NZ).",
+    "responsible": "Logistics Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Spec confirmed before first shipment"
+  },
+  {
+    "ref": "5.4.2.2",
+    "level": 3,
+    "name": "Pallet Loading Compliance",
+    "description": "Verify 1 SKU per pallet, shrink wrap, corner protectors, banding compliance.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Logistics Analyst",
+    "informed": "Client",
+    "kpi": "Pallet compliance rate 100%"
+  },
+  {
+    "ref": "5.4.2.3",
+    "level": 3,
+    "name": "Pallet Label Application",
+    "description": "Apply pallet labels per specification.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Logistics Analyst",
+    "informed": "Client",
+    "kpi": "Label accuracy 100%"
+  },
+  {
+    "ref": "5.4.2.4",
+    "level": 3,
+    "name": "Container Height Compliance Check",
+    "description": "Check single/double stack compliance against height limits.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Logistics Analyst",
+    "informed": "Client",
+    "kpi": "Height compliance 100%"
+  },
+  {
+    "ref": "5.4.3",
+    "level": 2,
+    "name": "Delivery Coordination"
+  },
+  {
+    "ref": "5.4.3.1",
+    "level": 3,
+    "name": "FCL Delivery to CY/CFS",
+    "description": "Deliver FCL to Container Yard or Container Freight Station (minimum CBM verification).",
+    "responsible": "Vendor",
+    "accountable": "Logistics Manager",
+    "consulted": "Supply Chain Analyst",
+    "informed": "Client",
+    "kpi": "Delivery within booking window"
+  },
+  {
+    "ref": "5.4.3.2",
+    "level": 3,
+    "name": "LCL Delivery to 3PL Warehouse",
+    "description": "Deliver LCL cargo to 3PL warehouse (7 days free storage).",
+    "responsible": "Vendor",
+    "accountable": "Logistics Manager",
+    "consulted": "Supply Chain Analyst",
+    "informed": "Client",
+    "kpi": "Delivery within booking window"
+  },
+  {
+    "ref": "5.4.3.3",
+    "level": 3,
+    "name": "ETD Confirmation",
+    "description": "Confirm Estimated Time of Departure.",
+    "responsible": "Logistics Analyst",
+    "accountable": "Logistics Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "ETD confirmed within 2 working days"
+  },
+  {
+    "ref": "5.4.3.4",
+    "level": 3,
+    "name": "Late Shipment Notification & Penalty Management",
+    "description": "Manage late shipment notifications and penalty processes.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor, Logistics Manager",
+    "informed": "Client",
+    "kpi": "Late shipment rate <2%"
+  },
+  {
+    "ref": "5.4.3.5",
+    "level": 3,
+    "name": "Volume Deviation Approval",
+    "description": "Approve deviations from ordered volumes.",
+    "responsible": "Category Supply Chain Manager",
+    "accountable": "Head of Operation",
+    "consulted": "Vendor, Client",
+    "informed": "Logistics Manager",
+    "kpi": "Deviation approval turnaround"
+  },
+  {
+    "ref": "5.5",
+    "level": 1,
+    "name": "Payment & Finance"
+  },
+  {
+    "ref": "5.5.1",
+    "level": 2,
+    "name": "Shipping Documentation"
+  },
+  {
+    "ref": "5.5.1.1",
+    "level": 3,
+    "name": "Commercial Invoice Preparation",
+    "description": "Prepare commercial invoice per order and shipping terms.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Accounting Manager",
+    "informed": "Client",
+    "kpi": "Invoice accuracy rate"
+  },
+  {
+    "ref": "5.5.1.2",
+    "level": 3,
+    "name": "Packing List Preparation",
+    "description": "Prepare packing list per container with full measurement/weight data.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client, Logistics Manager",
+    "kpi": "Packing list accuracy 100%"
+  },
+  {
+    "ref": "5.5.1.3",
+    "level": 3,
+    "name": "Bill of Lading / FCR Preparation",
+    "description": "Prepare Bill of Lading, FCR, or Sea Waybill.",
+    "responsible": "Logistics Analyst",
+    "accountable": "Logistics Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Document issued within 3 working days of sailing"
+  },
+  {
+    "ref": "5.5.1.4",
+    "level": 3,
+    "name": "Certificate of Origin / GSP Preparation",
+    "description": "Prepare Certificate of Origin or GSP Form A.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "CoO accuracy 100%"
+  },
+  {
+    "ref": "5.5.1.5",
+    "level": 3,
+    "name": "Fumigation Certificate / Self-Declaration",
+    "description": "Prepare fumigation certificate or self-declaration as required.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Certificate provided before document submission"
+  },
+  {
+    "ref": "5.5.1.6",
+    "level": 3,
+    "name": "Packing Declaration (AU/NZ)",
+    "description": "Prepare Packing Declaration or Annual Packing Declaration for Australia/NZ.",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "QA Technologist",
+    "informed": "Client",
+    "kpi": "Declaration accuracy 100%"
+  },
+  {
+    "ref": "5.5.1.7",
+    "level": 3,
+    "name": "Document Accuracy Check & Consistency Validation",
+    "description": "Cross-check PO, packing list, and invoice for consistency.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Document error rate <0.5%"
+  },
+  {
+    "ref": "5.5.2",
+    "level": 2,
+    "name": "Payment Processing"
+  },
+  {
+    "ref": "5.5.2.1",
+    "level": 3,
+    "name": "T/T Document Submission",
+    "description": "Submit documents for Open Account (T/T) payment processing.",
+    "responsible": "Assistant Accountant",
+    "accountable": "Accounting Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Documents submitted within 13 days of ETD"
+  },
+  {
+    "ref": "5.5.2.2",
+    "level": 3,
+    "name": "D/A or L/C Document Submission",
+    "description": "Submit documents for Documents Against Acceptance or Letter of Credit processing.",
+    "responsible": "Assistant Accountant",
+    "accountable": "Accounting Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Logistics Manager",
+    "kpi": "Documents submitted per payment terms"
+  },
+  {
+    "ref": "5.5.2.3",
+    "level": 3,
+    "name": "Payment Authorisation",
+    "description": "Authorise payment release upon document verification.",
+    "responsible": "Accounting Manager",
+    "accountable": "General Manager",
+    "consulted": "Client",
+    "informed": "Vendor",
+    "kpi": "Payment within 21 days of ETD"
+  },
+  {
+    "ref": "5.6",
+    "level": 1,
+    "name": "Post-Execution & Dispute Resolution"
+  },
+  {
+    "ref": "5.6.1",
+    "level": 2,
+    "name": "Non-Compliance Management"
+  },
+  {
+    "ref": "5.6.1.1",
+    "level": 3,
+    "name": "CAP Preparation",
+    "description": "Prepare Corrective Action Plan for non-conformances found post-delivery.",
+    "responsible": "QA Technologist",
+    "accountable": "Category QA Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "CAP issued within 5 working days"
+  },
+  {
+    "ref": "5.6.1.2",
+    "level": 3,
+    "name": "CAP Validation",
+    "description": "Validate vendor's response to CAP and verify corrective actions.",
+    "responsible": "Category QA Manager",
+    "accountable": "Head of Quality",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "CAP closure within 30 days"
+  },
+  {
+    "ref": "5.6.1.3",
+    "level": 3,
+    "name": "RTV Collection",
+    "description": "Coordinate Return to Vendor collection from destination (35-day window).",
+    "responsible": "Vendor",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Client, Logistics Manager",
+    "informed": "Accounting Manager",
+    "kpi": "RTV collected within 35 days"
+  },
+  {
+    "ref": "5.6.1.4",
+    "level": 3,
+    "name": "RTV Disposal",
+    "description": "Arrange disposal of non-conforming goods where RTV is not viable.",
+    "responsible": "Supply Chain Analyst",
+    "accountable": "Category Supply Chain Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Disposal arranged within 14 days"
+  },
+  {
+    "ref": "5.6.1.5",
+    "level": 3,
+    "name": "Cost Recovery Notification & Settlement",
+    "description": "Issue cost recovery notification and settle within 7-day payment window.",
+    "responsible": "Accounting Manager",
+    "accountable": "General Manager",
+    "consulted": "Vendor",
+    "informed": "Client",
+    "kpi": "Recovery rate >95%; settled within 7 days"
+  },
+  {
+    "ref": "5.6.1.6",
+    "level": 3,
+    "name": "Force Majeure Assessment",
+    "description": "Assess whether non-compliance qualifies as force majeure.",
+    "responsible": "Head of Operation",
+    "accountable": "General Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Head of Quality",
+    "kpi": "Assessment completed within 5 working days"
+  },
+  {
+    "ref": "5.6.1.7",
+    "level": 3,
+    "name": "Legal Dispute Management",
+    "description": "Manage formal legal dispute resolution process.",
+    "responsible": "Head of Operation",
+    "accountable": "General Manager",
+    "consulted": "Vendor, Client",
+    "informed": "Accounting Manager",
+    "kpi": "Dispute resolution timeline adherence"
+  }
+]

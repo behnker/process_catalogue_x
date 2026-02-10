@@ -47,7 +47,9 @@
       "mcp__omni-cortex__cortex_list_memories",
       "Bash(npx vitest run)",
       "Bash(echo:*)",
-      "Bash(npx shadcn@latest add:*)"
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(git status:*)",
+      "Bash(powershell:*)"
     ]
   }
 }
