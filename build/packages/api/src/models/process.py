@@ -82,6 +82,7 @@ class Process(TenantModel):
     )
     target_automation: Mapped[Optional[str]] = mapped_column(String(30))
     automation_notes: Mapped[Optional[str]] = mapped_column(Text)
+    agentic_potential: Mapped[Optional[str]] = mapped_column(String(20))
 
     # ── Ownership ───────────────────────────────────
     owner_id: Mapped[Optional[str]] = mapped_column(UUID(as_uuid=False))
@@ -137,6 +138,30 @@ class Process(TenantModel):
         back_populates="process", lazy="noload",
         foreign_keys="IssueLog.process_id"
     )
+    raci_entries: Mapped[list["ProcessRaci"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessRaci.process_id"
+    )
+    kpi_entries: Mapped[list["ProcessKpi"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessKpi.process_id"
+    )
+    governance_entries: Mapped[list["ProcessGovernance"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessGovernance.process_id"
+    )
+    policy_entries: Mapped[list["ProcessPolicy"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessPolicy.process_id"
+    )
+    timing_entries: Mapped[list["ProcessTiming"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessTiming.process_id"
+    )
+    sipoc_entries: Mapped[list["ProcessSipoc"]] = relationship(
+        back_populates="process", lazy="noload",
+        foreign_keys="ProcessSipoc.process_id"
+    )
 
 
 # ── Operating Model Components (Blueprint §4.4.1) ───
@@ -170,3 +195,11 @@ class ProcessOperatingModel(TenantModel):
 from src.models.riada import RiadaItem  # noqa: E402, F401
 from src.models.system_catalogue import ProcessSystem  # noqa: E402, F401
 from src.models.issue_log import IssueLog  # noqa: E402, F401
+from src.models.operating_model import (  # noqa: E402, F401
+    ProcessRaci,
+    ProcessKpi,
+    ProcessGovernance,
+    ProcessPolicy,
+    ProcessTiming,
+    ProcessSipoc,
+)

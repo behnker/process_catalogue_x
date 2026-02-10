@@ -45,6 +45,7 @@ export interface Process {
   owner_id?: string;
   sponsor_id?: string;
   function_id?: string;
+  agentic_potential?: "none" | "low" | "medium" | "high";
   tags?: string[];
   metadata_extra?: Record<string, unknown>;
   created_at: string;
@@ -541,4 +542,111 @@ export interface OperatingModelSummary {
   missing_components: string[];
   components_with_gaps: string[];
   completion_percentage: number;
+}
+
+// Operating Model — relational component types
+
+export interface ProcessRaci {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  activity: string;
+  responsible?: string;
+  accountable?: string;
+  consulted?: string;
+  informed?: string;
+  notes?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProcessKpi {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  name: string;
+  description?: string;
+  unit?: string;
+  target_value?: string;
+  current_value?: string;
+  previous_value?: string;
+  trend?: string;
+  rag_status?: string;
+  frequency?: string;
+  data_source?: string;
+  owner_role?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProcessGovernance {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  forum_name: string;
+  cadence?: string;
+  chair?: string;
+  attendees?: string[];
+  decision_authority?: string;
+  escalation_path?: string;
+  approval_threshold?: string;
+  documentation?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProcessPolicy {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  name: string;
+  policy_type: string;
+  description?: string;
+  compliance_requirement?: string;
+  owner_role?: string;
+  last_reviewed?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProcessTiming {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  name: string;
+  frequency?: string;
+  volume_per_period?: string;
+  cycle_time_target?: string;
+  cycle_time_actual?: string;
+  sla_commitment?: string;
+  trigger_event?: string;
+  dependencies?: string;
+  peak_season?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProcessSipoc {
+  id: string;
+  organization_id: string;
+  process_id: string;
+  element_type: "supplier" | "input" | "output" | "customer";
+  name: string;
+  description?: string;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RoleCatalogueEntry {
+  id: string;
+  organization_id: string;
+  name: string;
+  scope?: string;
+  description?: string;
+  is_active: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
 }

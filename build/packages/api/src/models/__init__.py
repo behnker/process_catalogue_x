@@ -43,6 +43,15 @@ from src.models.issue_log import (
     IssueLog,
     IssueLogHistory,
 )
+from src.models.operating_model import (
+    ProcessGovernance,
+    ProcessKpi,
+    ProcessPolicy,
+    ProcessRaci,
+    ProcessSipoc,
+    ProcessTiming,
+    RoleCatalogue,
+)
 
 __all__ = [
     # Organization & Auth
@@ -79,4 +88,12 @@ __all__ = [
     # Issue Log
     "IssueLog",
     "IssueLogHistory",
+    # Operating Model (relational)
+    "RoleCatalogue",
+    "ProcessRaci",
+    "ProcessKpi",
+    "ProcessGovernance",
+    "ProcessPolicy",
+    "ProcessTiming",
+    "ProcessSipoc",
 ]

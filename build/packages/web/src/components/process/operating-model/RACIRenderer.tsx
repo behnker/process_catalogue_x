@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils";
+import type { ProcessRaci } from "@/types/api";
 import { EmptyState } from "./EmptyState";
 import { GenericRenderer } from "./GenericRenderer";
 
 interface RACIRendererProps {
-  data: Record<string, unknown>;
+  items?: ProcessRaci[];
+  data?: Record<string, unknown>;
 }
 
 interface RACIEntry {
@@ -45,16 +47,7 @@ function RACICell({ value, letter }: { value?: string; letter: string }) {
   );
 }
 
-export function RACIRenderer({ data }: RACIRendererProps) {
-  const entries = data.matrix ?? data.entries ?? data.raci;
-
-  if (!isRACIArray(entries)) {
-    // Fall back to generic key-value if shape doesn't match
-    const keys = Object.keys(data);
-    if (keys.length === 0) return <EmptyState label="RACI" />;
-    return <GenericRenderer data={data} label="RACI" />;
-  }
-
+function RACITable({ entries }: { entries: RACIEntry[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
@@ -93,4 +86,23 @@ export function RACIRenderer({ data }: RACIRendererProps) {
       </table>
     </div>
   );
+}
+
+export function RACIRenderer({ items, data }: RACIRendererProps) {
+  // Prefer typed relational data
+  if (items && items.length > 0) {
+    return <RACITable entries={items} />;
+  }
+
+  // Fallback to JSONB data
+  if (data) {
+    const entries = data.matrix ?? data.entries ?? data.raci;
+    if (isRACIArray(entries)) {
+      return <RACITable entries={entries} />;
+    }
+    const keys = Object.keys(data);
+    if (keys.length > 0) return <GenericRenderer data={data} label="RACI" />;
+  }
+
+  return <EmptyState label="RACI" />;
 }

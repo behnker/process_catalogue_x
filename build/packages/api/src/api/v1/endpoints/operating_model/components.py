@@ -1,4 +1,8 @@
-"""Operating model component CRUD endpoints."""
+"""Operating model component CRUD endpoints — JSONB-only (resources, security, data).
+
+Migrated components (raci, kpis, governance, policies, timing, sipoc) now have
+dedicated relational endpoints. Systems uses the system_catalogue module.
+"""
 
 from uuid import uuid4
 
@@ -17,18 +21,11 @@ from src.schemas.operating_model import (
 
 router = APIRouter()
 
-# Valid component types per Blueprint §4.4.1
+# JSONB-only components — migrated types served by dedicated relational endpoints
 VALID_COMPONENTS = {
-    "sipoc",
-    "raci",
-    "kpis",
-    "systems",
-    "policies",
-    "timing",
-    "governance",
+    "resources",
     "security",
     "data",
-    "resources",
 }
 
 

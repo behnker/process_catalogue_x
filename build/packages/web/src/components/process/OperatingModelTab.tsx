@@ -9,6 +9,12 @@ import {
 import {
   useOperatingModel,
   useOperatingModelSummary,
+  useProcessRaci,
+  useProcessKpis,
+  useProcessGovernance,
+  useProcessPolicies,
+  useProcessTiming,
+  useProcessSipoc,
 } from "@/hooks/useOperatingModel";
 import { useProcessSystems } from "@/hooks/useProcessSystems";
 import { ComponentRenderer } from "./operating-model/ComponentRenderer";
@@ -43,6 +49,9 @@ const ALL_COMPONENT_TYPES: OperatingModelComponentType[] = [
   "security",
   "data",
 ];
+
+// Types served by relational endpoints
+const RELATIONAL_TYPES = new Set<string>(["raci", "kpis", "governance", "policies", "timing", "sipoc"]);
 
 interface ComponentMeta {
   label: string;
@@ -81,12 +90,14 @@ function LoadingSkeleton() {
 function getItemCount(
   type: OperatingModelComponentType,
   component?: OperatingModelComponent,
-  systemCount?: number
+  systemCount?: number,
+  relationalCount?: number
 ): number | undefined {
   if (type === "systems") return systemCount;
+  // For relational types, use the relational row count
+  if (RELATIONAL_TYPES.has(type)) return relationalCount;
   if (!component) return undefined;
   const state = component.current_state;
-  // Count top-level entries or array items for known shapes
   const firstArray = Object.values(state).find(Array.isArray);
   if (firstArray) return (firstArray as unknown[]).length;
   const keys = Object.keys(state);
@@ -100,6 +111,14 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
     useOperatingModelSummary(processId);
   const { data: systemsData } = useProcessSystems(processId);
 
+  // Relational component hooks
+  const { data: raciData } = useProcessRaci(processId);
+  const { data: kpisData } = useProcessKpis(processId);
+  const { data: governanceData } = useProcessGovernance(processId);
+  const { data: policiesData } = useProcessPolicies(processId);
+  const { data: timingData } = useProcessTiming(processId);
+  const { data: sipocData } = useProcessSipoc(processId);
+
   if (componentsLoading || summaryLoading) {
     return <LoadingSkeleton />;
   }
@@ -111,6 +130,25 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
     }
   }
 
+  const relational = {
+    raci: raciData,
+    kpis: kpisData,
+    governance: governanceData,
+    policies: policiesData,
+    timing: timingData,
+    sipoc: sipocData,
+  };
+
+  // Count map for relational types
+  const relationalCounts: Record<string, number> = {
+    raci: raciData?.length ?? 0,
+    kpis: kpisData?.length ?? 0,
+    governance: governanceData?.length ?? 0,
+    policies: policiesData?.length ?? 0,
+    timing: timingData?.length ?? 0,
+    sipoc: sipocData?.length ?? 0,
+  };
+
   const gapSet = new Set(summary?.components_with_gaps ?? []);
   const definedSet = new Set(summary?.defined_components ?? []);
   const defined = summary?.defined_components.length ?? 0;
@@ -118,8 +156,6 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
   const pct = summary?.completion_percentage ?? 0;
 
   const systems = systemsData?.items ?? [];
-  // Systems count as defined even if JSONB is empty
-  const systemsDefined = systems.length > 0;
 
   return (
     <div className="space-y-4">
@@ -127,7 +163,7 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">
-            {defined + (systemsDefined && !definedSet.has("systems") ? 1 : 0)}/{total} components defined
+            {defined}/{total} components defined
           </span>
           <span className="font-medium">{pct}%</span>
         </div>
@@ -152,10 +188,11 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
           const meta = COMPONENT_META[type] ?? { label: type, icon: FileText };
           const Icon = meta.icon;
           const component = componentMap.get(type);
-          const isDefined =
-            type === "systems" ? systemsDefined : definedSet.has(type);
+          const isDefined = definedSet.has(type);
           const hasGap = gapSet.has(type);
-          const count = getItemCount(type, component, systems.length);
+          const count = getItemCount(
+            type, component, systems.length, relationalCounts[type]
+          );
 
           return (
             <AccordionItem key={type} value={type} className="border rounded-lg px-1">
@@ -183,6 +220,7 @@ export function OperatingModelTab({ processId }: OperatingModelTabProps) {
                   componentType={type}
                   component={component}
                   systems={systems}
+                  relational={relational}
                   label={meta.label}
                 />
               </AccordionContent>

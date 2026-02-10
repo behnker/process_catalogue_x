@@ -2,17 +2,18 @@
 Operating Model API schemas.
 
 Blueprint §4.4.1: 10 components with current/future state.
+JSONB schemas for resources, security, data components.
+Summary schema aggregates relational + JSONB sources.
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field
-from typing import Any
 
 
 class OperatingModelComponentCreate(BaseModel):
-    component_type: str  # sipoc, raci, kpis, systems, policies, timing, governance, security, data, resources
+    component_type: str  # resources, security, data (JSONB-only)
     current_state: dict[str, Any] = Field(default_factory=dict)
     future_state: dict[str, Any] = Field(default_factory=dict)
     transition_notes: Optional[str] = None
@@ -45,3 +46,33 @@ class OperatingModelSummary(BaseModel):
     missing_components: list[str]
     components_with_gaps: list[str]
     completion_percentage: int
+
+
+class RoleCatalogueCreate(BaseModel):
+    name: str
+    scope: Optional[str] = None
+    description: Optional[str] = None
+    is_active: bool = True
+    sort_order: int = 0
+
+
+class RoleCatalogueUpdate(BaseModel):
+    name: Optional[str] = None
+    scope: Optional[str] = None
+    description: Optional[str] = None
+    is_active: Optional[bool] = None
+    sort_order: Optional[int] = None
+
+
+class RoleCatalogueResponse(BaseModel):
+    id: str
+    organization_id: str
+    name: str
+    scope: Optional[str]
+    description: Optional[str]
+    is_active: bool
+    sort_order: int
+    created_at: datetime
+    updated_at: datetime
+
+    model_config = {"from_attributes": True}
