@@ -4,6 +4,7 @@ Migrated components (raci, kpis, governance, policies, timing, sipoc) now have
 dedicated relational endpoints. Systems uses the system_catalogue module.
 """
 
+from typing import Literal
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -21,12 +22,8 @@ from src.schemas.operating_model import (
 
 router = APIRouter()
 
-# JSONB-only components — migrated types served by dedicated relational endpoints
-VALID_COMPONENTS = {
-    "resources",
-    "security",
-    "data",
-}
+# Literal type constrains path matching — FastAPI won't match "governance" etc.
+JsonbComponentType = Literal["resources", "security", "data"]
 
 
 @router.get(
@@ -35,16 +32,11 @@ VALID_COMPONENTS = {
 )
 async def get_operating_model_component(
     process_id: str,
-    component_type: str,
+    component_type: JsonbComponentType,
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_tenant_db),
 ):
-    """Get a specific operating model component."""
-    if component_type not in VALID_COMPONENTS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid component type. Must be one of: {', '.join(VALID_COMPONENTS)}",
-        )
+    """Get a specific JSONB operating model component (resources, security, data)."""
 
     result = await db.execute(
         select(ProcessOperatingModel).where(
@@ -72,13 +64,7 @@ async def create_operating_model_component(
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_tenant_db),
 ):
-    """Create a new operating model component for a process."""
-    if body.component_type not in VALID_COMPONENTS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid component type. Must be one of: {', '.join(VALID_COMPONENTS)}",
-        )
-
+    """Create a new JSONB operating model component for a process."""
     # Verify process exists
     result = await db.execute(
         select(Process).where(
@@ -122,18 +108,12 @@ async def create_operating_model_component(
 )
 async def update_operating_model_component(
     process_id: str,
-    component_type: str,
+    component_type: JsonbComponentType,
     body: OperatingModelComponentUpdate,
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_tenant_db),
 ):
-    """Update an operating model component."""
-    if component_type not in VALID_COMPONENTS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid component type. Must be one of: {', '.join(VALID_COMPONENTS)}",
-        )
-
+    """Update a JSONB operating model component."""
     result = await db.execute(
         select(ProcessOperatingModel).where(
             ProcessOperatingModel.process_id == process_id,
@@ -162,11 +142,11 @@ async def update_operating_model_component(
 )
 async def delete_operating_model_component(
     process_id: str,
-    component_type: str,
+    component_type: JsonbComponentType,
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_tenant_db),
 ):
-    """Delete an operating model component."""
+    """Delete a JSONB operating model component."""
     result = await db.execute(
         select(ProcessOperatingModel).where(
             ProcessOperatingModel.process_id == process_id,

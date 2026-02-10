@@ -7,13 +7,13 @@ Summary schema aggregates relational + JSONB sources.
 """
 
 from datetime import datetime
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 
 from pydantic import BaseModel, Field
 
 
 class OperatingModelComponentCreate(BaseModel):
-    component_type: str  # resources, security, data (JSONB-only)
+    component_type: Literal["resources", "security", "data"]
     current_state: dict[str, Any] = Field(default_factory=dict)
     future_state: dict[str, Any] = Field(default_factory=dict)
     transition_notes: Optional[str] = None

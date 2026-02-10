@@ -22,17 +22,21 @@ from .timing import router as timing_router
 
 router = APIRouter()
 
-# Summary + JSONB components
+# Summary endpoint (no path conflicts)
 router.include_router(summary_router, tags=["operating-model-summary"])
-router.include_router(components_router, tags=["operating-model-components"])
 
-# Relational component endpoints
+# Relational component endpoints — MUST come before JSONB catch-all
+# to prevent /{process_id}/operating-model/{component_type} from
+# matching "governance", "raci", etc.
 router.include_router(raci_router, tags=["operating-model-raci"])
 router.include_router(kpis_router, tags=["operating-model-kpis"])
 router.include_router(governance_router, tags=["operating-model-governance"])
 router.include_router(policies_router, tags=["operating-model-policies"])
 router.include_router(timing_router, tags=["operating-model-timing"])
 router.include_router(sipoc_router, tags=["operating-model-sipoc"])
+
+# JSONB catch-all (resources, security, data) — MUST be last
+router.include_router(components_router, tags=["operating-model-components"])
 
 # Reference data
 router.include_router(roles_router, tags=["operating-model-roles"])
